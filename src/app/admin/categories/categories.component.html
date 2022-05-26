@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+<!-- Sidebar -->
+
+<app-admin-siderbar></app-admin-siderbar>
+<!-- Page Content -->
+
+<br>
+<div style="margin-left:20%">
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Categories </h6>
+    </div>
+    <form
+    class="card-header py-3" >
+    <div class="input-group">
+        <input type="text" name="role" class="form-control" [(ngModel)]="searchedKeyword"  placeholder="Search for..." >
+      
+    </div>
+    </form>
+    <div class="card-body">
+      <div align="right" >
+        <button class="btn btn-outline-dark btn-lg" data-toggle="modal" data-target="#exampleModal1"  > Add Category  </button>&nbsp;&nbsp;
+       </div><br>
+        <div class="table-responsive">
+            <table class="table table-bordered"  width="100%" *ngIf="dataArray" >
+                <thead>
+                    <tr>
+                       
+                        <th scope="col" (click)="sort('id')" ># ID &nbsp;<i class="fa fa-sort"> </i>  </th>
+                        <th>Name</th>
+                        <th>Avatar</th>
+                        <th scope="col"> created_at</th>
+                        <th scope="col"> updated_at</th>
+                        <th colspan="2">Actions </th>
+  
+                    </tr>
+                </thead>
+               
+                <tbody>
+                  
+                    <tr *ngFor="let item of dataArray | paginate: { itemsPerPage: 3, currentPage: p } | filter:searchedKeyword ; index as i" >
+                        <th scope="row"  > {{item.id}} </th>
+                        <td> {{item.name}} </td>
+                        <td> <img  height="180" [src]="item.image_url" alt="" class="card-img-top"></td>
+                        <td> {{item.created_at | date:'medium'}}  </td>
+                        <td> {{item.updated_at | date:'medium'}}  </td>
+                        <td>  
+                           <button  (click)="getdata(item.name,item.image_url,item.id)"  class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal"  > update </button>&nbsp;&nbsp;
+                          </td>
+                          <td>
+                          <button (click)="delete(item.id , i)" class="btn btn-outline-danger"> delete </button> 
+                       </td>
+                       
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div style="text-align:right;">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+  </div>
+
+
+<div class="w3-container">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- form update start here -->
+          <form [formGroup]="update" #f="ngForm" (ngSubmit)="updatenewcat (f); f.reset()" >
+     
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Name  </label>
+              <input type="text"  class="form-control"  formControlName="name" [(ngModel)]="dataCat.name"  ngModel>
+            </div>
+           <!-- <div [hidden]='name.valid || name.pristine' class="alert alert-danger" role="alert" >
+                name is required
+            </div>-->
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Avatar  </label>
+              
+            <input type="file" 
+            (change)="fileChange($event)"  class="form-control"  formControlName="avatar"  [(ngModel)]="dataCat.avatar" ngModel rows="3"   /> 
+            
+            </div>
+           <!-- <div [hidden]='avatar.valid || avatar.pristine' class="alert alert-danger"role="alert" >
+                image is required
+            </div>-->
+           
+          
+            <br>
+            <div class="form-group">
+  
+                <button [disabled]="f.invalid" [hidden]="submitted" class="btn btn-danger" type="submit">save</button>
+            </div>
+            <div class="alert alert-danger" [hidden]="!submitted" role="alert"> 
+              Your post has been successfully created. 
+              <a routerLink="/categories" class="alert-link" > View all categories </a>
+            </div>
+          </form>
+  
+  
+          <!-- form update end here -->
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add  Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- form update start here -->
+          <form [formGroup]="addcategorie" #f="ngForm" (ngSubmit)="addcategory (f); f.reset()" >
+     
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Title  </label>
+              <input type="text" name="name" class="form-control"  formControlName="name"   required>
+            </div>
+           <!-- <div [hidden]='name.valid || name.pristine' class="alert alert-danger" role="alert" >
+                name is required
+            </div>-->
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Avatar  </label>
+              
+              <input type="file" 
+              (change)="fileChangeadd($event)" formControlName="avatar" class="form-control"  formControlName="avatar"   rows="3"   required /> 
+              
+            </div>
+           <!-- <div [hidden]='avatar.valid || avatar.pristine' class="alert alert-danger"role="alert" >
+                image is required
+            </div>-->
+           
+          
+  <br>
+            <div class="form-group">
+  
+                <button [disabled]="f.invalid" [hidden]="submitted" class="btn btn-danger" type="submit">save</button>
+            </div>
+          <!--  <div class="alert alert-danger" [hidden]="!submitted" role="alert"> 
+              Your post has been successfully created. 
+              <a routerLink="/categories" class="alert-link" > View all categories </a>
+            </div>-->
+          </form>
+  
+  
+          <!-- form update end here -->
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+</div>
+      
+</body>
+</html>
+

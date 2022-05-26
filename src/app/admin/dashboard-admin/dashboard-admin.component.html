@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+<!-- Sidebar -->
+
+<app-admin-siderbar></app-admin-siderbar>
+<!-- Page Content -->
+
+<br>
+<div style="margin-left:20%">
+
+
+  <div id="wrapper">
+
+    <div id="content-wrapper"  class="d-flex flex-column">
+  
+        <!-- Main Content -->
+        <div id="content">
+                <div class="container-fluid">
+
+                    <div style="display: block" *ngIf="chartReady">
+                        <canvas mdbChart
+                          
+                          [chartType]="chartType"
+                          [datasets]="chartDatasets"
+                          [labels]="chartLabels"
+                          [colors]="chartColors"
+                          
+                          [legend]="true"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)">
+                        </canvas>
+                      </div>
+
+  
+                </div>
+ 
+  
+    </div>
+
+  
+    </div>
+  
+</div>
+
+
+<div class="w3-container">
+
+</div>
+
+</div>
+      
+</body>
+</html>
+

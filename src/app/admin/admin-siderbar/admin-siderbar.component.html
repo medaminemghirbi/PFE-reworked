@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Sidebar -->
+<div  class="w3-sidebar w3-light-grey w3-bar-block" >
+  <div class="dashboard-nav"  style="background-color: rgb(38, 8,158);">
+    <header>
+        <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#" class="brand-logo">    <i class="fas fa-laugh-wink" style="color: white;" ></i> <span>ADMIN</span></a>
+        <div class="nav-item-divider"></div>
+    </header>
+    <nav class="dashboard-nav-list">
+        <a routerLink="/dashboard" class="dashboard-nav-item "><i class="fas fa-tachometer-alt"></i> dashboard </a>
+        <a routerLink="/categories" class="dashboard-nav-item "><i class="fas fa-photo-video"></i> All Categories </a>
+ 
+
+        <a  routerLink="/missions" class="dashboard-nav-item " ><i  class="fas fa-briefcase"></i>All Missions  </a>  
+        <a  routerLink="/alllanguages" class="dashboard-nav-item " ><i  class="fas fa-language"></i>All Languages  </a>  
+        <a routerLink="/allusers" class="dashboard-nav-item " ><i  class="fas fa-users"></i>All Users  </a>  
+ 
+        <a class="dashboard-nav-item dashboard-nav-dropdown-toggle" data-toggle="collapse" data-target="#settingscolaps"
+        aria-expanded="true" aria-controls="collapseTwo"><i class="fas fa-cogs"></i>  Settings  </a>  
+        <div id="settingscolaps" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-black py-2 collapse-inner rounded">              
+                <a routerLink="/profil-admin" class="dashboard-nav-item"><i class="fas fa-user"></i> Profil </a>              
+         
+            </div>
+        </div>
+        
+
+       
+
+
+        <div class="nav-item-divider"></div>
+        <a (click)="logout()" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a>
+    </nav>
+</div>
+</div>
+
+
+      
+</body>
+</html>
+
