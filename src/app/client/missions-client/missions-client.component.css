@@ -1,0 +1,53 @@
+table {
+  width: auto;
+  text-align: center;
+  border: 1px solid #fff;
+  border-spacing: 1px;
+  font-family: 'Cairo', sans-serif;
+margin: auto;
+}
+
+caption {
+  font-weight: bold;
+}
+
+table td {
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+table th {
+  background-color: rgb(10, 10, 94);
+  color: #fff;
+  padding: 10px;
+}
+
+img {
+  width: 90px;
+  height: 90px;
+}
+
+.view,
+.delete,
+.update {
+  border: none;
+  padding: 5px 10px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.view {
+  background-color: #015d88;
+}
+.update {
+  background-color: #09c009;
+}
+
+.delete {
+  background-color: #ff0000;
+}
+
+.tablefoot {
+  padding: 0;
+  border-bottom: 3px solid #333;
+}

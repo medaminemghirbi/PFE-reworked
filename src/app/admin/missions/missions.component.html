@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+<!-- Sidebar -->
+
+<app-admin-siderbar></app-admin-siderbar>
+<!-- Page Content -->
+
+<br>
+<div style="margin-left:20%">
+
+
+  <div id="wrapper">
+
+    <div id="content-wrapper"  class="d-flex flex-column">
+  
+        <!-- Main Content -->
+        <div id="content">
+          <div class="container">
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Missions ({{dataArray.length}}) </h6>
+                </div>
+                <form
+                class="card-header py-3" >
+                <div class="input-group">
+                    <input type="text" name="role" class="form-control" [(ngModel)]="searchedKeyword"  placeholder="Search for..." >
+                  
+                </div>
+                </form> 
+                <div class="card-body">
+                    <div class="table-responsive" >
+                    <table class="table table-bordered"  width="100%" >
+                        <thead >
+                          <tr >
+                            <th scope="col" (click)="sort('id')" ># ID &nbsp;<i class="fa fa-sort"> </i>  </th>
+                            <th scope="col"(click)="sort('title')" >title &nbsp;<i class="fa fa-sort"> </i> </th>
+                           <!-- <th scope="col"> Languages </th>  --> 
+                            <th scope="col"> description </th>
+                            <th scope="col"> duration </th>                 
+                            <th scope="col"> beginingDate</th>   
+                            <th scope="col"> category </th>                
+                           <!--
+                            <th scope="col"> created_at</th>
+                            <th scope="col"> updated_at</th>
+                            --> 
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>         
+                            <tr *ngFor="let item of dataArray| paginate: { itemsPerPage: 5, currentPage: p } | filter:searchedKeyword ; index as i" >
+                              <th scope="row" > {{item.id}} </th>
+                                <td> {{item.title}} </td>
+                               <!--   <td>{{item.languages.name}}</td> -->
+                                <td>{{item.description}}</td>
+                                <td> {{item.duration}}</td> 
+                                <td> {{item.beginingDate}}</td> 
+                                
+                                <td> {{item.category.name}}  </td>
+                               <!--
+                                   <td> {{item.created_at | date:'medium'}}  </td>
+                                <td> {{item.updated_at | date:'medium'}}  </td>
+                                --> 
+                                <td>  
+                                    <button  class="btn btn-outline-success" [routerLink]="['/detail-mission',item.id]" > Show </button> &nbsp;&nbsp;
+                                   
+                                </td>
+          
+                               
+                              </tr>
+                        </tbody>
+                       
+                      </table>
+          
+          
+                    </div>
+                    <div style="text-align:right;">
+                      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div>
+            </div>
+          </div>
+          
+          
+          
+          
+          </div>
+ 
+  
+    </div>
+
+  
+    </div>
+  
+</div>
+
+
+<div class="w3-container">
+
+</div>
+
+</div>
+      
+</body>
+</html>
+

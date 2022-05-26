@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:22%">
+<app-client-sider-bar></app-client-sider-bar>
+</div>
+
+<!-- Page Content -->
+<div style="margin-left:22%">
+
+
+  <br><br>
+  <div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">My All Missions ({{dataArray.length}})</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table-bordered">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mission title</th>
+                            <th>description</th>
+                            <th>duration</th>
+                            <th>beginingDate</th>
+                            <th>budget</th>
+                            <th>category</th>
+                            <th colspan="3">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of dataArray  ; index as i">
+                            <td>{{item.title}}</td>
+                            <!--   <td>{{item.languages.name}}</td> -->
+                            <td>{{item.description}}</td>
+                            <td>{{item.duration}} Months</td>
+                            <td>{{item.beginingDate}}</td>
+                            <td>{{item.budget}} TND</td>
+                            <td>{{item.category.name}}</td>
+                            <td>
+                                <button [routerLink]="['/detail-mission',item.id]" class="view">view</button>
+                            </td>
+                            <td>
+                                <button
+                                    (click)="getdata(item.title,item.description,item.duration, item.beginingDate,item.budget,item.category_id,item.language_id ,item.id)"
+                                    data-toggle="modal"
+                                    data-target="#exampleModal"
+                                    class="update"
+                                >
+                                    Update
+                                </button>
+                            </td>
+                            <td>
+                                <button (click)="delete(item.id , i)" class="delete">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- form update start here -->
+                    <form [formGroup]="addmissionn" #f="ngForm" (ngSubmit)="updatemission(f)">
+                        <!-- firstName validation start here -->
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Title</label>
+                            <input type="text" class="form-control" placeholder="title" [(ngModel)]="dataMission.title" required formControlName="title" ngModel minlength="2" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Duration </label>
+                            <input type="text" class="form-control" placeholder="duration" [(ngModel)]="dataMission.duration" formControlName="duration" required minlength="2" ngModel />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">BeginigDate </label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="beginingDate"
+                                [(ngModel)]="dataMission.beginingDate"
+                                required
+                                name="beginingDate"
+                                formControlName="beginingDate"
+                                minlength="2"
+                                maxlength="20"
+                                ngModel
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Budget </label>
+                            <input type="text" class="form-control" placeholder="budget" [(ngModel)]="dataMission.budget" required name="budget" formControlName="budget" minlength="2" maxlength="20" ngModel />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Category </label>
+                            <select [(ngModel)]="dataMission.category_id" class="form-control" id="exampleFormControlSelect1" formControlName="category_id">
+                                <option *ngFor=" let item of dataArrayy " [value]="item.id"> {{item.name}} </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Language </label>
+                            <ng-select [multiple]="true" placeholder="Select Language" formControlName="language_id" [(ngModel)]="selectedDefaultLanguage">
+                                <ng-option *ngFor="let l of languagedata" [value]="l.id">{{l.name}}</ng-option>
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="form-group">
+                              <label for="exampleFormControlTextarea1">Description</label>
+                              <textarea class="form-control" 
+                              placeholder="description"
+                              [(ngModel)]="dataMission.description"
+                              required
+                              name="description"
+                              formControlName="description"
+                              id="exampleFormControlTextarea1"
+                               rows="3"></textarea>
+                            </div>
+               
+                        </div>
+
+                        <!-- lastName validation end here -->
+
+                        <div class="alert alert-success" *ngIf="messageSuccess">
+                            {{messageSuccess}}
+                        </div>
+
+                        <button class="btn btn-primary">Update</button>
+                    </form>
+
+                    <!-- form update end here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+</body>
+</html>

@@ -17,7 +17,14 @@
                     <a routerLink="/about" class="nav-item nav-link">About Us</a>
                     <a routerLink="/contact" class="nav-item nav-link">Contact Us</a>
                 </div>
-                <a routerLink="/register" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a>
+                <a *ngIf="logged_in && role==='admin' " routerLink="/dashboard-admin"
+                    class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">dashboard Admin</a>
+                <a *ngIf="logged_in && role==='client' " routerLink="/dashboard-freelancer"
+                    class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">dashboard Client</a>
+
+                    <a *ngIf="logged_in && role==='freelancer' " routerLink="/dashboard-freelancer"
+                    class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">dashboard Freelancer</a>
+                <a *ngIf="!logged_in" routerLink="/register" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a>
             </div>
         </nav>
 

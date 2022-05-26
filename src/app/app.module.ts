@@ -24,11 +24,22 @@ import { DashboardAdminComponent } from './admin/dashboard-admin/dashboard-admin
 import { AdminSiderbarComponent } from './admin/admin-siderbar/admin-siderbar.component';
 import { UserNavbarComponent } from './user/user-navbar/user-navbar.component';
 import { CategoriesComponent } from './admin/categories/categories.component';
-import { AddCategoryComponent } from './admin/add-category/add-category.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { MissionsComponent } from './admin/missions/missions.component';
+import { SkillsComponent } from './admin/skills/skills.component';
+import { AllusersComponent } from './admin/allusers/allusers.component';
+import { ProfilAdminComponent } from './admin/profil-admin/profil-admin.component';
+import { DashbordClientComponent } from './client/dashbord-client/dashbord-client.component';
+import { ClientSiderBarComponent } from './client/client-sider-bar/client-sider-bar.component';
+import { PostulatedMissionsClientComponent } from './client/postulated-missions-client/postulated-missions-client.component';
+import { MissionsClientComponent } from './client/missions-client/missions-client.component';
+import { ActiveMissionsClientComponent } from './client/active-missions-client/active-missions-client.component';
+import { EndedMissionsClientComponent } from './client/ended-missions-client/ended-missions-client.component';
+import { AddmissionComponent } from './client/addmission/addmission.component';
+import { EditProfilClientComponent } from './client/edit-profil-client/edit-profil-client.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +60,19 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AdminSiderbarComponent,
     UserNavbarComponent,
     CategoriesComponent,
-    AddCategoryComponent  ],
+    MissionsComponent,
+    SkillsComponent,
+    AllusersComponent,
+    ProfilAdminComponent,
+    DashbordClientComponent,
+    ClientSiderBarComponent,
+    PostulatedMissionsClientComponent,
+    MissionsClientComponent,
+    ActiveMissionsClientComponent,
+    EndedMissionsClientComponent,
+    AddmissionComponent,
+    EditProfilClientComponent,
+      ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:22%">
+<app-client-sider-bar></app-client-sider-bar>
+</div>
+
+<!-- Page Content -->
+<div style="margin-left:22%">
+
+
+  <br><br>
+  <div class="container">
+  
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Missions (On Progress) | Status Accepted  </h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive" >
+            <table class="table table-bordered"  width="100%" >
+                <thead >
+                  <tr >
+                    <th scope="col"> Mission_id </th> 
+                    <th scope="col"> Title Mission </th>  
+                    <th scope="col"> Description </th> 
+                    <th scope="col" >Status  &nbsp;<i class="fa fa-sort"> </i> </th>
+                    <th scope="col"> Completed </th>  
+                 
+                   
+                    <th scope="col"> Email Freelancer </th> 
+                    <th scope="col">Descuter</th>              
+              
+                  </tr>
+                </thead>
+                <tbody>         
+                    <tr *ngFor="let item of dataArray  ; index as i" >
+                        
+                        <td>{{item.mission.id}}</td> 
+                        <td>{{item.mission.title}}</td>
+                        <td>{{item.mission.description}}</td>
+                        <td> <button *ngIf="item.status==='accepted' " class="btn btn-success">{{item.status}}</button> </td>
+                      
+                        <td> <button *ngIf="item.mission.completed===true " class="btn btn-success">{{item.mission.completed}}</button> 
+                         <button *ngIf="item.mission.completed===false " class="btn btn-warning">{{item.mission.completed}}</button> </td>
+
+                        <td > <a [routerLink]="['/detailfreelancer',item.freelancer_id]" >  {{item.freelancer.email }} </a></td> 
+                        <td> <a [routerLink]="['/descuter',item.freelancer_id]" >  Descuter </a></td> 
+
+                       
+                      </tr>
+                </tbody>
+               
+              </table>
+
+
+            </div>
+
+    </div>
+  </div>
+
+            </div>
+</div>
+
+
+
+</body>
+</html>

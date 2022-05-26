@@ -7,34 +7,52 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  dataArray:any = [];
-  dataArrayy:any = [];
-  messageErr =''
-  logged_in:any;
-  constructor(public usersService:UsersService) { }
+  dataArray: any = [];
+  dataArrayy: any = [];
+  messageErr = ''
+  logged_in: boolean = false;
+  role: string = '';
+  admindata: any;
+  clientdata: any;
+  freelancerdata: any;
 
-  ngOnInit(): void {
-    this.usersService.getAllcategories().subscribe(data=>{
-      this.connecter();
-      console.log(data)
-      this.dataArray=data , (err:HttpErrorResponse)=>{
-        console.log(err)
-      this.messageErr="We dont't found this user in our database"} 
-      //console.log(this.dataArray)
-    }) 
+  constructor(public userService: UsersService) {
 
-    this.usersService.countAllHome().subscribe(data=>{
-      this.connecter();
-      console.log(data)
-      this.dataArrayy=data , (err:HttpErrorResponse)=>{
-        console.log(err)
-      this.messageErr="We dont't found this user in our database"} 
-      //console.log(this.dataArray)
-    }) 
+    this.admindata = JSON.parse(localStorage.getItem('admindata') || '{}');
+    this.clientdata = JSON.parse(localStorage.getItem('clientdata') || '{}');
+    this.freelancerdata = JSON.parse(localStorage.getItem('freelancerdata') || '{}');
+    this.logged_in = JSON.parse(localStorage.getItem('logged_in')!);
+    console.log(this.logged_in)
+
+    this.role = JSON.parse(localStorage.getItem('role')!);
+    console.log(this.role)
 
   }
-  connecter(){
-    if(this.usersService.connecte ==true)
-    this.logged_in =true
+
+  ngOnInit(): void {
+    this.userService.getAllcategories().subscribe(data => {
+      this.connecter();
+      console.log(data)
+      this.dataArray = data, (err: HttpErrorResponse) => {
+        console.log(err)
+        this.messageErr = "We dont't found this user in our database"
+      }
+      //console.log(this.dataArray)
+    })
+
+    this.userService.countAllHome().subscribe(data => {
+      this.connecter();
+      console.log(data)
+      this.dataArrayy = data, (err: HttpErrorResponse) => {
+        console.log(err)
+        this.messageErr = "We dont't found this user in our database"
+      }
+      //console.log(this.dataArray)
+    })
+
+  }
+  connecter() {
+    if (this.userService.connecte == true)
+      this.logged_in = true
   }
 }

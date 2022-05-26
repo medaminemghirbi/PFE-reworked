@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:16%">
+<app-client-sider-bar></app-client-sider-bar>
+</div>
+
+<!-- Page Content -->
+<div style="margin-left:19%">
+
+
+  <br><br>
+          <div class="container-fluid"> 
+ 
+                    
+ 
+                     <!-- Content Row -->
+                     <div class="container">
+                      <div class="row">
+                        <div class="col">
+                          <div class="jumbotron">
+                              <h1 class="display-4">Add New  Mission </h1>
+                             </div>
+                        </div>
+                    
+                      </div>
+                      <div class="row">
+                    
+                        <div class="col">
+                        <form  [formGroup]="addmissionn" #f="ngForm" (ngSubmit)="addmission (f); f.reset()" >
+                         
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1">Title  </label>
+                                <input type="text" name="title" class="form-control"  formControlName="title"  required>
+                              </div><br>
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1">Description  </label>
+                                <input type="text" name="description" class="form-control" formControlName="description"   required>
+                              </div><br>
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1">Duration(Months) </label>
+                                <input type="number"  oninput="validity.valid||(value='');" min="0" max="12" name="duration" class="form-control"formControlName="duration"    required>
+                              </div><br>
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1">Begining Date  </label>
+                                <input type="date" name="beginingDate" class="form-control" formControlName="beginingDate"       required>
+                              </div><br>
+                              
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1">Budget  </label>
+                                <input type="number" name="Budget" class="form-control" formControlName="budget" oninput="validity.valid||(value='');" min="0" max="5000" placeholder="(DT)"    required>
+                              </div><br>
+                              <div class="form-group">
+                                <label for="exampleFormControlInput2">Language  </label>
+                                <ng-select 
+                                class="form-control"
+                                appendTo="body"
+                                [multiple]="true"
+                                 appendTo="body" 
+                                 id="exampleFormControlSelect2"
+                                    formControlName="language_id"
+                                [(ngModel)]="selectedDefaultLanguage">
+                                  <ng-option *ngFor="let l of languages" [value]="l.id">{{l.name}}</ng-option>
+                               </ng-select>
+              
+                              </div><br>
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1">Category  </label>
+                                <select class="form-control" id="exampleFormControlSelect1" formControlName="category_id"    name="id"   >
+                                    <option  *ngFor=" let item of dataArray " [value]="item.id"   >   {{item.name}}   </option>
+                                </select><br>
+                              </div>
+                 
+                              
+                              <div class="form-group" style="text-align: center;">
+                    
+                                  <button  [hidden]="submitted" class="btn btn-danger" type="submit">Add New  Mission </button>
+                              </div>
+                             <!-- <div class="alert alert-danger" [hidden]="!submitted" role="alert"> 
+                                Your mission has been successfully created. 
+                                <a routerLink="/missions-client" class="alert-link" > View all missions </a>
+                              </div>-->
+                            </form>
+                        </div>
+                      </div>
+                    </div>             
+ 
+                     <!-- Content Row -->
+             <!-- /.container-fluid -->
+   
+                 </div>
+</div>
+
+
+
+</body>
+</html>
