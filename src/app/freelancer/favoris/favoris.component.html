@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+    <!-- Sidebar -->
+    <app-freelancer-side-bar></app-freelancer-side-bar>
+    <!-- Page Content -->
+
+    <br>
+    <div style="margin-left:20%">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="container mb-4">
+            <div class="row">
+
+                <!-- Wishlist-->
+                <div class="col-lg-5 pb-5" *ngFor="let data of dataArray">
+                    <!-- Item-->
+                    <div class="cart-item d-md-flex justify-content-between"><span class="remove-item"><i
+                                (click)="deleteFavoris(data.id )" class="fa fa-times"></i></span>
+                        <div class="px-3 my-3">
+                            <a class="cart-item-product">
+                                <div class="cart-item-product-thumb"><img [src]="missions" alt="Product"></div>
+                                <div class="cart-item-product-info">
+                                    <h4 style="cursor: pointer;" [routerLink]="['/detail-mission',data.mission.id]"
+                                        class="cart-item-product-title"><i class="fas fa-heart"></i>
+                                        {{data.mission.title}}</h4>
+                                    <div class="text-lg text-body font-weight-medium pb-1">TND{{data.mission.budget}}
+                                    </div>
+                                    <div class="text-lg text-body font-weight-medium pb-1">Duration :
+                                        {{data.mission.duration}} Jours/Mois </div>
+                                    <div class="text-lg text-body font-weight-medium pb-1"><i class="fas fa-book">
+                                            {{data.mission.requests_count}} Proposition</i> &nbsp;</div>
+                                    <button class="btn btn-danger" *ngIf="data.mission.completed"> Offre expired
+                                    </button> <br><br>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

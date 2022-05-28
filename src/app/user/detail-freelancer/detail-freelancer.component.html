@@ -24,7 +24,7 @@
                             
                           <div  >
                
-                            <button *ngIf="!logged_in" class="btn btn-outline-primary">Contacter</button>
+                            <a  type="button"href="mailto:{{item.email}}" *ngIf="!logged_in"  class="btn btn-outline-primary">Contacter</a>
                          </div>
                          
                         </div>
@@ -292,7 +292,7 @@
                           <div *ngIf=" data.name && data.name !=='null' " >  
                             <p >  {{data.name}} </p>
                               
-                              <div class="progress">
+                              <div class="progress" style="height:30px">
                                 <div ngClass="progress-bar progress-bar-striped bg-{{data.color}}" [ngStyle]="{width: data.languagerate+'%'}" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">  {{data.languagerate}}%</div>
                               </div>
                           </div>

@@ -11,8 +11,7 @@
          <br>
           <div class="border-bottom pb-2 ml-2">
             <div class="form-group">
-              <h6 class="font-weight-bold">Language</h6>
-              <div id="orange"><span class="fa fa-minus"></span></div>
+       
              
               <div class="py-3">
                 <h5 class="font-weight-bold">Rating</h5>
@@ -43,11 +42,15 @@
             </div>   
                   
             </form>
-            </div>
-              <form class="formSteps" [formGroup]="stepOneOfOneForm" >
+            </div><br>
+            <h6 class="font-weight-bold">Language</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+              <form  [formGroup]="stepOneOfOneForm" >
                 <ng-select 
+              
                 [multiple]="true"
-                 placeholder="Select Language"
+                class="form-control" 
+           
                     formControlName="language_id"
                     name="language_id"
                       [(ngModel)]="selectedDefaultLanguage"

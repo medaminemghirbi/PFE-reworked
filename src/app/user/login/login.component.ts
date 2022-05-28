@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem( 'freelancerdata', JSON.stringify( response.user ) );
           localStorage.setItem( 'logged_in', JSON.stringify( response.logged_in ) );
           localStorage.setItem( 'role', JSON.stringify( response.role ) );
-          this.route.navigate(['/dashbord-freelancer']);
+          this.route.navigate(['/dashboard-freelancer']);
         }
         else{
           Swal.fire({

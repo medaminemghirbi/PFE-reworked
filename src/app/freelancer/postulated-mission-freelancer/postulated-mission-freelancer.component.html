@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+    <!-- Sidebar -->
+
+    <app-freelancer-side-bar></app-freelancer-side-bar>
+    <!-- Page Content -->
+
+    <br>
+    <div style="margin-left:20%">
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Postulated ( {{dataArray.length}} ) </h6>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" width="100%">
+                        <thead>
+                            <tr>
+                                <th scope="col" (click)="sort('id')"># ID &nbsp;<i class="fa fa-sort"> </i> </th>
+                                <th scope="col"> Status </th>
+                                <th scope="col" (click)="sort('title')">title &nbsp;<i class="fa fa-sort"> </i> </th>
+                                <!-- <th scope="col"> Languages </th>  -->
+                                <th scope="col"> description </th>
+                                <th scope="col"> duration </th>
+                                <th scope="col"> beginingDate</th>
+
+
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of dataArray  ; index as i">
+                                <td scope="row"> {{item.mission.id}} </td>
+
+                                <td>
+                                    <button *ngIf="item.status==='encours' "
+                                        class="btn btn-warning">{{item.status}}</button>
+                                    <button *ngIf="item.status==='refus' "
+                                        class="btn btn-danger">{{item.status}}</button>
+                                    <button *ngIf="item.status==='accepted' "
+                                        class="btn btn-success">{{item.status}}</button>
+                                </td>
+
+                                <td> {{item.mission.title}} </td>
+                                <!--   <td>{{item.languages.name}}</td> -->
+                                <td>{{item.mission.description}}</td>
+                                <td> {{item.mission.duration}} months</td>
+                                <td> {{item.mission.beginingDate}}</td>
+
+                                <td>
+                                    <button readonly style="cursor: not-allowed;" disabled
+                                        *ngIf="item.status==='accepted' " (click)="delete(item.id , i)" type="button"
+                                        class="btn btn-outline-danger"> Delete My Request </button>
+                                    <button *ngIf="item.status!=='accepted' " (click)="delete(item.id , i)"
+                                        type="button" class="btn btn-outline-danger"> Delete My Request </button> &nbsp;
+                                    &nbsp;
+                                </td>
+
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

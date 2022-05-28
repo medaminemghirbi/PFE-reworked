@@ -142,6 +142,10 @@ export class UsersService {
       return this.http.post(environment.urlBackend+'missions/',profile) ;
     }
     
+    gethomemissions () {
+      return this.http.get(`${environment.urlBackend}`+'homemissions/')
+    }
+   
     getAllMissions () {
       return this.http.get(`${environment.urlBackend}`+'missions/')
     }

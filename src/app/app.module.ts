@@ -40,8 +40,23 @@ import { ActiveMissionsClientComponent } from './client/active-missions-client/a
 import { EndedMissionsClientComponent } from './client/ended-missions-client/ended-missions-client.component';
 import { AddmissionComponent } from './client/addmission/addmission.component';
 import { EditProfilClientComponent } from './client/edit-profil-client/edit-profil-client.component';
+import { GeneratecvComponent } from './freelancer/generatecv/generatecv.component';
+import { FreelancerSideBarComponent } from './freelancer/freelancer-side-bar/freelancer-side-bar.component';
+import { DashbordFreelancerComponent } from './freelancer/dashbord-freelancer/dashbord-freelancer.component';
+import { ActiveMissionsFreelancerComponent } from './freelancer/active-missions-freelancer/active-missions-freelancer.component';
+import { EducationComponent } from './freelancer/education/education.component';
+import { EndedMissionsFreelancerComponent } from './freelancer/ended-missions-freelancer/ended-missions-freelancer.component';
+import { ExperienceComponent } from './freelancer/experience/experience.component';
+import { FavorisComponent } from './freelancer/favoris/favoris.component';
+import { PostulatedMissionFreelancerComponent } from './freelancer/postulated-mission-freelancer/postulated-mission-freelancer.component';
+import { ProfilFreelancerComponent } from './freelancer/profil-freelancer/profil-freelancer.component';
+import { FreelancerSkillsComponent } from './freelancer/freelancer-skills/freelancer-skills.component';
+import { DescuterFreelancerComponent } from './freelancer/descuter-freelancer/descuter-freelancer.component';
+import { DescuterComponent } from './client/descuter/descuter.component';
+import { OrderByPipe } from './order-by.pipe';
 @NgModule({
   declarations: [
+    OrderByPipe,
     AppComponent,
     HomeComponent,
     LoginComponent,
@@ -72,6 +87,19 @@ import { EditProfilClientComponent } from './client/edit-profil-client/edit-prof
     EndedMissionsClientComponent,
     AddmissionComponent,
     EditProfilClientComponent,
+    GeneratecvComponent,
+    FreelancerSideBarComponent,
+    DashbordFreelancerComponent,
+    ActiveMissionsFreelancerComponent,
+    EducationComponent,
+    EndedMissionsFreelancerComponent,
+    ExperienceComponent,
+    FavorisComponent,
+    PostulatedMissionFreelancerComponent,
+    ProfilFreelancerComponent,
+    FreelancerSkillsComponent,
+    DescuterFreelancerComponent,
+    DescuterComponent
       ],
   imports: [
     BrowserModule,

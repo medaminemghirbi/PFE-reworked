@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+    <!-- Sidebar -->
+
+    <app-freelancer-side-bar></app-freelancer-side-bar>
+    <!-- Page Content -->
+
+    <br>
+    <div style="margin-left:20%">
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Ended Missions ( {{dataArray.length}} ) </h6>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" width="100%">
+                        <thead>
+                            <tr>
+
+
+                                <th scope="col"> completed </th>
+                                <th scope="col"> Filepath </th>
+                                <th scope="col"> Title Mission </th>
+                                <th scope="col">Description &nbsp;<i class="fa fa-sort"> </i> </th>
+                                <th scope="col"> Email Client </th>
+                                <th scope="col"> Rating Client</th>
+
+                                <th scope="col">Rate CLient</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let item of dataArray  ; index as i">
+
+
+                                <td> <button *ngIf="item.completed==true " class="btn btn-success"> {{item.completed}}
+                                    </button>
+                                    <button *ngIf="item.completed==false " class="btn btn-danger"> {{item.completed}}
+                                    </button>
+                                </td>
+
+                                <td *ngIf="item.filepath"><a href="{{item.filepath}}">Go To file</a></td>
+                                <td *ngIf="!item.filepath">{{item.filepath}}</td>
+
+                                <td> <a [routerLink]="['/detail-mission',item.id]"> {{item.title}} </a></td>
+                                <td>{{item.description}}</td>
+                                <td> <a> {{item.client.email }} </a> </td>
+                                <td> {{item.client.reviews_count}} Stars </td>
+
+                                <td>
+                                    <button (click)="addreview(item.id , item.client.id)" type="button"
+                                        class="btn btn-outline-primary px-3"><i class="far fa-star" aria-hidden="true">
+                                            {{item.client.reviews_count}}</i></button>
+
+                                </td>
+
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+    <!-- Sidebar -->
+    <app-freelancer-side-bar></app-freelancer-side-bar>
+    <!-- Page Content -->
+
+    <br>
+    <div style="margin-left:20%">
+
+        <div class="container">
+
+            <div class="container">
+
+                <div align="right">
+                    <button (click)="clicker()" type="button" data-toggle="modal" data-target="#exampleModal"
+                        class="btn btn-outline-dark btn-sm">+ Add School/University </button>
+                </div>
+
+
+                <div class="container bootstrap snippets bootdey" *ngFor="let data of dataArray">
+                    <div class="panel-body inf-content">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img alt="" style="width:150px;" title=""
+                                    src="https://icon-library.com/images/school-icon/school-icon-11.jpg"
+                                    data-original-title="Usuario">
+
+                            </div>
+                            <div class="col-md-6">
+                                <strong> School/University Details</strong><br>
+                                <div class="table-responsive">
+                                    <table class="table table-user-information">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <strong>
+                                                        <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                                                        School/University
+                                                    </strong>
+                                                </td>
+                                                <td class="text-primary">
+                                                    {{ data.ecole }}
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <strong>
+                                                        <span class="glyphicon glyphicon-cloud text-primary"></span>
+                                                        Start Date </strong>
+                                                </td>
+                                                <td class="text-primary">
+                                                    {{data.dateDebut}}
+                                                </td>
+                                            </tr>
+
+
+                                            <tr>
+                                                <td>
+                                                    <strong>
+                                                        <span class="glyphicon glyphicon-envelope text-primary"></span>
+                                                        Graduation Date </strong>
+                                                </td>
+                                                <td class="text-primary">
+                                                    {{data.dateFin }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div align="right">
+                            <button (click)="deleteeducation(data.id )" type="button"
+                                class="btn btn-outline-danger btn-sm"> Delete School/University </button> &nbsp; &nbsp;
+                            <button (click)="getdata(data.ecole,data.dateDebut,data.dateFin,data.id)" type="button"
+                                data-toggle="modal" data-target="#exampleModal1"
+                                class="btn btn-outline-success btn-sm">Update School/University </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div><br>
+
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add School </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- form update start here -->
+                            <form [formGroup]="addeducation" #f="ngForm" (ngSubmit)="addschool (f); f.reset()">
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">School/University </label>
+                                    <input type="text" class="form-control" formControlName="ecole"
+                                        placeholder="your School/University is ?" ngModel>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="fullName">Start Date</label>
+                                    <input type="date" class="form-control" formControlName="dateDebut" id="dateDebut"
+                                        placeholder="your Post is ?">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fullName">Finish Date</label>
+                                    <input type="date" class="form-control" formControlName="dateFin" id="dateFin"
+                                        placeholder="your Post is ?">
+                                </div>
+                                <br>
+                                <div class="row gutters">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="text-right">
+
+                                            <button type="submit" class="btn btn-primary"> Add </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                            <!-- form update end here -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Update School </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- form update start here -->
+                            <form [formGroup]="addeducation" #f="ngForm" (ngSubmit)="updateschool (f); f.reset()">
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">School/University </label>
+                                    <input type="text" class="form-control" formControlName="ecole"
+                                        [(ngModel)]="dataeducation.ecole" placeholder="your School/University is ?"
+                                        ngModel>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="fullName">Start Date</label>
+                                    <input type="date" class="form-control" [(ngModel)]="dataeducation.dateDebut"
+                                        formControlName="dateDebut" id="dateDebut" placeholder="your Post is ?">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fullName">Finish Date</label>
+                                    <input type="date" class="form-control" formControlName="dateFin"
+                                        [(ngModel)]="dataeducation.dateFin" id="dateFin" placeholder="your Post is ?">
+                                </div>
+                                <br>
+                                <div class="row gutters">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="text-right">
+
+                                            <button type="submit" class="btn btn-primary"> Update </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                            <!-- form update end here -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
