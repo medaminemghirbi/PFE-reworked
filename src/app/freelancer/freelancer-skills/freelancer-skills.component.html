@@ -20,7 +20,7 @@
 
                 <div align="right">
                     <button (click)="clicker()" type="button" data-toggle="modal" data-target="#exampleModal"
-                        class="btn btn-outline-dark btn-sm">+ Add Language </button>
+                        class="btn btn-outline-dark btn-sm">+ Add Skill </button>
                 </div>
 
 
@@ -29,12 +29,12 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <img alt="" style="width:320px;" title=""
-                                    src="https://g.foolcdn.com/editorial/images/466511/man-working-at-a-computer_gettyimages-650066898.jpg"
+                                [src]="skill"
                                     data-original-title="Usuario">
 
                             </div>
                             <div class="col-md-6">
-                                <strong> Language Details</strong><br>
+                                <strong> Skill Details</strong><br>
                                 <div class="table-responsive">
                                     <table class="table table-user-information">
                                         <tbody>
@@ -42,7 +42,7 @@
                                                 <td>
                                                     <strong>
                                                         <span class="glyphicon glyphicon-asterisk text-primary"></span>
-                                                        Language Name
+                                                        Skill Name
                                                     </strong>
                                                 </td>
 
@@ -54,7 +54,7 @@
                                                 <td>
                                                     <strong>
                                                         <span class="glyphicon glyphicon-asterisk text-primary"></span>
-                                                        LanguageRate
+                                                        Skill Rate
                                                     </strong>
                                                 </td>
                                                 <td class="text-primary">
@@ -67,14 +67,14 @@
 
 
                                             <tr>
-
+<br>
                                                 <button (click)="destroylanguagefreelancer(data.id )" type="button"
-                                                    class="btn btn-outline-danger btn-sm"> Delete Language </button>
+                                                    class="btn btn-outline-danger btn-sm"> Delete Skill </button>
                                                 &nbsp; &nbsp;
                                                 <button
                                                     (click)="getdata(data.user_id,data.language_id,data.languagerate, data.id)"
                                                     type="button" data-toggle="modal" data-target="#exampleModal1"
-                                                    class="btn btn-outline-success btn-sm">Update Language </button>
+                                                    class="btn btn-outline-success btn-sm">Update SKill </button>
 
                                             </tr>
 
@@ -88,7 +88,7 @@
                         </div>
 
                     </div>
-
+<br>
                 </div>
 
 
@@ -111,7 +111,7 @@
 
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Language </label>
+                                    <label for="exampleFormControlInput1">Skill </label>
                                     <select [(ngModel)]="datalanguage.language_id" class="form-control"
                                         id="exampleFormControlSelect1" formControlName="language_id">
                                         <option *ngFor=" let item of dataArrayy " [value]="item.id"> {{item.name}}
@@ -121,7 +121,7 @@
 
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Language </label>
+                                    <label for="exampleFormControlInput1">Skill </label>
                                     <input type="text" class="form-control" formControlName="languagerate"
                                         placeholder="languageRate ?" ngModel>
                                 </div>
@@ -162,7 +162,7 @@
 
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Language </label>
+                                    <label for="exampleFormControlInput1">Skill </label>
                                     <select [(ngModel)]="datalanguage.language_id" class="form-control"
                                         id="exampleFormControlSelect1" formControlName="language_id">
                                         <option *ngFor=" let item of dataArrayy " [value]="item.id"> {{item.name}}
@@ -170,8 +170,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">LanguageRate </label>
-                                    <input type="text" class="form-control" formControlName="languagerate"
+                                    <label for="exampleFormControlInput1">Skill Rate </label>
+                                    <input type="text" class="form-control" formControlName="Skill Rate"
                                         [(ngModel)]="datalanguage.languagerate" placeholder="your JobType is ?" ngModel>
                                 </div>
 

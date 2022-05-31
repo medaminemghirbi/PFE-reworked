@@ -80,7 +80,7 @@ export class MissionComponent implements OnInit {
     this.getallmiss()
   }
   getallmiss () {
-    this.usersService.getAllMissions().subscribe(data=>{
+    this.usersService.gethomemissions().subscribe(data=>{
       console.log(data)
       this.dataArray =data , (err:HttpErrorResponse)=>{
         console.log(err)

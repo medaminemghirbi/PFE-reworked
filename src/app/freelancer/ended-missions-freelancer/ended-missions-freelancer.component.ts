@@ -141,7 +141,7 @@ export class EndedMissionsFreelancerComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'You cant rate  twice '
+          text: 'You cant rate  twice on the same mission '
         })
          
       }) ;

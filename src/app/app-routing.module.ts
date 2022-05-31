@@ -12,6 +12,7 @@ import { DashbordClientComponent } from './client/dashbord-client/dashbord-clien
 import { DescuterComponent } from './client/descuter/descuter.component';
 import { EditProfilClientComponent } from './client/edit-profil-client/edit-profil-client.component';
 import { EndedMissionsClientComponent } from './client/ended-missions-client/ended-missions-client.component';
+import { GeneratecontratclientComponent } from './client/generatecontratclient/generatecontratclient.component';
 import { MissionsClientComponent } from './client/missions-client/missions-client.component';
 import { PostulatedMissionsClientComponent } from './client/postulated-missions-client/postulated-missions-client.component';
 import { ActiveMissionsFreelancerComponent } from './freelancer/active-missions-freelancer/active-missions-freelancer.component';
@@ -79,6 +80,8 @@ const routes: Routes = [
   { path:'descuter/:id' , canActivate:[AuthGuard]  ,  component:DescuterComponent},
   { path:'descuter-freelancer/:id' , canActivate:[AuthGuard]  ,  component:DescuterFreelancerComponent},
   { path:'edit-client', canActivate:[AuthGuard]  ,  component:EditProfilClientComponent},
+  { path: 'generatecontratclient/:id', canActivate: [AuthGuard], component: GeneratecontratclientComponent },
+
 ];
 
 @NgModule({

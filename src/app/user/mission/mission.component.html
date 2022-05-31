@@ -25,7 +25,7 @@
             </div>
             <div class="py-2 border-bottom ml-3">
           
-              <h6 class="font-weight-bold"> Budget  </h6>
+              <h6 class="font-weight-bold"> Find by Budget  </h6>
               <div id="orange"><span class="fa fa-minus"></span></div>
               <form >
                   <div class="form-group"   >  
@@ -54,31 +54,27 @@
               </div>       
               </form>
           </div>
-          <form [formGroup]="languagefiltre" >
-          <div class="border-bottom pb-2 ml-2">
+          
+          <form [formGroup]="languagefiltre">
             <div class="form-group">
-              <h6 class="font-weight-bold">Language</h6>
+              <label for="exampleFormControlInput2">Find By Skills  </label>
               <div id="orange"><span class="fa fa-minus"></span></div>
-              <ng-select  
-              [multiple]="true"
-               placeholder="Select Language"
-               class="form-control" 
+              <ng-select 
+              class="form-control"
+              appendTo="body"
+              [multiple]="true" 
+               appendTo="body" 
+               id="exampleFormControlSelect2"
                   formControlName="language_id"
-                  name="language_id"
-                    [(ngModel)]="selectedDefaultLanguage"
-                    (change)="missionbylanguages()" 
-                      >
-                <ng-option *ngFor="let l of languages" [value]="l.id"   >
-                   {{l.name}} 
-            
-                </ng-option>
-                
+              [(ngModel)]="selectedDefaultLanguage"
+              (change)="missionbylanguages()" >
+                <ng-option *ngFor="let l of languages" [value]="l.id">{{l.name}}</ng-option>
              </ng-select>
-             
-                              
-            </div>
+  
             </div>
           </form>
+
+
           <br>
           
           

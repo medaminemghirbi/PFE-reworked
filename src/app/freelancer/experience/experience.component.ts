@@ -107,7 +107,7 @@ addexperiance (f:any){
   
   this.usersService.addexperiance(formData).subscribe( ()=>{
       console.log(data)
-    
+      Swal.fire('Saved!', 'Experience added succefully', 'success')
       window.location.reload();
 
   },(err:HttpErrorResponse)=>{

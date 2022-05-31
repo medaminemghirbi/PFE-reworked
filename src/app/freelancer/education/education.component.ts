@@ -64,7 +64,7 @@ export class EducationComponent implements OnInit {
 
     this.usersService.addschool(formData).subscribe(() => {
       console.log(data)
-
+      Swal.fire('Saved!', 'Education added succefully', 'success')
       window.location.reload();
 
     }, (err: HttpErrorResponse) => {

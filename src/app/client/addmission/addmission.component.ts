@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
@@ -25,7 +26,8 @@ export class AddmissionComponent implements OnInit {
   submitted: boolean = false ; 
   clientdata: any;
   addmissionn: any ;
-
+  messageError:any
+  date: any ;
   constructor(private usersService:UsersService,private route:Router) { 
     this.clientdata = JSON.parse( localStorage.getItem('clientdata') !);
     console.log(this.clientdata.firstname)  
@@ -67,7 +69,6 @@ export class AddmissionComponent implements OnInit {
   }
 
   addmission (f:any){
-
     const formData = new FormData();
       formData.append('title', this.addmissionn.value.title);
       formData.append('description', this.addmissionn.value.description);
@@ -76,27 +77,57 @@ export class AddmissionComponent implements OnInit {
       formData.append('budget', this.addmissionn.value.budget);
       formData.append('category_id',this.addmissionn.value.category_id);
       formData.append('client_id',this.clientdata.id);
-      formData.append('language_id',this.addmissionn.value.language_id);
-      
-
+      formData.append('language_id',this.addmissionn.value.language_id);   
     let data=f.value   
-    debugger
     console.log(data)
     this.usersService.addMission(formData).subscribe( ()=>{
-      
-        console.log(data)
-       // console.log(formData)
-        this.submitted = true ;
-        Swal.fire('Saved!', '', 'success')
+       this.date = moment(Date.now()).format("YYYY-MM-DD"); 
+      if (data.beginingDate > this.date ) {
+        console.log(this.date)
+        console.log(data.beginingDate)
+        this.submitted = true ;  
+        Swal.fire({
+          icon: 'success',
+          title: 'success...',
+          text: 'Saved !' ,
+          position: 'top-end',
+            showConfirmButton: true,
+            timer: 1500
+        })
        // window.location.reload();
-      this.route.navigate(['/missions-client'])
-
+      this.route.navigate(['/missions-client'])   
+      }
+      else {
+        this.messageError = "beginingDate must be after current date"
+        console.log(data.beginingDate)
+        console.log(this.date)
+       /* Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'beginingDate must be after current date !' ,
+          position: 'top-end',
+            showConfirmButton: false,
+            timer: 1500
+        })  */
+      }
+   
     },(err:HttpErrorResponse)=>{
+      console.log(data.beginingDate)
+        console.log(this.date)
+
+      this.messageError =  "champs required or not valid"
       this.messageErr=err.error
       console.log(err.error)
        console.log(err.status)
-       
-    }) ;
+       Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'champs required or not valid !' ,
+        position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500
+      })    
+    }) ;  
   }
 
 }

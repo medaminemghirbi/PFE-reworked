@@ -54,6 +54,7 @@ import { FreelancerSkillsComponent } from './freelancer/freelancer-skills/freela
 import { DescuterFreelancerComponent } from './freelancer/descuter-freelancer/descuter-freelancer.component';
 import { DescuterComponent } from './client/descuter/descuter.component';
 import { OrderByPipe } from './order-by.pipe';
+import { GeneratecontratclientComponent } from './client/generatecontratclient/generatecontratclient.component';
 @NgModule({
   declarations: [
     OrderByPipe,
@@ -99,7 +100,8 @@ import { OrderByPipe } from './order-by.pipe';
     ProfilFreelancerComponent,
     FreelancerSkillsComponent,
     DescuterFreelancerComponent,
-    DescuterComponent
+    DescuterComponent,
+    GeneratecontratclientComponent
       ],
   imports: [
     BrowserModule,

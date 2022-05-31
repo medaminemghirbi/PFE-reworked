@@ -79,5 +79,20 @@ export class DetailFreelancerComponent implements OnInit {
 
   }
 
-
+golinkedin(){
+  var result = this.dataArray.map(function(a:any) {return a.linkedin;});
+  window.open(result);
+}
+gogithub(){
+  var result = this.dataArray.map(function(a:any) {return a.github;});
+  window.open(result);
+}
+gotfacebook(){
+  var result = this.dataArray.map(function(a:any) {return a.facebook;});
+  window.open(result);
+}
+goinstagram(){
+  var result = this.dataArray.map(function(a:any) {return a.instagram;});
+  window.open(result);
+}
 }

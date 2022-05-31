@@ -36,7 +36,7 @@
                          
                               <div class="form-group">
                                 <label for="exampleFormControlInput1">Title  </label>
-                                <input type="text" name="title" class="form-control"  formControlName="title"  required>
+                                <input type="text"  name="title" class="form-control"  formControlName="title"  required>
                               </div><br>
                               <div class="form-group">
                                 <label for="exampleFormControlInput1">Description  </label>
@@ -78,14 +78,14 @@
                  
                               
                               <div class="form-group" style="text-align: center;">
-                    
+                                <div class="alert alert-danger" *ngIf="messageError">{{messageError}}</div>
                                   <button  [hidden]="submitted" class="btn btn-danger" type="submit">Add New  Mission </button>
                               </div>
                              <!-- <div class="alert alert-danger" [hidden]="!submitted" role="alert"> 
                                 Your mission has been successfully created. 
                                 <a routerLink="/missions-client" class="alert-link" > View all missions </a>
                               </div>-->
-                            </form>
+                            </form> 
                         </div>
                       </div>
                     </div>             

@@ -18,11 +18,12 @@
           <div>
               <label>Conversation Name</label>
               <input type="text" matInput placeholder="abcd" formControlName="name">
+              <button mat-raised-button  class="btn btn-info"  type="submit" [disabled]="!conversationFormGroup.valid" title="Get Or Create Conversation">Start COnversation</button>
+
           </div>&nbsp;
-          <button mat-raised-button color="primary" type="submit" [disabled]="!conversationFormGroup.valid" title="Get Or Create Conversation">GetOrCreateConversation</button>
 
       </form>
-    
+    <hr>
       <div>
           <div id="remote-container">
 

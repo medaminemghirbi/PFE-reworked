@@ -34,7 +34,9 @@
                  
                    
                     <th scope="col"> Email Freelancer </th> 
-                    <th scope="col">Descuter</th>              
+                    <th scope="col">Generate Contract </th>
+
+                    <th scope="col">Discuss</th>              
               
                   </tr>
                 </thead>
@@ -50,7 +52,9 @@
                          <button *ngIf="item.mission.completed===false " class="btn btn-warning">{{item.mission.completed}}</button> </td>
 
                         <td > <a [routerLink]="['/detailfreelancer',item.freelancer_id]" >  {{item.freelancer.email }} </a></td> 
-                        <td> <a [routerLink]="['/descuter',item.freelancer_id]" >  Descuter </a></td> 
+                        <td> <a  class="btn btn-outline-secondary" [routerLink]="['/generatecontratclient',item.mission.id]" > Generate </a></td>
+
+                        <td> <a  class="btn btn-outline-dark" [routerLink]="['/descuter',item.freelancer_id]" >  Discuss </a></td> 
 
                        
                       </tr>

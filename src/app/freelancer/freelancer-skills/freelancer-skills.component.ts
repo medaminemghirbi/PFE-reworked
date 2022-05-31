@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./freelancer-skills.component.css']
 })
 export class FreelancerSkillsComponent implements OnInit {
-
+  skill:any = "./assets/img/SKILL.png";
   clicked:boolean=false;
   clickedd:boolean=false;
   dataArray:any = [];

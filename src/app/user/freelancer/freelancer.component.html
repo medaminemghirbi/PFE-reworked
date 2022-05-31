@@ -14,7 +14,7 @@
        
              
               <div class="py-3">
-                <h5 class="font-weight-bold">Rating</h5>
+                <h5 class="font-weight-bold">Find  By  Rating</h5>
                <form >
                 <div class="form-group"   >  
                   <input (click)="this.getallfreelancers()" type="radio" value="" name="1" id="exampleCheck1" >  &nbsp;
@@ -43,26 +43,25 @@
                   
             </form>
             </div><br>
-            <h6 class="font-weight-bold">Language</h6>
-            <div id="orange"><span class="fa fa-minus"></span></div>
-              <form  [formGroup]="stepOneOfOneForm" >
+            <form [formGroup]="stepOneOfOneForm">
+              <div class="form-group">
+                <label for="exampleFormControlInput2">Find Freelancer By Skills  </label>
+                <div id="orange"><span class="fa fa-minus"></span></div>
                 <ng-select 
-              
-                [multiple]="true"
-                class="form-control" 
-           
+                class="form-control"
+                appendTo="body"
+                [multiple]="true" 
+                 appendTo="body" 
+                 id="exampleFormControlSelect2"
                     formControlName="language_id"
-                    name="language_id"
-                      [(ngModel)]="selectedDefaultLanguage"
-                      (change)="getfreelancerbylanguage()" 
-                        >
-                  <ng-option *ngFor="let l of languages" [value]="l.id"   >
-                     {{l.name}} 
-              
-                  </ng-option>
-                  
+                [(ngModel)]="selectedDefaultLanguage"
+                (change)="getfreelancerbylanguage()"  >
+                  <ng-option *ngFor="let l of languages" [value]="l.id">{{l.name}}</ng-option>
                </ng-select>
-                </form>
+    
+              </div>
+            </form>
+            
                               
             </div>
             </div>
