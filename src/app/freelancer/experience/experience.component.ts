@@ -19,7 +19,7 @@ export class ExperienceComponent implements OnInit {
   id:any;
   addexper! :  FormGroup;
   constructor(public usersService:UsersService) {
-    this.freelancerdata = JSON.parse( localStorage.getItem('freelancerdata') !);
+    this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
     this.addexper = new FormGroup({
       entreprise: new FormControl('', [Validators.required]),
       dateDebut: new FormControl('', [Validators.required]),

@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-missions',
@@ -36,20 +37,20 @@ export class MissionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.usersService.getAllMissions().subscribe(data=>{
-      console.log(data)
+
       this.dataArray=data , (err:HttpErrorResponse)=>{
-        console.log(err)
+
       this.messageErr="We dont't found this student in our database"} 
-      //console.log(this.dataArray)
+
     }) 
 
     /*
     this.produitServiceService.getAllusers().subscribe(data=>{
-      console.log(data)
+
       this.dataArrays=data , (err:HttpErrorResponse)=>{
-        console.log(err)
+ 
       this.messageErrr="We dont't found this user in our database"} 
-      //console.log(this.dataArray)
+    
     }) 
     */
   }
@@ -77,29 +78,42 @@ export class MissionsComponent implements OnInit {
   }
 
 
+
   delete(id:any  , i :number){
-
-    this.usersService.deleteMission(id).subscribe(response=>{
-      console.log(response)
-      this.dataArray.splice(i,1)
-
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.usersService.deleteMission(id).subscribe(response=>{
+          this.dataArray.splice(i,1)   
+        })
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
     })
+   
     
   }
-  
     getdata(title:string,description:string,id:any){
       this.messageSuccess=''
       this.dataStudent.title=title
       this.dataStudent.description=description
       this.dataStudent.id=id
-      console.log(this.dataStudent)
   
     }
     updatenewstudent(f:any){
       let data=f.value
       this.usersService.updateMission(this.dataStudent.id,data).subscribe(response=>
         {
-        console.log(response)
           let indexId=this.dataArray.findIndex((obj:any)=>obj.id==this.dataStudent.id)
   
           this.dataArray[indexId].title=data.title
@@ -108,7 +122,6 @@ export class MissionsComponent implements OnInit {
           this.messageSuccess=`this title : ${this.dataArray[indexId].title} is updated`
   
         },(err:HttpErrorResponse)=>{
-          console.log(err.message)
         
         })
     }

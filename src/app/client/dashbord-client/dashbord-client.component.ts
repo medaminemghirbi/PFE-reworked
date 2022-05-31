@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class DashbordClientComponent implements OnInit {
   clientdata:any;
   constructor() { 
-    this.clientdata = JSON.parse( localStorage.getItem('clientdata') !);
+    this.clientdata = JSON.parse( sessionStorage.getItem('clientdata') !);
     console.log(this.clientdata)
   }
 

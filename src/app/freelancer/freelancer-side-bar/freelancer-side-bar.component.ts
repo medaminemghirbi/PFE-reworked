@@ -13,7 +13,7 @@ export class FreelancerSideBarComponent implements OnInit {
   constructor(public UsersService:UsersService, public router:Router) { }
 
   ngOnInit(): void {
-    this.freelancerdata = JSON.parse(localStorage.getItem('freelancerdata') ||'{}');
+    this.freelancerdata = JSON.parse(sessionStorage.getItem('freelancerdata') ||'{}');
     console.log(this.freelancerdata.id)
   
   }

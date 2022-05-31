@@ -22,7 +22,7 @@ export class DescuterFreelancerComponent implements OnInit {
     name: this.fb.control('', [Validators.required])
   });
   constructor(private activatedRoute: ActivatedRoute,private fb: FormBuilder,private usersService:UsersService) {
-    this.freelancerdata = JSON.parse( localStorage.getItem('freelancerdata') !);
+    this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
 
     this.addmessage = new FormGroup({
       text: new FormControl('', [Validators.required]),

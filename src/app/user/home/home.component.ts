@@ -18,13 +18,13 @@ export class HomeComponent implements OnInit {
 
   constructor(public userService: UsersService) {
 
-    this.admindata = JSON.parse(localStorage.getItem('admindata') || '{}');
-    this.clientdata = JSON.parse(localStorage.getItem('clientdata') || '{}');
-    this.freelancerdata = JSON.parse(localStorage.getItem('freelancerdata') || '{}');
-    this.logged_in = JSON.parse(localStorage.getItem('logged_in')!);
+    this.admindata = JSON.parse(sessionStorage.getItem('admindata') || '{}');
+    this.clientdata = JSON.parse(sessionStorage.getItem('clientdata') || '{}');
+    this.freelancerdata = JSON.parse(sessionStorage.getItem('freelancerdata') || '{}');
+    this.logged_in = JSON.parse(sessionStorage.getItem('logged_in')!);
     console.log(this.logged_in)
 
-    this.role = JSON.parse(localStorage.getItem('role')!);
+    this.role = JSON.parse(sessionStorage.getItem('role')!);
     console.log(this.role)
 
   }

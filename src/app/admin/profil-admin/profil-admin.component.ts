@@ -19,8 +19,7 @@ export class ProfilAdminComponent implements OnInit {
   imageupdate!: any;
   messageSuccess: any;
   constructor(private route:Router, private usersService:UsersService) {
-    this.admindata = JSON.parse( localStorage.getItem('admindata') !) ;
-    console.log(this.admindata)
+    this.admindata = JSON.parse( sessionStorage.getItem('admindata') !) ;
     this.imageupdate = new FormGroup({ avatar: new FormControl('', [Validators.required]), });
     this.upadate = new FormGroup({
      // photo: new FormControl('', [Validators.required]),
@@ -49,7 +48,6 @@ export class ProfilAdminComponent implements OnInit {
     this.admindata.id = id 
     this.admindata.email = email
      this.admindata.adresse = adresse 
-    console.log(this.admindata)
 
   }
 
@@ -74,12 +72,11 @@ export class ProfilAdminComponent implements OnInit {
           {
             
             
-            localStorage.setItem( 'admindata', JSON.stringify( response ) );
+            sessionStorage.setItem( 'admindata', JSON.stringify( response ) );
             window.location.reload();
          
     
           },(err:HttpErrorResponse)=>{
-            console.log(err.message)
           
           })
     //   this.route.navigate(['/dashbord-freelancer']);
@@ -121,9 +118,8 @@ export class ProfilAdminComponent implements OnInit {
     this.usersService.updateProfileUser(this.admindata.id,formData).subscribe(response=>
       {
         
-        localStorage.setItem( 'admindata', JSON.stringify( response ) );
+        sessionStorage.setItem( 'admindata', JSON.stringify( response ) );
         window.location.reload();
-      console.log(response)
         let indexId=this.admindata.findIndex((obj:any)=>obj.id==this.admindata.id)
 
         this.admindata[indexId].email=data.email
@@ -146,7 +142,6 @@ export class ProfilAdminComponent implements OnInit {
         this.messageSuccess=`this email : ${this.admindata[indexId].email} is updated`
 
       },(err:HttpErrorResponse)=>{
-        console.log(err.message)
       })
      this.route.navigate(['/dashboard']);
         Swal.fire('Saved!', '', 'success')

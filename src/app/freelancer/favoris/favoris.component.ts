@@ -15,7 +15,7 @@ export class FavorisComponent implements OnInit {
   missions:any = "./assets/img/missions.jpeg";
   
   constructor(private usersService:UsersService) {
-    this.freelancerdata = JSON.parse( localStorage.getItem('freelancerdata') !);
+    this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
     
     }
 

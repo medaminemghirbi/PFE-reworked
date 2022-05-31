@@ -27,7 +27,7 @@ export class DescuterComponent implements OnInit {
     name: this.fb.control('', [Validators.required])
   });
   constructor(private activatedRoute: ActivatedRoute,private fb: FormBuilder,private usersService:UsersService) {
-    this.clientdata = JSON.parse( localStorage.getItem('clientdata') !);
+    this.clientdata = JSON.parse( sessionStorage.getItem('clientdata') !);
 
     this.addmessage = new FormGroup({
       text: new FormControl('', [Validators.required]),

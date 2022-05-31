@@ -9,7 +9,7 @@ export class DashbordFreelancerComponent implements OnInit {
   freelancerdata:any;
   
   constructor() { 
-    this.freelancerdata = JSON.parse( localStorage.getItem('freelancerdata') !);
+    this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
     console.log(this.freelancerdata)
   }
   ngOnInit(): void {

@@ -21,7 +21,7 @@ export class ProfilFreelancerComponent implements OnInit {
   messageSuccess: any;
 
   constructor(private route:Router, private usersService:UsersService) {
-    this.freelancerdata = JSON.parse( localStorage.getItem('freelancerdata') !);
+    this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
     console.log(this.freelancerdata)
     this.imageupdate = new FormGroup({
       avatar: new FormControl('', [Validators.required]),
@@ -100,7 +100,7 @@ export class ProfilFreelancerComponent implements OnInit {
           {
             
            
-            localStorage.setItem( 'freelancerdata', JSON.stringify( response ) );
+            sessionStorage.setItem( 'freelancerdata', JSON.stringify( response ) );
             window.location.reload();
          
     
@@ -157,7 +157,7 @@ export class ProfilFreelancerComponent implements OnInit {
           {
             
             
-            localStorage.setItem( 'freelancerdata', JSON.stringify( response ) );
+            sessionStorage.setItem( 'freelancerdata', JSON.stringify( response ) );
             window.location.reload();
          
           console.log(response)

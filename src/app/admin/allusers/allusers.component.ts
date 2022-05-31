@@ -30,20 +30,14 @@ export class AllusersComponent implements OnInit {
   }
   ngOnInit(): void {
     this.usersService.getAllusers().subscribe(data=>{
-      console.log(data)
       this.dataArray=data , (err:HttpErrorResponse)=>{
-        console.log(err)
       this.messageErr="We dont't found this user in our database"} 
-      //console.log(this.dataArray)
     }) 
     this.usersService.freelancerhomedata(this.activatedRoute.snapshot.params['id']).subscribe(data=>{
 
-      console.log(data)
       this.dataArrayy = data ,
        (err:HttpErrorResponse)=>{
-        console.log(err)
       this.messageErr="We dont't found this user in our database"} 
-      //console.log(this.dataArray)
     }) 
   }
   
@@ -73,7 +67,6 @@ export class AllusersComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.usersService.deleteuser(id).subscribe(response=>{
-          console.log(response)
           this.dataArray.splice(i,1)
     
         })
@@ -99,7 +92,6 @@ export class AllusersComponent implements OnInit {
       denyButtonText: `Don't save`,
     }).then((result) => {
       this.usersService.deleteclient(id).subscribe(response=>{
-        console.log(response)
         this.dataArray.splice(i,1)
   
       })

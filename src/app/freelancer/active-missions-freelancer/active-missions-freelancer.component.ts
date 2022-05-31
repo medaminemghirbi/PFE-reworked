@@ -34,7 +34,7 @@ export class ActiveMissionsFreelancerComponent implements OnInit {
   update: FormGroup;
 
   constructor(private usersService:UsersService,private route:Router ,private activatedRoute: ActivatedRoute, ) {
-    this.freelancerdata = JSON.parse( localStorage.getItem('freelancerdata') !);
+    this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
     console.log(this.freelancerdata.id)
 
     this.update = new FormGroup({

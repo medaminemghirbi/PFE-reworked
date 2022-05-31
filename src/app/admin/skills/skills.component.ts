@@ -47,12 +47,9 @@ export class SkillsComponent implements OnInit {
   ngOnInit(): void {
     this.usersService.getAllLanguages().subscribe(data=>{
       // debugger
-      console.log(data)
       
       this.dataArray=data , (err:HttpErrorResponse)=>{
-        console.log(err)
       this.messageErr="We dont't found this category in our database"} 
-      //console.log(this.dataArray)
     }) 
   }
 
@@ -62,7 +59,6 @@ export class SkillsComponent implements OnInit {
     // formData.append('name', this.add.value.name);
     let data=f.value
     
-    console.log(data)
     Swal.fire({
       title: 'Do you want to Add this langugage?',
       showDenyButton: true,
@@ -73,15 +69,12 @@ export class SkillsComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.usersService.addLanguage(data).subscribe( ()=>{
-          console.log(data)
           this.submitted = true ;
           window.location.reload();
         //this.router.navigate(['/posts'])
   
       },(err:HttpErrorResponse)=>{
         this.messageErr=err.error
-        console.log(err.error)
-         console.log(err.status)
          
       }) ;
   
@@ -116,7 +109,6 @@ export class SkillsComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.usersService.deleteLanguage(id).subscribe(response=>{
-          console.log(response)
           this.dataArray.splice(i,1)   
         })
         Swal.fire(
@@ -135,7 +127,6 @@ export class SkillsComponent implements OnInit {
     this.dataLang.name= name 
    
     this.dataLang.id= id 
-    console.log(this.dataLang)
 
   }
 
@@ -147,7 +138,6 @@ export class SkillsComponent implements OnInit {
     Swal.fire('Whooa!', 'Language Succeffully updated !', 'success')
     this.usersService.updateLanguage(this.dataLang.id,formData).subscribe(response=>
       {
-        console.log(response)
         this.submitted = true ;
 
         let indexId=this.dataArray.findIndex((obj:any)=>obj.id==this.dataLang.id)
@@ -160,7 +150,6 @@ export class SkillsComponent implements OnInit {
        this.route.navigate(['/alllanguages']);
       
       },(err:HttpErrorResponse)=>{
-        console.log(err.message)
       
       })
 

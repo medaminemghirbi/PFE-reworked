@@ -20,7 +20,7 @@ export class EditProfilClientComponent implements OnInit {
   messageSuccess: any;
 
   constructor(private route:Router, private usersService:UsersService) {
-    this.clientdata = JSON.parse( localStorage.getItem('clientdata') !);
+    this.clientdata = JSON.parse( sessionStorage.getItem('clientdata') !);
     console.log(this.clientdata)
     this.imageupdate = new FormGroup({ avatar: new FormControl('', [Validators.required]), });
     this.upadate = new FormGroup({
@@ -94,7 +94,7 @@ export class EditProfilClientComponent implements OnInit {
           {
             
             
-            localStorage.setItem( 'clientdata', JSON.stringify( response ) );
+            sessionStorage.setItem( 'clientdata', JSON.stringify( response ) );
             window.location.reload();
          
     
@@ -137,7 +137,7 @@ export class EditProfilClientComponent implements OnInit {
         this.usersService.updateprofilclient(this.clientdata.id,formData).subscribe(response=>
           {
            
-            localStorage.setItem( 'clientdata', JSON.stringify( response ) );
+            sessionStorage.setItem( 'clientdata', JSON.stringify( response ) );
             window.location.reload();
          
           console.log(response)

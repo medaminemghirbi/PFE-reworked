@@ -20,7 +20,7 @@ export class EducationComponent implements OnInit {
   id: any;
   addeducation!: FormGroup;
   constructor(public router: Router, public usersService: UsersService) {
-    this.freelancerdata = JSON.parse(localStorage.getItem('freelancerdata')!);
+    this.freelancerdata = JSON.parse(sessionStorage.getItem('freelancerdata')!);
     this.addeducation = new FormGroup({
       ecole: new FormControl('', [Validators.required]),
       dateDebut: new FormControl('', [Validators.required]),

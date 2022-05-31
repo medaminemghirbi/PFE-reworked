@@ -55,6 +55,7 @@ import { DescuterFreelancerComponent } from './freelancer/descuter-freelancer/de
 import { DescuterComponent } from './client/descuter/descuter.component';
 import { OrderByPipe } from './order-by.pipe';
 import { GeneratecontratclientComponent } from './client/generatecontratclient/generatecontratclient.component';
+import { GeneratecontratfreelancerComponent } from './freelancer/generatecontratfreelancer/generatecontratfreelancer.component';
 @NgModule({
   declarations: [
     OrderByPipe,
@@ -101,7 +102,8 @@ import { GeneratecontratclientComponent } from './client/generatecontratclient/g
     FreelancerSkillsComponent,
     DescuterFreelancerComponent,
     DescuterComponent,
-    GeneratecontratclientComponent
+    GeneratecontratclientComponent,
+    GeneratecontratfreelancerComponent
       ],
   imports: [
     BrowserModule,

@@ -41,7 +41,7 @@ export class EndedMissionsClientComponent implements OnInit {
     data: any =[];
   
     constructor(private checkout: CheckoutService,private usersService:UsersService,private route:Router ,private activatedRoute: ActivatedRoute ) {
-      this.clientdata = JSON.parse( localStorage.getItem('clientdata') !);
+      this.clientdata = JSON.parse( sessionStorage.getItem('clientdata') !);
       console.log(this.clientdata)
   
       this.update = new FormGroup({
@@ -227,7 +227,7 @@ pay(data:any){
   
       ratingClient ( id : any ) {
         this.usersService.ratingclient(id).subscribe(data=>{
-          localStorage.setItem( 'count', JSON.stringify( data ) );
+          sessionStorage.setItem( 'count', JSON.stringify( data ) );
           
           console.log(this.data)
           this.count=data , (err:HttpErrorResponse)=>{

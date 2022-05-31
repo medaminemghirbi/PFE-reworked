@@ -21,7 +21,7 @@ export class FreelancerSkillsComponent implements OnInit {
   addlang! :  FormGroup;
 
   constructor(public usersService:UsersService) {
-    this.freelancerdata = JSON.parse( localStorage.getItem('freelancerdata') !);
+    this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
     this.addlang = new FormGroup({
       language_id: new FormControl('', [Validators.required]),
       languagerate: new FormControl('', [Validators.required]),

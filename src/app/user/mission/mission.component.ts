@@ -29,12 +29,12 @@ export class MissionComponent implements OnInit {
   languagefiltre!: any;
   languageids:any= [];
   constructor(private usersService:UsersService , private route : Router ) {
-    this.freelancerdata = JSON.parse( localStorage.getItem('freelancerdata') !);
-    this.logged_in = JSON.parse( localStorage.getItem('logged_in') !);
+    this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
+    this.logged_in = JSON.parse( sessionStorage.getItem('logged_in') !);
     this.selectedDefaultLanguage= null
     console.log(this.logged_in)
 
-    this.role = JSON.parse( localStorage.getItem('role') !);
+    this.role = JSON.parse( sessionStorage.getItem('role') !);
     console.log(this.role)
 
     this.languagefiltre = new FormGroup({

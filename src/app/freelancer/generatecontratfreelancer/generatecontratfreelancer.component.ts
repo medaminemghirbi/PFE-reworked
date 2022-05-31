@@ -3,24 +3,24 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
-import Swal from 'sweetalert2';
+
 import * as pdfMake from'pdfmake/build/pdfmake.js';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
-@Component({
-  selector: 'app-generatecontratclient',
-  templateUrl: './generatecontratclient.component.html',
-  styleUrls: ['./generatecontratclient.component.css']
-})
-export class GeneratecontratclientComponent implements OnInit {
 
-  
+@Component({
+  selector: 'app-generatecontratfreelancer',
+  templateUrl: './generatecontratfreelancer.component.html',
+  styleUrls: ['./generatecontratfreelancer.component.css']
+})
+export class GeneratecontratfreelancerComponent implements OnInit {
+
   messageErr = ''
   dataArray: any;
   dataArrayy: any;
   logged_in: boolean = false;
   role: string = '';
-  clientdata: any;
+  freelancerdata: any;
   dataArrayx:any
   docDefinition:any
   missiondetails:any
@@ -30,13 +30,13 @@ export class GeneratecontratclientComponent implements OnInit {
 
     this.role = JSON.parse(sessionStorage.getItem('role')!);
     console.log(this.role)
-    this.clientdata = JSON.parse( sessionStorage.getItem('clientdata') !);
+    this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
     this.missiondetails = JSON.parse( sessionStorage.getItem('missiondetails') !);
-    console.log(this.clientdata.id)
+    console.log(this.freelancerdata.id)
 
   }
   ngOnInit(): void {
-    this.usersService.getrequestacceptedbyclient(this.clientdata.id).subscribe(data=>{
+    this.usersService.getrequestacceptedbyclient(this.freelancerdata.id).subscribe(data=>{
       console.log(data)
       this.dataArrayx = data , (err:HttpErrorResponse)=>{
         console.log(err)
@@ -52,7 +52,7 @@ export class GeneratecontratclientComponent implements OnInit {
       this.messageErr="We dont't found this user in our database"} 
       //console.log(this.dataArray)
     }) 
-    this.usersService.freelancerhomedata(this.clientdata.id).subscribe(data => {
+    this.usersService.freelancerhomedata(this.freelancerdata.id).subscribe(data => {
 
       console.log(data)
       this.dataArray = data,
@@ -105,12 +105,12 @@ export class GeneratecontratclientComponent implements OnInit {
           columns: [
             [
               {
-                text:"Full Name : " +this.clientdata.lastname+" "+ this.clientdata.firstname,
+                text:"Full Name : " +this.freelancerdata.lastname+" "+ this.freelancerdata.firstname,
                 bold: true
               },
-              { text:"Freelancer Email : " + this.clientdata.email},
-              { text:"Phone Number : " + this.clientdata.phone },
-              { text:"Freelancer Adress : " + this.clientdata.adresse }
+              { text:"Freelancer Email : " + this.freelancerdata.email},
+              { text:"Phone Number : " + this.freelancerdata.phone },
+              { text:"Freelancer Adress : " + this.freelancerdata.adresse }
             ],
             [
       
@@ -125,12 +125,12 @@ export class GeneratecontratclientComponent implements OnInit {
           columns: [
             [
               {
-                text:"Full Name : " +this.clientdata.lastname+" "+ this.clientdata.firstname,
+                text:"Full Name : " +this.freelancerdata.lastname+" "+ this.freelancerdata.firstname,
                 bold: true
               },
-              { text:"Freelancer Email : " + this.clientdata.email},
-              { text:"Phone Number : " + this.clientdata.phone },
-              { text:"Freelancer Adress : " + this.clientdata.adresse }
+              { text:"Freelancer Email : " + this.freelancerdata.email},
+              { text:"Phone Number : " + this.freelancerdata.phone },
+              { text:"Freelancer Adress : " + this.freelancerdata.adresse }
             ],
             [
       
@@ -219,12 +219,12 @@ export class GeneratecontratclientComponent implements OnInit {
           columns: [
             [
               {
-                text:"Full Name : " +this.clientdata.lastname+" "+ this.clientdata.firstname,
+                text:"Full Name : " +this.freelancerdata.lastname+" "+ this.freelancerdata.firstname,
                 bold: true
               },
-              { text:"Freelancer Email : " + this.clientdata.email},
-              { text:"Phone Number : " + this.clientdata.phone },
-              { text:"Freelancer Adress : " + this.clientdata.adresse }
+              { text:"Freelancer Email : " + this.freelancerdata.email},
+              { text:"Phone Number : " + this.freelancerdata.phone },
+              { text:"Freelancer Adress : " + this.freelancerdata.adresse }
             ],
             [
       
@@ -239,12 +239,12 @@ export class GeneratecontratclientComponent implements OnInit {
           columns: [
             [
               {
-                text:"Full Name : " +this.clientdata.lastname+" "+ this.clientdata.firstname,
+                text:"Full Name : " +this.freelancerdata.lastname+" "+ this.freelancerdata.firstname,
                 bold: true
               },
-              { text:"Freelancer Email : " + this.clientdata.email},
-              { text:"Phone Number : " + this.clientdata.phone },
-              { text:"Freelancer Adress : " + this.clientdata.adresse }
+              { text:"Freelancer Email : " + this.freelancerdata.email},
+              { text:"Phone Number : " + this.freelancerdata.phone },
+              { text:"Freelancer Adress : " + this.freelancerdata.adresse }
             ],
             [
       
@@ -274,9 +274,8 @@ export class GeneratecontratclientComponent implements OnInit {
         },
         {
           columns: [
-            { text: 'Signature', alignment: 'right', italics: true },
             { qr: "salem", fit: '50' },
-         
+            { text: 'Signature', alignment: 'right', italics: true },
           ]
         },
 
@@ -334,12 +333,12 @@ export class GeneratecontratclientComponent implements OnInit {
           columns: [
             [
               {
-                text:"Full Name : " +this.clientdata.lastname+" "+ this.clientdata.firstname,
+                text:"Full Name : " +this.freelancerdata.lastname+" "+ this.freelancerdata.firstname,
                 bold: true
               },
-              { text:"Freelancer Email : " + this.clientdata.email},
-              { text:"Phone Number : " + this.clientdata.phone },
-              { text:"Freelancer Adress : " + this.clientdata.adresse }
+              { text:"Freelancer Email : " + this.freelancerdata.email},
+              { text:"Phone Number : " + this.freelancerdata.phone },
+              { text:"Freelancer Adress : " + this.freelancerdata.adresse }
             ],
             [
       
@@ -354,12 +353,12 @@ export class GeneratecontratclientComponent implements OnInit {
           columns: [
             [
               {
-                text:"Full Name : " +this.clientdata.lastname+" "+ this.clientdata.firstname,
+                text:"Full Name : " +this.freelancerdata.lastname+" "+ this.freelancerdata.firstname,
                 bold: true
               },
-              { text:"Freelancer Email : " + this.clientdata.email},
-              { text:"Phone Number : " + this.clientdata.phone },
-              { text:"Freelancer Adress : " + this.clientdata.adresse }
+              { text:"Freelancer Email : " + this.freelancerdata.email},
+              { text:"Phone Number : " + this.freelancerdata.phone },
+              { text:"Freelancer Adress : " + this.freelancerdata.adresse }
             ],
             [
       

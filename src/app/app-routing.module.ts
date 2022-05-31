@@ -23,6 +23,7 @@ import { EndedMissionsFreelancerComponent } from './freelancer/ended-missions-fr
 import { ExperienceComponent } from './freelancer/experience/experience.component';
 import { FavorisComponent } from './freelancer/favoris/favoris.component';
 import { FreelancerSkillsComponent } from './freelancer/freelancer-skills/freelancer-skills.component';
+import { GeneratecontratfreelancerComponent } from './freelancer/generatecontratfreelancer/generatecontratfreelancer.component';
 import { GeneratecvComponent } from './freelancer/generatecv/generatecv.component';
 import { PostulatedMissionFreelancerComponent } from './freelancer/postulated-mission-freelancer/postulated-mission-freelancer.component';
 import { ProfilFreelancerComponent } from './freelancer/profil-freelancer/profil-freelancer.component';
@@ -81,6 +82,7 @@ const routes: Routes = [
   { path:'descuter-freelancer/:id' , canActivate:[AuthGuard]  ,  component:DescuterFreelancerComponent},
   { path:'edit-client', canActivate:[AuthGuard]  ,  component:EditProfilClientComponent},
   { path: 'generatecontratclient/:id', canActivate: [AuthGuard], component: GeneratecontratclientComponent },
+  { path: 'generatecontratfreelancer/:id', canActivate: [AuthGuard], component: GeneratecontratfreelancerComponent },
 
 ];
 

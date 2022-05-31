@@ -32,7 +32,7 @@ export class ActiveMissionsClientComponent implements OnInit {
   update: FormGroup;
 
   constructor(private usersService:UsersService,private route:Router ,private activatedRoute: ActivatedRoute, ) {
-    this.clientdata = JSON.parse( localStorage.getItem('clientdata') !);
+    this.clientdata = JSON.parse( sessionStorage.getItem('clientdata') !);
     console.log(this.clientdata)
 
     this.update = new FormGroup({

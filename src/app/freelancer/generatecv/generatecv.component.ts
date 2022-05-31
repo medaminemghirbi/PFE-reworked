@@ -30,17 +30,19 @@ export class GeneratecvComponent implements OnInit {
   docDefinition: any;
   freelancerdata:any
   freelancereducation:any
+  freelancerskills:any
   url:any
   constructor(private activatedRoute: ActivatedRoute, private usersService: UsersService) {
-    this.logged_in = JSON.parse(localStorage.getItem('logged_in')!);
+    this.logged_in = JSON.parse(sessionStorage.getItem('logged_in')!);
     console.log(this.logged_in)
-   this.freelancerdata = JSON.parse( localStorage.getItem('freelancerdata') !);
-   this.freelancereducation = JSON.parse( localStorage.getItem('freelancereducation') !);
+   this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
+   this.freelancereducation = JSON.parse( sessionStorage.getItem('freelancereducation') !);
+   this.freelancerskills = JSON.parse( sessionStorage.getItem('freelancerskills')!);
    this.url = this.freelancerdata.user_image_url
     console.log(this.freelancerdata)
    debugger
    console.log(name)
-    this.role = JSON.parse(localStorage.getItem('role')!);
+    this.role = JSON.parse(sessionStorage.getItem('role')!);
     console.log(this.role)
 
   } 
@@ -60,7 +62,7 @@ export class GeneratecvComponent implements OnInit {
     this.usersService.getfreelancereducation(this.activatedRoute.snapshot.params['id']).subscribe(data => {
 
       console.log(data)
-      localStorage.setItem( 'freelancereducation', JSON.stringify( data ) );
+      sessionStorage.setItem( 'freelancereducation', JSON.stringify( data ) );
       this.dataArrayy = data,
         (err: HttpErrorResponse) => {
           console.log(err)
@@ -83,6 +85,7 @@ export class GeneratecvComponent implements OnInit {
     this.usersService.getfreelancerlanguage(this.activatedRoute.snapshot.params['id']).subscribe(data => {
       console.log(data)
       let i = 0
+      sessionStorage.setItem( 'freelancerskills', JSON.stringify( data ) );
 
       while (i < data.length) {
         this.arrayData.push({
@@ -91,6 +94,7 @@ export class GeneratecvComponent implements OnInit {
           "languagerate": data[i].languagerate,
           "color": this.colorsBootstrap[i]
         });
+        
         i++
 
       }

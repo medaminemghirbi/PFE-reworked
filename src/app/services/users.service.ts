@@ -49,7 +49,7 @@ export class UsersService {
   }
   logout(){
     this.connecte = false;
-    localStorage.clear();
+    sessionStorage.clear();
     return this.http.delete(environment.urlBackend+'logout/') ;
   }
 

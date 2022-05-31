@@ -50,7 +50,7 @@
                             <th scope="col"> created_at</th>
                             <th scope="col"> updated_at</th>
                             --> 
-                            <th scope="col">Actions</th>
+                            <th colspan="2">Actions</th>
                           </tr>
                         </thead>
                         <tbody>         
@@ -71,6 +71,9 @@
                                     <button  class="btn btn-outline-success" [routerLink]="['/detail-mission',item.id]" > Show </button> &nbsp;&nbsp;
                                    
                                 </td>
+                                <td>  
+                                  <button class="btn btn-outline-danger" (click)="delete(item.id , i)" class="delete">Delete</button>                                 
+                              </td>
           
                                
                               </tr>

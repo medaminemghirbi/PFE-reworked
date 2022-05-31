@@ -40,7 +40,7 @@ export class MissionsClientComponent implements OnInit {
   submitted: boolean = false ;
 
   constructor(private usersService:UsersService,private route:Router) {
-    this.clientdata = JSON.parse( localStorage.getItem('clientdata') !);
+    this.clientdata = JSON.parse( sessionStorage.getItem('clientdata') !);
     console.log(this.clientdata)
 
     this.addmissionn = new FormGroup({

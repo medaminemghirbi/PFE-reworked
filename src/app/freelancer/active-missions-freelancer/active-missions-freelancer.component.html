@@ -32,7 +32,7 @@
 
 
 
-                                <th colspan="3"> Actions </th>
+                                <th colspan="3" style="text-align: center;"> Actions </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,12 +59,16 @@
 
                                 </td>
 
-                                <td>
+                                
                                 <td> <a class="btn btn-outline-dark"
-                                        [routerLink]="['/descuter-freelancer',item.mission.client_id]"> Descuter with
+                                        [routerLink]="['/descuter-freelancer',item.mission.client_id]"> Discuss with
                                         client </a></td>
 
 
+                                        <td> <button class="btn btn-outline-success"
+                                            [routerLink]="['/generatecontratfreelancer',item.mission.id]"> Generate
+                                        </button>
+                                    </td>
 
                             </tr>
                         </tbody>

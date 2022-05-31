@@ -18,7 +18,7 @@ export class PostulatedMissionFreelancerComponent implements OnInit {
   submitted: boolean = false ;
 
   constructor(private route:Router, private usersService:UsersService) {
-    this.freelancerdata = JSON.parse( localStorage.getItem('freelancerdata') !);
+    this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
     console.log(this.freelancerdata)
   }
   dataMission = {
@@ -32,7 +32,7 @@ export class PostulatedMissionFreelancerComponent implements OnInit {
       console.log(response)
       
       this.dataArray = response 
-      localStorage.setItem( 'status', JSON.stringify( response.status ) )
+      sessionStorage.setItem( 'status', JSON.stringify( response.status ) )
       , (err:HttpErrorResponse)=>{
         console.log(err)
       this.messageErr="We dont't found this mission in our database"} 
