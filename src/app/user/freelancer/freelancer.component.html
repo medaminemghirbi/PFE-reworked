@@ -74,7 +74,14 @@
         </section><br><br><br><br>
         <div class="container">
           <div class="row">
-            <div class="col-4 col-sm-4 col-md-4 col-lg-4" *ngFor="let data of dataArray">
+            <form class="card-header py-2">
+              <div class="input-group">
+                <input type="text" name="name" class="form-control" [(ngModel)]="searchedKeyword"
+                  placeholder="Search for...">
+              </div>
+            </form>
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4" *ngFor="let data of dataArray | filter:searchedKeyword ; index as i">
+             
               <div class="our-team">
                 <div class="picture">
                   <a [routerLink]="['/detail-freelancer',data.id]">  <img class="img-fluid" [src]="data.user_image_url"></a>

@@ -3,148 +3,119 @@
 <title>W3.CSS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <body>
 
-<!-- Sidebar -->
-<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%">
-<app-client-sider-bar></app-client-sider-bar>
-</div>
+    <!-- Sidebar -->
+    <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:18%">
+      <app-client-sider-bar></app-client-sider-bar>
+    </div>
 
-<!-- Page Content -->
-<div style="margin-left:25%">
-
-
-  <br><br>
-  <div class="container bootstrap snippets bootdey">
-    <div class="panel-body inf-content">
-        <div class="row">
-            <div class="col-md-4">
-                <img alt="" style="width:600px;" title=""
-                    class="img-circle img-thumbnail isTooltip"
-                    [src]="clientdata.user_image_url" data-original-title="Usuario">
-                <ul title="Ratings" class="list-inline ratings text-center">
-                    <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <strong>Information Freelancer</strong><br>
-                <div class="table-responsive">
-                    <table class="table table-user-information">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <strong>
-                                        <span
-                                            class="glyphicon glyphicon-asterisk text-primary"></span>
-                                        Identificacion
-                                    </strong>
-                                </td>
-                                <td class="text-primary">
-                                    {{clientdata.email }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>
-                                        <span
-                                            class="glyphicon glyphicon-user  text-primary"></span>
-                                        Name
-                                    </strong>
-                                </td>
-                                <td class="text-primary">
-                                    {{clientdata.firstname }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>
-                                        <span
-                                            class="glyphicon glyphicon-cloud text-primary"></span>
-                                        Lastname
-                                    </strong>
-                                </td>
-                                <td class="text-primary">
-                                    {{clientdata.lastname }}
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <strong>
-                                        <span
-                                            class="glyphicon glyphicon-bookmark text-primary"></span>
-                                        Username
-                                    </strong>
-                                </td>
-                                <td class="text-primary">
-                                    {{clientdata.email }}
-                                </td>
-                            </tr>
+    <!-- Page Content -->
+    <div style="margin-left:20%">
 
 
-                            <tr>
-                                <td>
-                                    <strong>
-                                        <span
-                                            class="glyphicon glyphicon-eye-open text-primary"></span>
-                                        Role
-                                    </strong>
-                                </td>
-                                <td class="text-primary">
-                                    {{clientdata.role }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>
-                                        <span
-                                            class="glyphicon glyphicon-envelope text-primary"></span>
-                                        Email
-                                    </strong>
-                                </td>
-                                <td class="text-primary">
-                                    {{clientdata.email }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>
-                                        <span
-                                            class="glyphicon glyphicon-calendar text-primary"></span>
-                                        created
-                                    </strong>
-                                </td>
-                                <td class="text-primary">
-                                    {{clientdata.created_at }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>
-                                        <span
-                                            class="glyphicon glyphicon-calendar text-primary"></span>
-                                        Last Modified
-                                    </strong>
-                                </td>
-                                <td class="text-primary">
-                                    {{clientdata.updated_at }}
+        <br><br>
+        <div class="container bootstrap snippets bootdey">
+            <div class="panel-body inf-content">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    <button (click)="getPdf()"  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</button>
+                </div>
+                <div class="row">
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div routerLink="/missions-client"
+                                         class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            All Missions
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            {{dataArray.allmissions}}
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-list fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                            routerLink="/postulated-missions-client">
+                                            Not Active Missions </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            {{dataArray.notactivemissions}}
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div routerLink="/active-missions-client"
+                                         class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                            Active Missions
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            {{dataArray.activemissions}}
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-chart-line fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div  routerLink="/ended-missions-client"
+                                        class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Ended Missions </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            {{dataArray.endedmissions}}
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 
 
 
 </body>
+
 </html>

@@ -3,209 +3,231 @@
 <title>W3.CSS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 <body>
 
-    <!-- Sidebar -->
-<app-freelancer-side-bar></app-freelancer-side-bar>
-    <!-- Page Content -->
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:16%">
+  <app-freelancer-side-bar></app-freelancer-side-bar>
+</div>
 
-    <br>
-    <div style="margin-left:20%">
-
-
-        <div id="wrapper">
-
-            <div id="content-wrapper" class="d-flex flex-column">
-
-                <!-- Main Content -->
-                <div id="content">
+<!-- Page Content -->
+<div style="margin-left:20%">
 
 
+  <br><br>
 
-                    <!-- Begin Page Content -->
-                    <!-- Begin Page Content -->
-                    <div class="container-fluid">
+  <div id="wrapper">
 
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <div class="container-fluid">
 
+                <div class="row">
 
-                        <!-- Content Row -->
-                        <div class="container bootstrap snippets bootdey">
-                            <div class="panel-body inf-content">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <img alt="" style="width:600px;" title=""
-                                            class="img-circle img-thumbnail isTooltip"
-                                            [src]="freelancerdata.user_image_url" data-original-title="Usuario">
-                                        <ul title="Ratings" class="list-inline ratings text-center">
-                                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <strong>Information Freelancer</strong><br>
-                                        <div class="table-responsive">
-                                            <table class="table table-user-information">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>
-                                                                <span
-                                                                    class="glyphicon glyphicon-asterisk text-primary"></span>
-                                                                Identificacion
-                                                            </strong>
-                                                        </td>
-                                                        <td class="text-primary">
-                                                            {{freelancerdata.email }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>
-                                                                <span
-                                                                    class="glyphicon glyphicon-user  text-primary"></span>
-                                                                Name
-                                                            </strong>
-                                                        </td>
-                                                        <td class="text-primary">
-                                                            {{freelancerdata.firstname }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>
-                                                                <span
-                                                                    class="glyphicon glyphicon-cloud text-primary"></span>
-                                                                Lastname
-                                                            </strong>
-                                                        </td>
-                                                        <td class="text-primary">
-                                                            {{freelancerdata.lastname }}
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <strong>
-                                                                <span
-                                                                    class="glyphicon glyphicon-bookmark text-primary"></span>
-                                                                Username
-                                                            </strong>
-                                                        </td>
-                                                        <td class="text-primary">
-                                                            {{freelancerdata.email }}
-                                                        </td>
-                                                    </tr>
-
-
-                                                    <tr>
-                                                        <td>
-                                                            <strong>
-                                                                <span
-                                                                    class="glyphicon glyphicon-eye-open text-primary"></span>
-                                                                Role
-                                                            </strong>
-                                                        </td>
-                                                        <td class="text-primary">
-                                                            {{freelancerdata.role }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>
-                                                                <span
-                                                                    class="glyphicon glyphicon-envelope text-primary"></span>
-                                                                Email
-                                                            </strong>
-                                                        </td>
-                                                        <td class="text-primary">
-                                                            {{freelancerdata.email }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>
-                                                                <span
-                                                                    class="glyphicon glyphicon-calendar text-primary"></span>
-                                                                created
-                                                            </strong>
-                                                        </td>
-                                                        <td class="text-primary">
-                                                            {{freelancerdata.created_at }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>
-                                                                <span
-                                                                    class="glyphicon glyphicon-calendar text-primary"></span>
-                                                                Last Modified
-                                                            </strong>
-                                                        </td>
-                                                        <td class="text-primary">
-                                                            {{freelancerdata.updated_at }}
-
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                                            routerLink="/postulated-missions-freelancer">
+                                            Requests </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"
+                                         >
+                                        {{dataArray.requests}}
                                         </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Content Row -->
-                        <!-- /.container-fluid -->
-
                     </div>
-                    <!-- End of Main Content -->
 
-                    <!-- Footer -->
-
-                    <!-- End of Footer -->
-
-                </div>
-                <!-- End of Content Wrapper -->
-
-            </div>
-            <!-- End of Page Wrapper -->
-
-
-
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="/login">Logout</a>
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div
+                                            class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Skills  
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            {{dataArray.language}}
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        
+                                        <i class="fas fa-gem fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div
+                                            class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                            Educations
+                                        </div>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <div
+                                                    class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                    {{dataArray.education}} </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-school fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pending Requests Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div
+                                            class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                            Experiences </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            {{dataArray.experience}}
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-briefcase fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div
+                                            class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                           favorite 
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            {{dataArray.favoris}}
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        
+                                        <i class="fas fa-heart fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div
+                                            class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Active Missions </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            {{dataArray.activemissions}}
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-chart-line fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div
+                                            class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Ended Missions </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            {{dataArray.endedmissions}}
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              
+
                 </div>
+
+                <!-- Content Row -->
+      
+
+                <!-- Content Row -->
+                <!-- /.container-fluid -->
+
             </div>
 
 
 
-            <div class="w3-container">
-
-            </div>
 
         </div>
+    </div>
+
+
+
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="/login">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="w3-container">
 
     </div>
-</body>
 
+</div>
+</div>
+
+
+
+</body>
 </html>

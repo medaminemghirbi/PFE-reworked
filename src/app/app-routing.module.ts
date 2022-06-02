@@ -82,7 +82,7 @@ const routes: Routes = [
   { path:'descuter-freelancer/:id' , canActivate:[AuthGuard]  ,  component:DescuterFreelancerComponent},
   { path:'edit-client', canActivate:[AuthGuard]  ,  component:EditProfilClientComponent},
   { path: 'generatecontratclient/:id', canActivate: [AuthGuard], component: GeneratecontratclientComponent },
-  { path: 'generatecontratfreelancer/:id', canActivate: [AuthGuard], component: GeneratecontratfreelancerComponent },
+  { path: 'generatecontratfreelancer/:id', canActivate: [AuthGuard], component: GeneratecontratfreelancerComponent   },
 
 ];
 

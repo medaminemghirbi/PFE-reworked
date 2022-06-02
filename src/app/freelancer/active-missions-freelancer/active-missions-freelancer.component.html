@@ -3,134 +3,180 @@
 <title>W3.CSS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 <body>
 
-    <!-- Sidebar -->
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:16%">
+  <app-freelancer-side-bar></app-freelancer-side-bar>
+</div>
 
-    <app-freelancer-side-bar></app-freelancer-side-bar>
-    <!-- Page Content -->
-
-    <br>
-    <div style="margin-left:20%">
-
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Active Missions ( {{dataArray.length}} ) </h6>
-            </div>
-
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" width="100%">
-                        <thead>
-                            <tr>
-                                <th scope="col"># ID &nbsp;<i class="fa fa-sort"> </i> </th>
-                                <th scope="col"> Title Mission </th>
-                                <th scope="col"> Completed </th>
-
-                                <th scope="col"> Url Mission </th>
+<!-- Page Content -->
+<div style="margin-left:20%">
 
 
+  <br><br>
 
-                                <th colspan="3" style="text-align: center;"> Actions </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let item of dataArray  ; index as i">
-                                <th scope="row"> {{item.id}} </th>
-                                <td>{{item.mission.title}}</td>
+  <div id="wrapper">
 
-                                <td>
-                                    <button *ngIf="item.mission.completed===true "
-                                        class="btn btn-success">{{item.mission.completed}} </button>
-                                    <button *ngIf="item.mission.completed===false "
-                                        class="btn btn-danger">{{item.mission.completed}} </button>
-                                </td>
-                                <td *ngIf="item.mission.filepath"><a href="{{item.mission.filepath}}">Go To file</a>
-                                </td>
-                                <td *ngIf="!item.mission.filepath">{{item.mission.filepath}}</td>
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Active Missions ( {{dataArray.length}} ) </h6>
+      </div>
+      <form
+      class="card-header py-3" >
+      <div class="input-group">
+          <input type="text" name="role" class="form-control" [(ngModel)]="searchedKeyword"  placeholder="Search for..." >
+        
+      </div>
+      </form>
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table table-bordered" width="100%">
+                  <thead>
+                      <tr>
+                          <th scope="col"># ID &nbsp;<i class="fa fa-sort"> </i> </th>
+                          <th scope="col"> Title Mission </th>
+                          <th scope="col"> Completed </th>
 
-
-                                <td>
-
-                                    <button (click)="getdata( item.id , item.mission.completed , item.mission.filepath)"
-                                        class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
-                                        Update </button> &nbsp;&nbsp;
-
-                                </td>
-
-                                
-                                <td> <a class="btn btn-outline-dark"
-                                        [routerLink]="['/descuter-freelancer',item.mission.client_id]"> Discuss with
-                                        client </a></td>
+                          <th scope="col"> Url Mission </th>
 
 
-                                        <td> <button class="btn btn-outline-success"
-                                            [routerLink]="['/generatecontratfreelancer',item.mission.id]"> Generate
-                                        </button>
-                                    </td>
 
-                            </tr>
-                        </tbody>
+                          <th colspan="3" style="text-align: center;"> Actions </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let item of dataArray |paginate: { itemsPerPage: 3, currentPage: p } | filter:searchedKeyword ; index as i">
+                          <th scope="row"> {{item.id}} </th>
+                          <td>{{item.mission.title}}</td>
 
-                    </table>
+                          <td>
+                              <button *ngIf="item.mission.completed===true "
+                                  class="btn btn-success">{{item.mission.completed}} </button>
+                              <button *ngIf="item.mission.completed===false "
+                                  class="btn btn-danger">{{item.mission.completed}} </button>
+                          </td>
+                          <td *ngIf="item.mission.filepath"><a href="{{item.mission.filepath}}">Go To file</a>
+                          </td>
+                          <td *ngIf="!item.mission.filepath">{{item.mission.filepath}}</td>
 
 
-                </div>
+                          <td>
 
-            </div>
-        </div>
+                              <button (click)="getdata( item.id , item.mission.completed , item.mission.filepath)"
+                                  class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+                                  Update </button> &nbsp;&nbsp;
 
-    </div>
+                          </td>
+
+                          
+                          <td> <a class="btn btn-outline-dark"
+                                  [routerLink]="['/descuter-freelancer',item.mission.client_id]"> Discuss with
+                                  client </a></td>
 
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+                                  <td> <button class="btn btn-outline-success"
+                                      [routerLink]="['/generatecontratfreelancer',item.mission.id]"> Generate
+                                  </button>
+                              </td>
+
+                      </tr>
+                      <tr *ngIf="dataArray.length==0">
+                        <td colspan="7"style="text-align:center;">no data found</td>
+                    </tr>
+                  </tbody>
+
+              </table>
+
+
+          </div>
+
+          <div style="text-align:right;">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+          
+      </div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Update </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <!-- form update start here -->
+                  <form [formGroup]="update" #f="ngForm" (ngSubmit)="updatemissioncompleted (f) ">
+
+                      <div class="form-group">
+                          <label for="exampleFormControlInput1">Completed </label>
+                          <select [(ngModel)]="dataMission.completed" formControlName="completed" class="form-control"
+                              ngModel required>
+                              <option value="true"> True </option>
+                              <option value="false"> False </option>
+
+                          </select>
+
+                      </div>
+                      <div class="form-group">
+                          <label for="exampleFormControlInput1">Url Mission </label>
+                          <input class="form-control" placeholder="filepath " ngModel rows="3"
+                              [(ngModel)]="dataMission.filepath" formControlName="filepath" required name="filepath"
+                              ngModel>
+                      </div>
+
+                      <div class="alert alert-success" *ngIf="messageSuccess">
+                          {{messageSuccess}}
+                      </div>
+                      <br>
+                      <button class="btn btn-primary">Update </button>
+                  </form>
+
+
+
+                  <!-- form update end here -->
+              </div>
+
+          </div>
+      </div>
+  </div>
+
+
+
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <!-- form update start here -->
-                    <form [formGroup]="update" #f="ngForm" (ngSubmit)="updatemissioncompleted (f) ">
-
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Completed </label>
-                            <select [(ngModel)]="dataMission.completed" formControlName="completed" class="form-control"
-                                ngModel required>
-                                <option value="true"> True </option>
-                                <option value="false"> False </option>
-
-                            </select>
-
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Url Mission </label>
-                            <input class="form-control" placeholder="filepath " ngModel rows="3"
-                                [(ngModel)]="dataMission.filepath" formControlName="filepath" required name="filepath"
-                                ngModel>
-                        </div>
-
-                        <div class="alert alert-success" *ngIf="messageSuccess">
-                            {{messageSuccess}}
-                        </div>
-                        <br>
-                        <button class="btn btn-primary">Update </button>
-                    </form>
-
-
-
-                    <!-- form update end here -->
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.
                 </div>
-
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="/login">Logout</a>
+                </div>
             </div>
         </div>
     </div>
+
+
+
+    <div class="w3-container">
+
+    </div>
+
+</div>
+</div>
+
 
 
 </body>
-
 </html>

@@ -27,7 +27,7 @@ export class DashboardAdminComponent implements OnInit {
     this.admindata = JSON.parse( sessionStorage.getItem('admindata') !);
  
 
-    this.chartLabels = ['Users', 'Missions', 'Categories', 'Langugages'];
+    this.chartLabels = ['Users', 'Missions', 'Categories', 'Skills'];
   
     this.chartColors = [
       {
@@ -53,9 +53,9 @@ export class DashboardAdminComponent implements OnInit {
     };
 
     this.UsersService.countall().subscribe(result=>{
-      
+      debugger
       this.chartDatasets =[ 
-        { data: [result.data[0], result.data[1], result.data[2], result.data[3]],label: 'Freelancy Officiel Statistique'  }
+        { data: [result.data[0], result.data[1], result.data[2], result.data[3]],label: 'Freelancy Officiel statistic'  }
       ];
      // this.chartDatasets = [ this.chartDatasets[0] ]
      this.chartReady=true; 

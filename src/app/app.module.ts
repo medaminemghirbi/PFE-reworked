@@ -103,7 +103,7 @@ import { GeneratecontratfreelancerComponent } from './freelancer/generatecontrat
     DescuterFreelancerComponent,
     DescuterComponent,
     GeneratecontratclientComponent,
-    GeneratecontratfreelancerComponent
+    GeneratecontratfreelancerComponent,
       ],
   imports: [
     BrowserModule,

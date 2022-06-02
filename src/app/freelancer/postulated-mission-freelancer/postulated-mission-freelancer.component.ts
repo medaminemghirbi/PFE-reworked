@@ -10,13 +10,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./postulated-mission-freelancer.component.css']
 })
 export class PostulatedMissionFreelancerComponent implements OnInit {
-
+  p:number = 1 ;
   freelancerdata: any;
   messageErr: any;
   dataArray: any = [];
   messageSuccess : any ;
   submitted: boolean = false ;
-
+  searchedKeyword!:string;
   constructor(private route:Router, private usersService:UsersService) {
     this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
     console.log(this.freelancerdata)

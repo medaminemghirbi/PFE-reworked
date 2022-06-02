@@ -18,7 +18,7 @@ export class FreelancerComponent implements OnInit {
   messageErr ='';
   stepOneOfOneForm : any ;
   p:number = 1 ;
-
+  searchedKeyword!:string;
   languages: { "id": number, "name": string }[] = []
 
   selectedDefaultLanguage:any

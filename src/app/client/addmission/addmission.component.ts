@@ -90,7 +90,7 @@ export class AddmissionComponent implements OnInit {
           icon: 'success',
           title: 'success...',
           text: 'Saved !' ,
-          position: 'top-end',
+       
             showConfirmButton: true,
             timer: 1500
         })
@@ -98,17 +98,15 @@ export class AddmissionComponent implements OnInit {
       this.route.navigate(['/missions-client'])   
       }
       else {
-        this.messageError = "beginingDate must be after current date"
-        console.log(data.beginingDate)
-        console.log(this.date)
-       /* Swal.fire({
+
+       Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'beginingDate must be after current date !' ,
-          position: 'top-end',
+          text: 'Start Date must be after current date !' ,
+     
             showConfirmButton: false,
             timer: 1500
-        })  */
+        })  
       }
    
     },(err:HttpErrorResponse)=>{

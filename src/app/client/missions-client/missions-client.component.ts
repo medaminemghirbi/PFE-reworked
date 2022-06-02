@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-missions-client',
   templateUrl: './missions-client.component.html',
@@ -30,8 +30,9 @@ export class MissionsClientComponent implements OnInit {
   }
   addmissionn: any ;
   messageErr =''
-  
+  messageError : any ;
   messageSuccess = '' ;
+  date: any;
   title: string ="" ;
   searchedKeyword!:string;
   dataArray: any;
@@ -102,14 +103,26 @@ export class MissionsClientComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.usersService.deleteMission(id).subscribe(response=>{
+         
           console.log(response)
-          this.dataArray.splice(i,1)   
+          if (response.status == '200') {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+            this.dataArray.splice(i,1) 
+          }
+          if (response.status == '401') {
+            Swal.fire(
+              'not Deleted!',
+              'You cant delete an active mission.',
+              'error'
+            )
+          }
+            
         })
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        
       }
     })
    
@@ -145,8 +158,10 @@ export class MissionsClientComponent implements OnInit {
       formData.append('client_id',this.clientdata.id);
       formData.append('language_id',this.addmissionn.value.language_id);
 
-    Swal.fire('Whooa!', 'Mission Succeffulfy updated !', 'success')
-    this.usersService.updateMission(this.dataMission.id,formData).subscribe(response=>
+   
+    this.usersService.updateMission(this.dataMission.id,formData).subscribe((response)=> {
+      this.date = moment(Date.now()).format("YYYY-MM-DD"); 
+      if (data.beginingDate > this.date ) 
       {
       console.log(response)
       this.submitted = true ;
@@ -162,18 +177,33 @@ export class MissionsClientComponent implements OnInit {
         this.dataArray[indexId].language_id=data.language_id
 
         this.messageSuccess=`this title : ${this.dataArray[indexId].title} is updated`
-        window.location.reload();
+        Swal.fire('Whooa!', 'Mission Succeffulfy updated !', 'success')
+        //window.location.reload();
        this.route.navigate(['/missions-client']);
+      }
+      else {
+        this.messageError = "beginingDate must be after current date"
+        console.log(data.beginingDate)
+        console.log(this.date)
+      
+      }
       
       },(err:HttpErrorResponse)=>{
         console.log(err.message)
-      
+        this.messageError = "champs required or not valid !"
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'champs required or not valid !' ,
+          position: 'top-end',
+            showConfirmButton: false,
+            timer: 1500
+        })    
       })
 
       
       
     }
-  
   test(){
     console.log("hi")
   }
