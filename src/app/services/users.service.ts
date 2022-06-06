@@ -49,7 +49,7 @@ export class UsersService {
   }
   logout(){
     this.connecte = false;
-    localStorage.clear();
+    sessionStorage.clear();
     return this.http.delete(environment.urlBackend+'logout/') ;
   }
 
@@ -142,6 +142,10 @@ export class UsersService {
       return this.http.post(environment.urlBackend+'missions/',profile) ;
     }
     
+    gethomemissions () {
+      return this.http.get(`${environment.urlBackend}`+'homemissions/')
+    }
+   
     getAllMissions () {
       return this.http.get(`${environment.urlBackend}`+'missions/')
     }
@@ -151,7 +155,7 @@ export class UsersService {
     }
   
     deleteMission (id:any) {
-      return this.http.delete(environment.urlBackend+'missions/' + id )
+      return this.http.delete<any>(environment.urlBackend+'missions/' + id )
     }
   
     updateMission (id:string,newdata:any) {
@@ -183,7 +187,7 @@ export class UsersService {
     }
     
     getrequestbyclient (client_id : any) {
-      return this.http.get(`${environment.urlBackend}`+'getrequestbyclient/' + client_id )
+      return this.http.get<any>(`${environment.urlBackend}`+'getrequestbyclient/' + client_id )
     }
     getmissionbyrequestclient(client_id : any) {
       return this.http.get(`${environment.urlBackend}`+'getmissionbyrequestclient/' + client_id )
@@ -215,6 +219,13 @@ export class UsersService {
     }
     countAllHome(){
       return this.http.get<any>(`${environment.urlBackend}`+'countAllHome/')
+    }
+    countAllFreelancer(user_id : any ) {
+      return this.http.get<any>(`${environment.urlBackend}` + 'countAllFreelancer/' + user_id)
+    }
+  
+    countAllClient(client_id : any  ) {
+      return this.http.get<any>(`${environment.urlBackend}` + 'countAllClient/' + client_id )
     }
 
 //***********************experience  call api***********************/
@@ -282,7 +293,7 @@ deleteFavoris  (id:any) {
   }
 
   updatecompleted (id:string,newdata:any) {
-    return this.http.patch(environment.urlBackend+'updatecompleted/' + id , newdata )
+    return this.http.patch<any>(environment.urlBackend+'updatecompleted/' + id , newdata )
   }
 
   /********************** client : status accepted *****************************************/

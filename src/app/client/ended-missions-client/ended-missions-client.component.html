@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:16%">
+<app-client-sider-bar></app-client-sider-bar>
+</div>
+
+<!-- Page Content -->
+<div style="margin-left:19%">
+
+
+  <br><br>
+          <div class="container-fluid"> 
+ 
+                    
+ 
+                     <!-- Content Row -->
+                     <div class="container-fluid"> 
+   
+                      
+   
+                      <!-- Content Row -->
+                      <div class="container">
+  
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Missions | Ended ({{counter}}) </h6>
+                            </div>
+                          <form
+                          class="card-header py-3" >
+                          <div class="input-group">
+                              <input type="text" name="role" class="form-control" [(ngModel)]="searchedKeyword"  placeholder="Search for..." >
+                            
+                          </div>
+                          </form>
+                            <div class="card-body">
+                                <div class="table-responsive" >
+                                <table class="table table-bordered"  width="100%" >
+                                    <thead >
+                                      <tr >
+                    
+                                       
+                                        <th scope="col"> completed </th> 
+                                        <th scope="col"> Filepath </th> 
+                                        <th scope="col"> Title Mission </th>  
+                                        <th scope="col" >Description  &nbsp;<i class="fa fa-sort"> </i> </th>
+                                        <th scope="col"> Email Freelancer </th> 
+                                      <!--  <th scope="col">  Freelancer  Stars</th>     -->           
+                                        <!--<th scope="col">Delete </th>-->
+                                        <th colspan="2">Pay Freelancer  </th>
+                                        <th scope="col">Rate Freelancer  </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>         
+                                        <tr *ngFor="let item of dataArray  |paginate: { itemsPerPage: 3, currentPage: p } | filter:searchedKeyword ; index as i"
+                                        >
+                                       
+                                            
+                                          <td> <button *ngIf="item.completed==true " class="btn btn-success"> {{item.completed}} </button> 
+                                            <button *ngIf="item.completed==false " class="btn btn-danger"> {{item.completed}} </button> 
+                                          </td>
+                                          <td><a href="{{item.filepath}}">Go To file</a></td> 
+                                            <td>{{item.title}}</td>
+                                            <td>{{item.description}}</td> 
+                                            <td > <a [routerLink]="['/detailfreelancer',item.freelancer_id]" >  {{item.freelancer.email }} </a></td> 
+                                          <!--  <td> {{item.freelancer.reviews_count}}  </td>
+                                            <td>     
+                                                <button (click)="delete(item.id , i)" class="btn btn-outline-danger"> Delete </button> 
+                                             </td>-->
+                                             <td>
+                                                   <div style="text-align:center;" id="myPaypalButtons"></div>
+                                                   
+                                                   <button (click)='pay({receiverWallet: "62838361e09cf743223912f2",amount:item.budget,firstName:"y",lastName:"x",phoneNumber: "58277084",email:item.freelancer.email  })'  class="btn btn-outline-warning"> Konnect Service  </button>
+                                                   </td>
+                                                   <td>                            <button (click)="makePayment(item.budget )" class="btn btn-outline-success"> Stripe  </button></td>
+                                              
+                                         <td>
+                                          <button    (click)="addreview(item.id , item.freelancer.id)" type="button" class="btn btn-outline-primary px-3">
+                                            <i class="far fa-star" aria-hidden="true"> {{item.freelancer.reviews_count}}</i>
+                                          </button>
+                                          
+                                             </td>
+                    
+                              
+                                          </tr>
+                                          <tr *ngIf="dataArray.length==0">
+                                            <td colspan="8"style="text-align:center;">no data found</td>
+                                          </tr>
+                                    </tbody>
+                                   
+                                  </table>
+                    
+                    
+                                </div>
+                                <div style="text-align:right;">
+                                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                </div>
+                        </div>
+                      </div>
+                    
+                                </div>                             
+  
+                      <!-- Content Row -->
+              <!-- /.container-fluid -->
+    
+                  </div>      
+ 
+                     <!-- Content Row -->
+             <!-- /.container-fluid -->
+   
+                 </div>
+</div>
+
+
+
+</body>
+</html>

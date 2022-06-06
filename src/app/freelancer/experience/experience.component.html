@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:16%">
+  <app-freelancer-side-bar></app-freelancer-side-bar>
+</div>
+
+<!-- Page Content -->
+<div style="margin-left:20%">
+
+
+  <br><br>
+  <div class="container">
+
+    <div class="container">
+
+        <div align="right">
+            <button (click)="clicker()" type="button" data-toggle="modal" data-target="#exampleModal"
+                class="btn btn-outline-dark btn-sm">+ Add Experaince </button>
+        </div>
+
+
+        <div class="container bootstrap snippets bootdey" *ngFor="let data of dataArray">
+            <div class="panel-body inf-content">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img alt="" style="width:320px;" title=""
+                            src="https://g.foolcdn.com/editorial/images/466511/man-working-at-a-computer_gettyimages-650066898.jpg"
+                            data-original-title="Usuario">
+
+                    </div>
+                    <div class="col-md-6">
+                        <strong> Experiance Details</strong><br>
+                        <div class="table-responsive">
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                                                entreprise
+                                            </strong>
+                                        </td>
+                                        <td class="text-primary">
+                                            {{ data.entreprise }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                                                JobType
+                                            </strong>
+                                        </td>
+                                        <td class="text-primary">
+                                            {{ data.jobType }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                                                Description
+                                            </strong>
+                                        </td>
+                                        <td class="text-primary">
+                                            {{ data.description }}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-cloud text-primary"></span>
+                                                Start Date </strong>
+                                        </td>
+                                        <td class="text-primary">
+                                            {{data.dateDebut}}
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-envelope text-primary"></span>
+                                                End Date </strong>
+                                        </td>
+                                        <td class="text-primary">
+                                            {{data.dateFin }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div align="right">
+                    <button (click)="deletexperiance(data.id )" type="button"
+                        class="btn btn-outline-danger btn-sm"> Delete Experience </button> &nbsp; &nbsp;
+                    <button
+                        (click)="getdata(data.entreprise,data.jobType,data.dateDebut,data.dateFin,data.description,data.id)"
+                        type="button" data-toggle="modal" data-target="#exampleModal1"
+                        class="btn btn-outline-success btn-sm">Update Experaince </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div><br>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Experience </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- form update start here -->
+                    <form [formGroup]="addexper" #f="ngForm" (ngSubmit)="addexperiance (f); f.reset()">
+
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">society </label>
+                            <input type="text" class="form-control" formControlName="entreprise"
+                                placeholder="your society is ?" ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">JobType </label>
+                            <input type="text" class="form-control" formControlName="jobType"
+                                placeholder="your JobType is ?" ngModel>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fullName">Start Date</label>
+                            <input type="date" class="form-control" formControlName="dateDebut"
+                                placeholder="your Post is ?" ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="fullName">Finish Date</label>
+                            <input type="date" class="form-control" formControlName="dateFin"
+                                placeholder="your Post is ?" ngModel>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Experience Description</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                formControlName="description" ngModel rows="3"></textarea>
+                        </div><br>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+
+                                    <button type="submit" class="btn btn-primary"> Add </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    <!-- form update end here -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Expereince </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- form update start here -->
+                    <form [formGroup]="addexper" #f="ngForm" (ngSubmit)="updateexperiance (f); f.reset()">
+
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">society </label>
+                            <input type="text" class="form-control" formControlName="entreprise"
+                                [(ngModel)]="dataexperiance.entreprise" placeholder="your society is ?" ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">JobType </label>
+                            <input type="text" class="form-control" formControlName="jobType"
+                                [(ngModel)]="dataexperiance.jobType" placeholder="your JobType is ?" ngModel>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fullName">Start Date</label>
+                            <input type="date" class="form-control" id="fullName" formControlName="dateDebut"
+                                [(ngModel)]="dataexperiance.dateDebut" placeholder="your Post is ?">
+                        </div>
+                        <div class="form-group">
+                            <label for="fullName">Finish Date</label>
+                            <input type="date" class="form-control" id="fullName" formControlName="dateFin"
+                                [(ngModel)]="dataexperiance.dateFin" placeholder="your Post is ?">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Experience Description</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                formControlName="description" [(ngModel)]="dataexperiance.description"
+                                rows="3"></textarea>
+                        </div> <br>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+
+                                    <button type="submit" id="submit" name="submit" class="btn btn-primary">
+                                        Update </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    <!-- form update end here -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+</body>
+</html>

@@ -14,6 +14,7 @@ export class DashboardAdminComponent implements OnInit {
   searchedKeyword!:string;
   messageErr="" ;
   chartType:any;
+  chartOptions: any 
   chartDatasets:any = []; 
   chartLabels:any = [];
   chartColors:any = [];
@@ -23,11 +24,10 @@ export class DashboardAdminComponent implements OnInit {
 
   constructor(public UsersService:UsersService, public router:Router) { 
     this.chartType = 'bar';
-    this.admindata = JSON.parse( localStorage.getItem('admindata') !);
-    console.log(this.admindata.firstname)
+    this.admindata = JSON.parse( sessionStorage.getItem('admindata') !);
  
 
-    this.chartLabels = ['Users', 'Missions', 'Categories', 'Langugages'];
+    this.chartLabels = ['Users', 'Missions', 'Categories', 'Skills'];
   
     this.chartColors = [
       {
@@ -48,16 +48,17 @@ export class DashboardAdminComponent implements OnInit {
         borderWidth: 2,
       }
     ];
-  
+    this.chartOptions = {
+      responsive: true
+    };
 
     this.UsersService.countall().subscribe(result=>{
-      
-      console.log(result)
+      debugger
       this.chartDatasets =[ 
-        { data: [result.data[0], result.data[1], result.data[2], result.data[3]], label: 'Freelancy Stats'  }]
+        { data: [result.data[0], result.data[1], result.data[2], result.data[3]],label: 'Freelancy Officiel statistic'  }
+      ];
      // this.chartDatasets = [ this.chartDatasets[0] ]
      this.chartReady=true; 
-     console.log(this.chartDatasets)
       debugger
       this.dataArray=result
       
@@ -65,9 +66,7 @@ export class DashboardAdminComponent implements OnInit {
       
          ,
        (err:HttpErrorResponse)=>{
-        console.log(err)
       this.messageErr="We dont't found this user in our database"} 
-      //console.log(this.dataArray)
     }) 
    
     
@@ -76,11 +75,9 @@ export class DashboardAdminComponent implements OnInit {
 
 
   chartClicked(event: any): void {
-    console.log(event);
   }
 
   chartHovered(event: any): void {
-    console.log(event);
   }
   ngOnInit(): void {
 

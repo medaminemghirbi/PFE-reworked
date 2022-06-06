@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:16%">
+  <app-freelancer-side-bar></app-freelancer-side-bar>
+</div>
+
+<!-- Page Content -->
+<div style="margin-left:20%">
+
+
+  <br><br>
+
+  <div id="wrapper">
+
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+
+          <div class="container">
+            <form [formGroup]="conversationFormGroup" (ngSubmit)="getOrcreateConversation()">
+              <div>
+                  <label>Conversation Name</label>
+                  <input type="text" matInput placeholder="abcd" formControlName="name">
+                  <button mat-raised-button  class="btn btn-info"  type="submit" [disabled]="!conversationFormGroup.valid" title="Get Or Create Conversation">Start COnversation</button>
+    
+              </div>&nbsp;
+    
+          </form>
+        <hr>
+          <div>
+              <div id="remote-container">
+    
+              </div>
+              <div id="local-container">
+       
+              </div>
+          </div>
+        </div>
+        <div class="container-fluid"> 
+    
+            <section class="msger">
+                <header class="msger-header">
+                  <div class="msger-header-title">
+                    <i class="fas fa-comment-alt"></i> Chat
+                  </div>
+                  <div class="msger-header-options">
+                    <span><i class="fas fa-cog"></i></span>
+                  </div>
+                </header>
+              
+                <main class="msger-chat"  *ngFor="let data of ordered_msges | orderBy: 'created_at': 'asc'">
+      
+                  <div class="msg right-msg" *ngIf="data.sender_id === current_user.id">
+                    <div
+                     class="msg-img"
+                     style="background-image: url({{current_user.user_image_url}})"
+                    ></div>
+              
+                    <div class="msg-bubble" >
+           
+              
+                      <div class="msg-text">
+                       {{data.text}}
+                      </div>
+                    </div>
+                  </div>
+                 <div class="msg left-msg" *ngIf="data.sender_id !== current_user.id">
+                    <div
+                     class="msg-img"
+                     
+                     style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjTThsV0nUW7Qr3Y4QC8rs3gdI3MunygNrGQ&usqp=CAU)"
+                    ></div>
+              
+                    <div class="msg-bubble" >
+           
+              
+                      <div class="msg-text">
+                        {{data.text}}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+                </main>
+              
+                <form class="msger-inputarea" [formGroup]="addmessage" #f="ngForm" (ngSubmit)="sendmessage (f); f.reset()">
+                  <input name="text" class="form-control"  formControlName="text"  required type="text" class="msger-input" placeholder="Enter your message...">
+                  <button type="submit" class="msger-send-btn">Send</button>
+                </form>
+              </section>
+    
+    
+        </div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="/login">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="w3-container">
+
+    </div>
+
+</div>
+</div>
+
+
+
+</body>
+</html>

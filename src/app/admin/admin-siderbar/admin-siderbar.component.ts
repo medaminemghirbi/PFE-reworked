@@ -14,8 +14,7 @@ export class AdminSiderbarComponent implements OnInit {
   messageErr:any;
   admindata:any;
   constructor(private route:Router, private servicesService:UsersService) {
-  this.admindata = JSON.parse( localStorage.getItem('admindata') !);
-    console.log(this.admindata.firstname)
+  this.admindata = JSON.parse( sessionStorage.getItem('admindata') !);
 
 }
   ngOnInit(): void {

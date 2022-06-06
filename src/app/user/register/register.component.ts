@@ -31,8 +31,15 @@ export class RegisterComponent implements OnInit {
       
       console.log(data)
     },(err:HttpErrorResponse)=>{
-      console.log(err)
-      this.messageError="champs required or not valid"})
+     
+      if(err.status == 422){
+        this.messageError="Email is already taken"
+ 
+      }else{
+        console.log(err)
+        this.messageError="champs required or not valid"
+      }
+     })
 
   }
 

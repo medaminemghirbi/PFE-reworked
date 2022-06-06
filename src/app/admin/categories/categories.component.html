@@ -3,20 +3,21 @@
 <title>W3.CSS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 <body>
 
 <!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:16%">
+  <app-admin-siderbar></app-admin-siderbar>
+</div>
 
-<app-admin-siderbar></app-admin-siderbar>
 <!-- Page Content -->
-
-<br>
 <div style="margin-left:20%">
 
+
+  <br><br>
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Categories </h6>
+        <h6 class="m-0 font-weight-bold text-primary">Categories ({{counter}})  </h6>
     </div>
     <form
     class="card-header py-3" >
@@ -177,8 +178,10 @@
   
 </div>
 
+
 </div>
-      
+
+
+
 </body>
 </html>
-

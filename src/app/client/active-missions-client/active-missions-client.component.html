@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:16%">
+<app-client-sider-bar></app-client-sider-bar>
+</div>
+
+<!-- Page Content -->
+<div style="margin-left:19%">
+
+
+  <br><br>
+          <div class="container-fluid"> 
+ 
+                    
+ 
+                     <!-- Content Row -->
+                     <div class="container-fluid"> 
+   
+                      
+   
+                      <!-- Content Row -->
+                      <div class="container">
+  
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Missions (On Progress) | Status Accepted ({{counter}})  </h6>
+                            </div>
+                            <form
+class="card-header py-3" >
+<div class="input-group">
+    <input type="text" name="role" class="form-control" [(ngModel)]="searchedKeyword"  placeholder="Search for..." >
+  
+</div>
+</form>
+
+                            <div class="card-body">
+                                <div class="table-responsive" >
+                                <table class="table table-bordered"  width="100%" >
+                                    <thead >
+                                      <tr >
+                                        <th scope="col"> Mission_id </th> 
+                                        <th scope="col"> Title Mission </th>  
+                                        <th scope="col"> Description </th> 
+                                        <th scope="col" >Status  &nbsp;<i class="fa fa-sort"> </i> </th>
+                                        <th scope="col"> Completed </th>  
+                                     
+                                       
+                                        <th scope="col"> Email Freelancer </th> 
+                                        <th scope="col">Generate Contract </th>
+                    
+                                        <th scope="col">Discuss</th>              
+                                  
+                                      </tr>
+                                    </thead>
+                                    <tbody>         
+                                        <tr *ngFor="let item of dataArray |paginate: { itemsPerPage: 3, currentPage: p } | filter:searchedKeyword ; index as i"
+                                        >
+                                            
+                                            <td>{{item.mission.id}}</td> 
+                                            <td>{{item.mission.title}}</td>
+                                            <td>{{item.mission.description}}</td>
+                                            <td> <button *ngIf="item.status==='accepted' " class="btn btn-success">{{item.status}}</button> </td>
+                                          
+                                            <td> <button *ngIf="item.mission.completed===true " class="btn btn-success">{{item.mission.completed}}</button> 
+                                             <button *ngIf="item.mission.completed===false " class="btn btn-warning">{{item.mission.completed}}</button> </td>
+                    
+                                            <td > <a [routerLink]="['/detailfreelancer',item.freelancer_id]" >  {{item.freelancer.email }} </a></td> 
+                                            <td> <a  class="btn btn-outline-secondary" [routerLink]="['/generatecontratclient',item.mission.id]" > Generate </a></td>
+                    
+                                            <td> <a  class="btn btn-outline-dark" [routerLink]="['/descuter',item.freelancer_id]" >  Discuss </a></td> 
+                    
+                                           
+                                          </tr>
+                                          <tr *ngIf="dataArray.length==0">
+                                            <td colspan="7"style="text-align:center;">no data found</td>
+                                          </tr>
+                                    </tbody>
+                                   
+                                  </table>
+                    
+                    
+                                </div>
+                                <div style="text-align:right;">
+                                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                </div>
+                                
+                        </div>
+                      </div>
+                    
+                                </div>                             
+  
+                      <!-- Content Row -->
+              <!-- /.container-fluid -->
+    
+                  </div>      
+ 
+                     <!-- Content Row -->
+             <!-- /.container-fluid -->
+   
+                 </div>
+</div>
+
+
+
+</body>
+</html>

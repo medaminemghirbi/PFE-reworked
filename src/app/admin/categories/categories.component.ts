@@ -13,6 +13,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
+  counter:any
   addcategorie! :  FormGroup;
   messageErr="" ;
   image:any;
@@ -53,12 +54,10 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.usersService.getAllcategories().subscribe(data=>{
       // debugger
-      console.log(data)
       
-      this.dataArray=data , (err:HttpErrorResponse)=>{
-        console.log(err)
+      this.dataArray=data 
+      this.counter = this.dataArray.length, (err:HttpErrorResponse)=>{
       this.messageErr="We dont't found this category in our database"} 
-      //console.log(this.dataArray)
     }) 
   }
 
@@ -85,7 +84,6 @@ export class CategoriesComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.usersService.deleteCat(id).subscribe(response=>{
-          console.log(response)
           this.dataArray.splice(i,1)   
         })
         Swal.fire(
@@ -104,7 +102,6 @@ export class CategoriesComponent implements OnInit {
     this.dataCat.name= name 
     this.dataCat.avatar =image_url 
     this.dataCat.id= id 
-    console.log(this.dataCat)
 
   }
   fileChange(event:any) {
@@ -128,7 +125,6 @@ export class CategoriesComponent implements OnInit {
       if (result.isConfirmed) {
         this.usersService.updateCat(this.dataCat.id,formData).subscribe(response=>
           {
-          console.log(response)
           this.submitted = true ;
             let indexId=this.dataArray.findIndex((obj:any)=>obj.id==this.dataCat.id)
     
@@ -140,7 +136,6 @@ export class CategoriesComponent implements OnInit {
            this.route.navigate(['/categories']);
           
           },(err:HttpErrorResponse)=>{
-            console.log(err.message)
           
           })
         Swal.fire('Saved!', '', 'success')
@@ -157,18 +152,15 @@ addcategory (f:any){
   formData.append('name', this.addcategorie.value.name);
   let data=f.value
   
-  console.log(data)
   
   this.usersService.addcategory(formData).subscribe( ()=>{
-      console.log(data)
       window.location.reload();
       Swal.fire('Saved!', '', 'success')
     this.route.navigate(['/categories'])
 
   },(err:HttpErrorResponse)=>{
     this.messageErr=err.error
-    console.log(err.error)
-     console.log(err.status)
+
      
   }) ;
 }

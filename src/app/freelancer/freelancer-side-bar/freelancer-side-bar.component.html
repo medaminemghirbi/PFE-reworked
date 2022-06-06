@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="w3-sidebar w3-light-grey w3-bar-block">
+        <div class="dashboard" id="accordionSidebar">
+            <div class="dashboard-nav" style="background-color: rgb(38, 8,158);">
+                <header>
+                    <a class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#" class="brand-logo"> <i
+                            class="fas fa-laugh" style="color: white;"></i> <span>FREELANCER</span></a>
+                </header>
+                <nav class="dashboard-nav-list">
+                    <a routerLink="/dashboard-freelancer" class="dashboard-nav-item "><i
+                            class="fas fa-tachometer-alt"></i>
+                        dashboard </a>
+
+                    <a routerLink="/postulated-missions-freelancer" class="dashboard-nav-item ">
+                        <i class="fas fa-envelope"></i>Requested missions </a>
+
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle" data-toggle="collapse"
+                        data-target="#settingscolaps" aria-expanded="true" aria-controls="collapseTwo"><i
+                            class="fas fa-briefcase"></i> My Mission List </a>
+                    <div id="settingscolaps" class="collapse" aria-labelledby="headingTwo"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-black py-2 collapse-inner rounded">
+
+                            <a routerLink="/active-missions-freelancer" class="dashboard-nav-item"><i
+                                    class="fas fa-chart-line"></i> Active Mission </a>
+                            <a routerLink="/ended-missions-freelancer" class="dashboard-nav-item"><i
+                                    class="fas fa-clipboard-list"></i> Ended Mission </a>
+                        </div>
+                    </div>
+
+
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle" data-toggle="collapse"
+                        data-target="#profilcolapse" aria-expanded="true" aria-controls="collapseTwo"><i
+                            class="fas fa-cogs"></i> Settings </a>
+                    <div id="profilcolapse" class="collapse" aria-labelledby="headingTwo"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-black py-2 collapse-inner rounded">
+                            <a routerLink="/profil-freelancer" class="dashboard-nav-item"><i class="fas fa-user"></i>
+                                Profil
+                                Details </a>
+                            <a routerLink="/education" class="dashboard-nav-item"><i class="fas fa-school"></i>
+                                Education
+                            </a>
+                            <a routerLink="/experience" class="dashboard-nav-item"><i class="fas fa-building"></i>
+                                Experiance </a>
+                            <a routerLink="/skills" class="dashboard-nav-item"><i class="fas fa-building"></i>
+                                Skills
+                            </a>
+                        </div>
+                    </div>
+
+                    <a [routerLink]="['/generatecv',freelancerdata.id]" class="dashboard-nav-item "><i
+                            class="fas fa-id-card"></i> Generate My CV </a>
+
+                    <a routerLink="/favoris" class="dashboard-nav-item "><i class="fas fa-heart"></i> My Favoris List
+                    </a>
+
+                    <div class="nav-item-divider"></div>
+                    <a (click)="logout()" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a>
+                </nav>
+            </div>
+        </div>
+        <div class="dashboard-app"></div>
+    </div>
+
+
+
+</body>
+
+</html>

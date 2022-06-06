@@ -11,11 +11,10 @@
          <br>
           <div class="border-bottom pb-2 ml-2">
             <div class="form-group">
-              <h6 class="font-weight-bold">Language</h6>
-              <div id="orange"><span class="fa fa-minus"></span></div>
+       
              
               <div class="py-3">
-                <h5 class="font-weight-bold">Rating</h5>
+                <h5 class="font-weight-bold">Find  By  Rating</h5>
                <form >
                 <div class="form-group"   >  
                   <input (click)="this.getallfreelancers()" type="radio" value="" name="1" id="exampleCheck1" >  &nbsp;
@@ -43,23 +42,26 @@
             </div>   
                   
             </form>
-            </div>
-              <form class="formSteps" [formGroup]="stepOneOfOneForm" >
+            </div><br>
+            <form [formGroup]="stepOneOfOneForm">
+              <div class="form-group">
+                <label for="exampleFormControlInput2">Find Freelancer By Skills  </label>
+                <div id="orange"><span class="fa fa-minus"></span></div>
                 <ng-select 
-                [multiple]="true"
-                 placeholder="Select Language"
+                class="form-control"
+                appendTo="body"
+                [multiple]="true" 
+                 appendTo="body" 
+                 id="exampleFormControlSelect2"
                     formControlName="language_id"
-                    name="language_id"
-                      [(ngModel)]="selectedDefaultLanguage"
-                      (change)="getfreelancerbylanguage()" 
-                        >
-                  <ng-option *ngFor="let l of languages" [value]="l.id"   >
-                     {{l.name}} 
-              
-                  </ng-option>
-                  
+                [(ngModel)]="selectedDefaultLanguage"
+                (change)="getfreelancerbylanguage()"  >
+                  <ng-option *ngFor="let l of languages" [value]="l.id">{{l.name}}</ng-option>
                </ng-select>
-                </form>
+    
+              </div>
+            </form>
+            
                               
             </div>
             </div>
@@ -72,7 +74,14 @@
         </section><br><br><br><br>
         <div class="container">
           <div class="row">
-            <div class="col-4 col-sm-4 col-md-4 col-lg-4" *ngFor="let data of dataArray">
+            <form class="card-header py-2">
+              <div class="input-group">
+                <input type="text" name="name" class="form-control" [(ngModel)]="searchedKeyword"
+                  placeholder="Search for...">
+              </div>
+            </form>
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4" *ngFor="let data of dataArray | filter:searchedKeyword ; index as i">
+             
               <div class="our-team">
                 <div class="picture">
                   <a [routerLink]="['/detail-freelancer',data.id]">  <img class="img-fluid" [src]="data.user_image_url"></a>
@@ -95,4 +104,3 @@
           </div>
           </div>
         </div>
-    <app-footer></app-footer>
