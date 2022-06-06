@@ -79,6 +79,7 @@ export class AddmissionComponent implements OnInit {
       formData.append('client_id',this.clientdata.id);
       formData.append('language_id',this.addmissionn.value.language_id);   
     let data=f.value   
+    debugger
     console.log(data)
     this.usersService.addMission(formData).subscribe( ()=>{
        this.date = moment(Date.now()).format("YYYY-MM-DD"); 

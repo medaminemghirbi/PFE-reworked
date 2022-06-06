@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./allusers.component.css']
 })
 export class AllusersComponent implements OnInit {
+  counter:any
   dataArray:any = [] ;
   dataArrayy:any = [] ;
   p:number = 1 ;
@@ -30,7 +31,8 @@ export class AllusersComponent implements OnInit {
   }
   ngOnInit(): void {
     this.usersService.getAllusers().subscribe(data=>{
-      this.dataArray=data , (err:HttpErrorResponse)=>{
+      this.dataArray=data
+      this.counter = this.dataArray.length , (err:HttpErrorResponse)=>{
       this.messageErr="We dont't found this user in our database"} 
     }) 
     this.usersService.freelancerhomedata(this.activatedRoute.snapshot.params['id']).subscribe(data=>{

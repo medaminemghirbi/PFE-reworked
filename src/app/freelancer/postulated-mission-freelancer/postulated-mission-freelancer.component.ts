@@ -13,6 +13,7 @@ export class PostulatedMissionFreelancerComponent implements OnInit {
   p:number = 1 ;
   freelancerdata: any;
   messageErr: any;
+  counter:any
   dataArray: any = [];
   messageSuccess : any ;
   submitted: boolean = false ;
@@ -32,6 +33,7 @@ export class PostulatedMissionFreelancerComponent implements OnInit {
       console.log(response)
       
       this.dataArray = response 
+      this.counter = this.dataArray.length
       sessionStorage.setItem( 'status', JSON.stringify( response.status ) )
       , (err:HttpErrorResponse)=>{
         console.log(err)

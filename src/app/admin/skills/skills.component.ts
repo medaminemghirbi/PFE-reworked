@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit {
-
+  counter:any
   dataArray:any = []
   p:number = 1 ;
  
@@ -48,7 +48,8 @@ export class SkillsComponent implements OnInit {
     this.usersService.getAllLanguages().subscribe(data=>{
       // debugger
       
-      this.dataArray=data , (err:HttpErrorResponse)=>{
+      this.dataArray=data 
+      this.counter = this.dataArray.length, (err:HttpErrorResponse)=>{
       this.messageErr="We dont't found this category in our database"} 
     }) 
   }

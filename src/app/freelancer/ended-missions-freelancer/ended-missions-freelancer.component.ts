@@ -113,6 +113,11 @@ export class EndedMissionsFreelancerComponent implements OnInit {
       
     }
 
+    navigate(){
+      var result = this.dataArray.map(function(a:any) {return a.filepath;});
+      
+      window.open(result);
+    }
 
 
     ///****************************************************  addReview ************************************///
@@ -133,7 +138,7 @@ export class EndedMissionsFreelancerComponent implements OnInit {
           //this.submitted = true ;
           Swal.fire('Saved!', '', 'success')
          window.location.reload();
-        this.route.navigate(['/ended-missions-client'])
+        this.route.navigate(['/ended-missions-freelancer'])
     
       },(err:HttpErrorResponse)=>{
         this.messageErr=err.error

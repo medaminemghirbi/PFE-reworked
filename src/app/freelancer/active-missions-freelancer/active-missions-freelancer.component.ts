@@ -32,7 +32,7 @@ export class ActiveMissionsFreelancerComponent implements OnInit {
   dataArrayy:any ;
   dataArrayyy:any ;
   update: FormGroup;
-
+  counter:any
   constructor(private usersService:UsersService,private route:Router ,private activatedRoute: ActivatedRoute, ) {
     this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
     console.log(this.freelancerdata.id)
@@ -48,7 +48,8 @@ export class ActiveMissionsFreelancerComponent implements OnInit {
   ngOnInit(): void {
     this.usersService.getrequestacceptedbyfreelancer(this.freelancerdata.id).subscribe(data=>{
       console.log(data)
-      this.dataArray = data , (err:HttpErrorResponse)=>{
+      this.dataArray = data 
+      this.counter = this.dataArray.length, (err:HttpErrorResponse)=>{
         console.log(err)
       this.messageErr="We dont't found this mission in our database"} 
       //console.log(this.dataArray)
@@ -106,6 +107,7 @@ export class ActiveMissionsFreelancerComponent implements OnInit {
       
       
     }
+
 
 
 }

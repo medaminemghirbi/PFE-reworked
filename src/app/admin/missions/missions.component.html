@@ -25,7 +25,7 @@
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Missions ({{dataArray.length}}) </h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Missions ({{counter}}) </h6>
                 </div>
                 <form
                 class="card-header py-3" >
@@ -50,6 +50,8 @@
                             <th scope="col"> created_at</th>
                             <th scope="col"> updated_at</th>
                             --> 
+                            <th scope="col"> Hired </th> 
+                            <th scope="col"> Completed </th>     
                             <th colspan="2">Actions</th>
                           </tr>
                         </thead>
@@ -67,12 +69,24 @@
                                    <td> {{item.created_at | date:'medium'}}  </td>
                                 <td> {{item.updated_at | date:'medium'}}  </td>
                                 --> 
+                                <td>
+                                  <button *ngIf="item.freelancer_id"
+                                      class="btn btn-success">Yes</button>
+                                  <button *ngIf="!item.freelancer_id"
+                                      class="btn btn-danger">No</button>
+                              </td>
+                                <td>
+                                  <button *ngIf="item.completed===true "
+                                      class="btn btn-success">{{item.completed}} </button>
+                                  <button *ngIf="item.completed===false "
+                                      class="btn btn-danger">{{item.completed}} </button>
+                              </td>
                                 <td>  
                                     <button  class="btn btn-outline-success" [routerLink]="['/detail-mission',item.id]" > Show </button> &nbsp;&nbsp;
                                    
                                 </td>
                                 <td>  
-                                  <button class="btn btn-outline-danger" (click)="delete(item.id , i)" class="delete">Delete</button>                                 
+                                  <button class="btn btn-outline-danger" (click)="delete(item.id , i)">Delete</button>                                 
                               </td>
           
                                

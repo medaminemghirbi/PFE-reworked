@@ -187,7 +187,7 @@ export class UsersService {
     }
     
     getrequestbyclient (client_id : any) {
-      return this.http.get(`${environment.urlBackend}`+'getrequestbyclient/' + client_id )
+      return this.http.get<any>(`${environment.urlBackend}`+'getrequestbyclient/' + client_id )
     }
     getmissionbyrequestclient(client_id : any) {
       return this.http.get(`${environment.urlBackend}`+'getmissionbyrequestclient/' + client_id )
@@ -293,7 +293,7 @@ deleteFavoris  (id:any) {
   }
 
   updatecompleted (id:string,newdata:any) {
-    return this.http.patch(environment.urlBackend+'updatecompleted/' + id , newdata )
+    return this.http.patch<any>(environment.urlBackend+'updatecompleted/' + id , newdata )
   }
 
   /********************** client : status accepted *****************************************/

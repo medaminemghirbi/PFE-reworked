@@ -80,7 +80,9 @@ export class DetailFreelancerComponent implements OnInit {
   }
 
 golinkedin(){
+
   var result = this.dataArray.map(function(a:any) {return a.linkedin;});
+  debugger
   window.open(result);
 }
 gogithub(){

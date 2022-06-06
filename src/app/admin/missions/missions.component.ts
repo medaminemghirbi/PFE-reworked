@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class MissionsComponent implements OnInit {
 
   p:number = 1 ;
+  counter:any
   dataStudent={
     id : '',
     title:'',
@@ -37,8 +38,11 @@ export class MissionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.usersService.getAllMissions().subscribe(data=>{
-
-      this.dataArray=data , (err:HttpErrorResponse)=>{
+      console.log(data)
+    
+      debugger
+      this.dataArray=data 
+      this.counter = this.dataArray.length, (err:HttpErrorResponse)=>{
 
       this.messageErr="We dont't found this student in our database"} 
 
@@ -79,7 +83,7 @@ export class MissionsComponent implements OnInit {
 
 
 
-  delete(id:any  , i :number){
+  delete(id: any, i: number) {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -90,18 +94,31 @@ export class MissionsComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.usersService.deleteMission(id).subscribe(response=>{
-          this.dataArray.splice(i,1)   
+        this.usersService.deleteMission(id).subscribe(response => {
+
+          console.log(response)
+          if (response.status == '200') {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+            this.dataArray.splice(i, 1)
+          }
+          if (response.status == '401') {
+            Swal.fire(
+              'not Deleted!',
+              'You cant delete an active mission.',
+              'error'
+            )
+          }
+
         })
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+
       }
     })
-   
-    
+
+
   }
     getdata(title:string,description:string,id:any){
       this.messageSuccess=''
