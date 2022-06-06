@@ -167,7 +167,7 @@ updateexperiance(f:any){
   }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-      debugger
+      
       this.usersService.updateexperiance(this.dataexperiance.id,formData).subscribe(response=>
         
         {

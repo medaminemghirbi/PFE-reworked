@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {ChartsModule,  MDBBootstrapModule } from 'angular-bootstrap-md';
+import {ButtonsModule, CardsModule, ChartsModule,  MDBBootstrapModule, TableModule } from 'angular-bootstrap-md';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -56,6 +56,9 @@ import { DescuterComponent } from './client/descuter/descuter.component';
 import { OrderByPipe } from './order-by.pipe';
 import { GeneratecontratclientComponent } from './client/generatecontratclient/generatecontratclient.component';
 import { GeneratecontratfreelancerComponent } from './freelancer/generatecontratfreelancer/generatecontratfreelancer.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { StatsticComponent } from './user/statstic/statstic.component';
 @NgModule({
   declarations: [
     OrderByPipe,
@@ -104,19 +107,25 @@ import { GeneratecontratfreelancerComponent } from './freelancer/generatecontrat
     DescuterComponent,
     GeneratecontratclientComponent,
     GeneratecontratfreelancerComponent,
+    StatsticComponent,
       ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule, 
+    HttpClientModule,
+    FontAwesomeModule,
+    CardsModule,
+    ButtonsModule,
+    FormsModule,
     MDBBootstrapModule,
-    NgSelectModule,
-    FormsModule ,  
     ReactiveFormsModule,
     ChartsModule,
-    NgxPaginationModule,
+    NgSelectModule,
     Ng2SearchPipeModule,
-    BrowserAnimationsModule
+    NgxPaginationModule,
+    TableModule,
+    BrowserAnimationsModule,
+    NgMultiSelectDropDownModule.forRoot()
   ], 
   providers: [],
   bootstrap: [AppComponent]

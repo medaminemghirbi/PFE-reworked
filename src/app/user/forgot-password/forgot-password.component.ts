@@ -33,7 +33,7 @@ export class ForgotPasswordComponent implements OnInit {
      
     this.usersService.sendresetlink(formData).subscribe( ()=>{
       
-    debugger
+    
      // console.log(formData)
      
       Swal.fire('REset Link Sent Avec Succes!', '', 'success')

@@ -40,6 +40,7 @@ import { LoginComponent } from './user/login/login.component';
 import { MissionComponent } from './user/mission/mission.component';
 import { RegisterComponent } from './user/register/register.component';
 import { ResetPasswordComponent } from './user/reset-password/reset-password.component';
+import { StatsticComponent } from './user/statstic/statstic.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -57,6 +58,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'freelancer',component:FreelancerComponent},
   {path:'contact',component:ContactComponent},
+  {path:'statistic',component: StatsticComponent},
   {path:'dashboard-admin'    , canActivate:[AuthGuard], component:DashboardAdminComponent } ,
   { path : 'categories' , canActivate:[AuthGuard]   , component : CategoriesComponent} ,
   { path : 'missions' , canActivate:[AuthGuard]   ,component : MissionsComponent} ,
@@ -83,7 +85,7 @@ const routes: Routes = [
   { path:'edit-client', canActivate:[AuthGuard]  ,  component:EditProfilClientComponent},
   { path: 'generatecontratclient/:id', canActivate: [AuthGuard], component: GeneratecontratclientComponent },
   { path: 'generatecontratfreelancer/:id', canActivate: [AuthGuard], component: GeneratecontratfreelancerComponent   },
-
+ 
 ];
 
 @NgModule({

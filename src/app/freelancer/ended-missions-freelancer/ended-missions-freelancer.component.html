@@ -56,9 +56,10 @@
                             </button>
                         </td>
 
-                        <td *ngIf="item.filepath"><a href="{{item.filepath}}">Go To file</a></td>
-                        <td *ngIf="!item.filepath">{{item.filepath}}</td>
-
+                        <td>
+                            <a  *ngIf="item.filepath !== 'null'&& item.filepath  !== '' "  (click)="navigate()" class="btn btn-success" >Go To file</a>
+                            <button *ngIf="item.filepath  == 'null' || item.filepath  == '' " class="btn btn-danger">No FIle Yet </button>
+                        </td>                                
                         <td> <a [routerLink]="['/detail-mission',item.id]"> {{item.title}} </a></td>
                         <td>{{item.description}}</td>
                         <td> <a> {{item.client.email }} </a> </td>

@@ -20,7 +20,7 @@
 
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Active Missions ( {{dataArray.length}} ) </h6>
+          <h6 class="m-0 font-weight-bold text-primary">Active Missions ({{counter}}) </h6>
       </div>
       <form
       class="card-header py-3" >
@@ -61,14 +61,13 @@
                           <td *ngIf="!item.mission.filepath">{{item.mission.filepath}}</td>
 
 
-                          <td>
 
-                              <button (click)="getdata( item.id , item.mission.completed , item.mission.filepath)"
-                                  class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
-                                  Update </button> &nbsp;&nbsp;
 
-                          </td>
-
+                            <td>
+                                <button (click)="getdata( item.id , item.mission.completed , item.mission.filepath)"
+                                    class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
+                                    Update </button> &nbsp;&nbsp;
+                            </td>
                           
                           <td> <a class="btn btn-outline-dark"
                                   [routerLink]="['/descuter-freelancer',item.mission.client_id]"> Discuss with

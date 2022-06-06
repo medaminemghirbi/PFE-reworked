@@ -20,23 +20,25 @@
 
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
-
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Postulated ( {{dataArray.length}} ) </h6>
-            </div><br>
             <div align="right">
                 <button class="btn btn-outline-dark" routerLink="/mission"> Add New Request
                 </button>&nbsp;&nbsp;
+            </div><br>
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Postulated ({{counter}}) </h6>
+            
+            </div>                
+            <form
+            class="card-header py-3" >
+            <div class="input-group">
+                <input type="text" name="role" class="form-control" [(ngModel)]="searchedKeyword"  placeholder="Search for..." >
+              
             </div>
-            <div class="card-body">
-                <form
-class="card-header py-3" >
-<div class="input-group">
-    <input type="text" name="role" class="form-control" [(ngModel)]="searchedKeyword"  placeholder="Search for..." >
+            </form>
   
-</div>
-</form><br>
+            <div class="card-body">
+<br>
                 <div class="table-responsive">
                     <table class="table table-bordered" width="100%">
                         <thead>

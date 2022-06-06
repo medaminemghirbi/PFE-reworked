@@ -35,7 +35,7 @@ export class DescuterFreelancerComponent implements OnInit {
     this.usersService.getmessagebysender(this.freelancerdata.id,this.activatedRoute.snapshot.params['id']).subscribe(datac=>{
       //this.ordered_msges = _.sortBy(datac, function(msg:any){ return msg; });
       console.log(datac)
-      debugger
+      
       this.dataArray = datac , (err:HttpErrorResponse)=>{
         console.log(err)
       this.messageErr="We dont't found any message with that id"} 
@@ -49,7 +49,7 @@ export class DescuterFreelancerComponent implements OnInit {
         console.log(err)
       this.messageErr="We dont't found any message with that id"} 
       //console.log(this.dataArray)
-      debugger
+      
       this.ordered_msges = this.dataArray.message.concat(this.dataArrayy.message)
      // this.elem = new Date(this.ordered_msges[0]).getTime()
      /* this.ordered_msges.forEach((element: any) => {

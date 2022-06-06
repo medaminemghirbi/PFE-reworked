@@ -9,9 +9,7 @@ export class CheckoutService {
 
 
   constructor(private http: HttpClient) { }
-    makePayment(stripeToken:any,amount:any):Observable<any>{
-  debugger
-      
+    makePayment(stripeToken:any,amount:any):Observable<any>{      
     return this.http.post<any>(environment.urlBackend+'charges/',{token: stripeToken,amount: amount})
 
   }

@@ -1,10 +1,13 @@
 {
   "name": "pfe-front-reworked",
   "version": "0.0.0",
+  "engines": {
+    "node": "16.14.2"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

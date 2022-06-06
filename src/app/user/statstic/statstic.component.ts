@@ -3,13 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 
-
 @Component({
-  selector: 'app-dashboard-admin',
-  templateUrl: './dashboard-admin.component.html',
-  styleUrls: ['./dashboard-admin.component.css']
+  selector: 'app-statstic',
+  templateUrl: './statstic.component.html',
+  styleUrls: ['./statstic.component.css']
 })
-export class DashboardAdminComponent implements OnInit {
+export class StatsticComponent implements OnInit {
+
   dataArray:any = [];
   searchedKeyword!:string;
   messageErr="" ;
@@ -20,14 +20,14 @@ export class DashboardAdminComponent implements OnInit {
   chartColors:any = [];
   chartReady = false;
 
-  admindata:any;
+
 
   constructor(public UsersService:UsersService, public router:Router) { 
-    this.chartType = 'bar';
-    this.admindata = JSON.parse( sessionStorage.getItem('admindata') !);
+    this.chartType = 'doughnut';
+
  
 
-    this.chartLabels = ['Users', 'Missions', 'Categories', 'Skills'];
+    this.chartLabels = ['Freelancers', 'Clients', 'Missions'];
   
     this.chartColors = [
       {
@@ -35,14 +35,14 @@ export class DashboardAdminComponent implements OnInit {
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
           'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
+   
   
         ],
         borderColor: [
           'rgba(255,99,132,1)',
           'rgba(54, 162, 235, 1)',
           'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
+   
   
         ],
         borderWidth: 2,
@@ -52,10 +52,10 @@ export class DashboardAdminComponent implements OnInit {
       responsive: true
     };
 
-    this.UsersService.countall().subscribe(result=>{
+    this.UsersService.countAllHome().subscribe(result=>{
       
       this.chartDatasets =[ 
-        { data: [result.data[0], result.data[1], result.data[2], result.data[3]],label: 'Freelancy Officiel statistic'  }
+        { data: [result.data[0], result.data[1], result.data[2]],label: 'Freelancy Officiel statistic'  }
       ];
      // this.chartDatasets = [ this.chartDatasets[0] ]
      this.chartReady=true; 
@@ -89,3 +89,6 @@ export class DashboardAdminComponent implements OnInit {
    
   }
 }
+
+
+

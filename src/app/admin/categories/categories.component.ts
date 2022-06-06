@@ -13,6 +13,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
+  counter:any
   addcategorie! :  FormGroup;
   messageErr="" ;
   image:any;
@@ -54,7 +55,8 @@ export class CategoriesComponent implements OnInit {
     this.usersService.getAllcategories().subscribe(data=>{
       // debugger
       
-      this.dataArray=data , (err:HttpErrorResponse)=>{
+      this.dataArray=data 
+      this.counter = this.dataArray.length, (err:HttpErrorResponse)=>{
       this.messageErr="We dont't found this category in our database"} 
     }) 
   }

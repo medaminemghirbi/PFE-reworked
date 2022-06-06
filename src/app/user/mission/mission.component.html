@@ -116,11 +116,11 @@
          
                     <div class="form-group">
                       <button *ngIf="role!=='client' && role!=='admin' " class="btn btn-danger"  type="submit" 
-                      (click)="addfavoris(produit.id,freelancerdata.id)" > <i class="fas fa-heart"></i>  Favoris  </button> &nbsp;
+                      (click)="addfavoris(produit.id)" > <i class="fas fa-heart"></i>  Favoris  </button> &nbsp;
             
                 
                      
-                      <button *ngIf="role!=='client' && role!=='admin' " class="btn btn-danger"  type="submit" (click)="addrequest(produit.id,freelancerdata.id)" > Postuler  </button>
+                      <button *ngIf="role!=='client' && role!=='admin' " class="btn btn-danger"  type="submit" (click)="addrequest(produit.id)" > Postuler  </button>
              
                     </div>
           

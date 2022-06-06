@@ -40,7 +40,7 @@ export class GeneratecvComponent implements OnInit {
    this.freelancerskills = JSON.parse( sessionStorage.getItem('freelancerskills')!);
    this.url = this.freelancerdata.user_image_url
     console.log(this.freelancerdata)
-   debugger
+   
    console.log(name)
     this.role = JSON.parse(sessionStorage.getItem('role')!);
     console.log(this.role)

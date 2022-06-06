@@ -26,7 +26,7 @@ export class EndedMissionsClientComponent implements OnInit {
       freelancer_id:''
     }
     messageErr =''
-    
+    counter:any
     messageSuccess = '' ;
     title: string ="" ;
     searchedKeyword!:string;
@@ -71,7 +71,8 @@ export class EndedMissionsClientComponent implements OnInit {
     ngOnInit(): void {
       this.usersService.getendedmissionbyclient(this.clientdata.id).subscribe(data=>{
         console.log(data)
-        this.dataArray = data , (err:HttpErrorResponse)=>{
+        this.dataArray = data 
+        this.counter = this.dataArray.length, (err:HttpErrorResponse)=>{
           console.log(err)
         this.messageErr="We dont't found this mission in our database"} 
         //console.log(this.dataArray)

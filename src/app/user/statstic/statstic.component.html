@@ -1,0 +1,31 @@
+
+  <div class="container-xxl bg-white p-0">
+    <div class="container-xxl position-relative p-0">
+        <app-user-navbar></app-user-navbar>
+
+          <div class="container">
+    <br><br><br><br><br>
+            <div  style="display: block" *ngIf="chartReady">
+              <canvas mdbChart
+                
+                [chartType]="chartType"
+                [datasets]="chartDatasets"
+                [labels]="chartLabels"
+                [colors]="chartColors"
+                [options]="chartOptions"
+                [legend]="true"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+ 
+      
+          </div>
+      
+      
+      
+      
+      
+  </div>
+        </div>
+    <app-footer></app-footer>

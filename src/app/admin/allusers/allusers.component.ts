@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./allusers.component.css']
 })
 export class AllusersComponent implements OnInit {
+  counter:any
   dataArray:any = [] ;
   dataArrayy:any = [] ;
   p:number = 1 ;
@@ -30,7 +31,8 @@ export class AllusersComponent implements OnInit {
   }
   ngOnInit(): void {
     this.usersService.getAllusers().subscribe(data=>{
-      this.dataArray=data , (err:HttpErrorResponse)=>{
+      this.dataArray=data
+      this.counter = this.dataArray.length , (err:HttpErrorResponse)=>{
       this.messageErr="We dont't found this user in our database"} 
     }) 
     this.usersService.freelancerhomedata(this.activatedRoute.snapshot.params['id']).subscribe(data=>{
@@ -91,12 +93,13 @@ export class AllusersComponent implements OnInit {
       confirmButtonText: 'Save',
       denyButtonText: `Don't save`,
     }).then((result) => {
-      this.usersService.deleteclient(id).subscribe(response=>{
-        this.dataArray.splice(i,1)
-  
-      })
+
       
       if (result.isConfirmed) {
+        this.usersService.deleteclient(id).subscribe(response=>{
+          this.dataArray.splice(i,1)
+    
+        })
         Swal.fire('Saved!', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('Changes are not saved', '', 'info')

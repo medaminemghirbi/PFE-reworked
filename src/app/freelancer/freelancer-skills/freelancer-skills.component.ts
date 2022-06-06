@@ -66,7 +66,7 @@ export class FreelancerSkillsComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        debugger
+        
         this.usersService.updatefreelancerlanguages(this.datalanguage.id,formData).subscribe(response=>
           
           {
@@ -104,7 +104,7 @@ export class FreelancerSkillsComponent implements OnInit {
     }) 
 
     this.usersService.getAllLanguages().subscribe(data=>{
-      // debugger
+      // 
       console.log(data)
       
       this.dataArrayy=data , (err:HttpErrorResponse)=>{
@@ -183,7 +183,7 @@ export class FreelancerSkillsComponent implements OnInit {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          debugger
+          
           this.usersService.updatelanguage(this.freelancerdata.id,formData).subscribe(response=>        
             {
               

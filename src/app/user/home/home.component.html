@@ -14,7 +14,15 @@
                     <a routerLink="/freelancer" class="nav-item nav-link">Freelancers</a>
                     <a routerLink="/mission" class="nav-item nav-link">Missions</a>
                   
-                    <a routerLink="/about" class="nav-item nav-link">About Us</a>
+   
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">About Us</a>
+                        <div class="dropdown-menu m-0">
+                            <a routerLink="/about" class="dropdown-item">About Us </a>
+                            <a href="/statistic" class="dropdown-item">Freelancy Statstic </a>
+                  
+                        </div>
+                    </div>
                     <a routerLink="/contact" class="nav-item nav-link">Contact Us</a>
                 </div>
                 <a *ngIf="logged_in && role==='admin' " routerLink="/dashboard-admin"

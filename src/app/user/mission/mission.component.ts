@@ -29,6 +29,7 @@ export class MissionComponent implements OnInit {
   languagefiltre!: any;
   languageids:any= [];
   searchedKeyword!:string;
+  
   constructor(private usersService:UsersService , private route : Router ) {
     this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
     this.logged_in = JSON.parse( sessionStorage.getItem('logged_in') !);
@@ -110,73 +111,76 @@ missionbybudget( budget : any ) {
      this.dataArray = response ;
   })
 }
-addreview(){
-  
-}
  ///****************************************************  addrequest  ************************************///
- addrequest (id:any , freelancer_id:any){
-  
-  const formData = new FormData();
-    formData.append('mission_id',id );
-    formData.append('freelancer_id',this.freelancerdata.id);
-    formData.append('status',status);
- // let data=f.value   
-  console.log(formData)
-  this.usersService.addRequest(formData).subscribe( ()=>{
-    this.route.navigate(['/postulated-missions-freelancer'])
-      //console.log(data)
+ addrequest(id: any) {
+
+  if (this.freelancerdata) {
+    const formData = new FormData();
+    formData.append('mission_id', id);
+    formData.append('freelancer_id', this.freelancerdata.id);
+    formData.append('status', status);
+
+    this.usersService.addRequest(formData).subscribe(() => {
+      this.route.navigate(['/postulated-missions-freelancer'])
       console.log(formData)
-      //this.submitted = true ;
       Swal.fire('Saved!', '', 'success')
-     // window.location.reload();
-  
+    }, (err: HttpErrorResponse) => {
+      this.messageErr = err.error
 
-  },(err:HttpErrorResponse)=>{
-    this.messageErr=err.error
-     
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'You cant postulate twice '
-    })
-     
-  }) ;
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You cant postulate twice '
+      })
+
+    });
+  }
+  else {
+    Swal.fire('you must logged_in !', '', 'error')
+    this.route.navigate(['/login'])
+  }
+
+
 }
-addfavoris (id:any , user_id:any){
+addfavoris(id: any ) {
 
-  const formData = new FormData();
-  formData.append('mission_id',id );
-  formData.append('user_id',this.freelancerdata.id);
-// let data=f.value   
-console.log(formData)
-this.usersService.addFavoris(formData).subscribe( ()=>{
-  this.route.navigate(['/postulated-missions-freelancer'])
-    //console.log(data)
-    console.log(formData)
-    //this.submitted = true ;
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Your work has been saved',
-      showConfirmButton: false,
-      timer: 1500
-    })
-   // window.location.reload();
-  
+  if (this.freelancerdata) {
+    const formData = new FormData();
+    formData.append('mission_id', id);
+    formData.append('user_id', this.freelancerdata.id);
+    // let data=f.value   
+   // console.log(formData)
+    this.usersService.addFavoris(formData).subscribe(() => {
+      this.route.navigate(['/postulated-missions-freelancer'])
 
-},(err:HttpErrorResponse)=>{
-  this.messageErr=err.error
-   
-  Swal.fire({
-    icon: 'error',
-    title: 'Oops...',
-    text: 'You cant twice ' ,
-    position: 'top-end',
-      showConfirmButton: false,
-      timer: 1500
-  })
-   
-}) ;
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      // window.location.reload();
+
+
+    }, (err: HttpErrorResponse) => {
+      this.messageErr = err.error
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You cant twice ',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+    });
+  }
+  else {
+    Swal.fire('you must logged_in !', '', 'error')
+    this.route.navigate(['/login'])
+  }
 }
 
 

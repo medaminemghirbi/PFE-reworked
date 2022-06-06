@@ -29,7 +29,7 @@
     
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Users  </h6>
+          <h6 class="m-0 font-weight-bold text-primary">Users ({{counter}})  </h6>
          
       </div>
       <form
@@ -56,7 +56,7 @@
                   <tbody>
                      
                     
-                      <tr *ngFor="let item of dataArray | filter:searchedKeyword ; index as i" >
+                      <tr *ngFor="let item of dataArray | paginate: { itemsPerPage: 5, currentPage: p } | filter:searchedKeyword ; index as i" >
                         <th scope="row" > {{item.id}} </th>
                           <td> {{item.email}} </td>
                           <td> {{item.lastname}}</td>
@@ -91,7 +91,9 @@
   
   
               </div>
-  
+              <div style="text-align:right;">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </div>
       </div>
     </div>
 

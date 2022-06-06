@@ -70,7 +70,7 @@ export class DetailFreelancerComponent implements OnInit {
         i++
 
       }
-      debugger
+      
       this.dataArrayyyy=this.arrayData , (err:HttpErrorResponse)=>{
         console.log(err)
       this.messageErr="We dont't found this user in our database"} 
@@ -80,7 +80,9 @@ export class DetailFreelancerComponent implements OnInit {
   }
 
 golinkedin(){
+
   var result = this.dataArray.map(function(a:any) {return a.linkedin;});
+  
   window.open(result);
 }
 gogithub(){
