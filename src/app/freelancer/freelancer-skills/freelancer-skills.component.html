@@ -122,9 +122,9 @@
 
 
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Skill </label>
-                            <input type="text" class="form-control" formControlName="languagerate"
-                                placeholder="languageRate ?" ngModel>
+                            <label for="exampleFormControlInput1">Skill Percentage </label>
+                            <input type="number" class="form-control" formControlName="languagerate"
+                            oninput="validity.valid||(value='');" min="0" max="100"       placeholder="your Skill Rate is ?" ngModel>
                         </div>
                         <br>
                         <div class="row gutters">
@@ -172,8 +172,8 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Skill Rate </label>
-                            <input type="text" class="form-control" formControlName="Skill Rate"
-                                [(ngModel)]="datalanguage.languagerate" placeholder="your JobType is ?" ngModel>
+                            <input type="number" class="form-control" formControlName="Skill Rate"
+                            oninput="validity.valid||(value='');" min="0" max="100"     [(ngModel)]="datalanguage.languagerate" placeholder="your Skill Rate is ?" ngModel>
                         </div>
 
 

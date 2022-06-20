@@ -23,7 +23,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                                     </div>
-                                    <form class="user"  #f="ngForm" (ngSubmit)="register(f)" >
+                                    <form class="user needs-validation"  #f="ngForm" (ngSubmit)="register(f)" >
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                 <input type="text" class="form-control form-control-user" id="exampleFirstName"
@@ -37,7 +37,7 @@
                                         <br>
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                                placeholder="Email Address" name="email" ngModel #email="ngModel" required >
+                                                placeholder="Email Address" name="email" ngModel #email="ngModel" email required >
                                                 
                                         </div><br>
                                         <div class="form-group row">

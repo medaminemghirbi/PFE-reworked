@@ -23,6 +23,10 @@
                     <h4 class="product-title">{{produit.title}}</h4>
                     <h4  ><a style="text-decoration: none;" [routerLink]="['/detail-client',produit.client_id]">  
                       Email Client : {{produit.client.email}} </a> </h4>
+                      <div style="text-align: right;">
+                        <a class="btn btn-danger" *ngIf="produit.freelancer_id"> Offre expired
+                         </a>
+                        </div>
                       <i class="fas fa-book">  {{produit.requests_count}} Proposition</i> &nbsp;
                   <i class="fas fa-clock"> &nbsp; {{produit.beginingDate}}</i>
                     <p class="product-description">{{produit.desc}}</p>
@@ -36,7 +40,7 @@
                   Category : 
                   <button class="btn btn-outline-dark">{{produit.category.name}} <br></button>
                  <br>
-                 Languages :  <button  class="btn btn-outline-dark" *ngFor="let x of produit.languages"> {{x.name}}</button> 
+                 SKILLS :  <button  class="btn btn-outline-dark" *ngFor="let x of produit.languages"> {{x.name}}</button> 
                   &nbsp;
                 </div>
                 </div>

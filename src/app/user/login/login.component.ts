@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
 
 
        if(response.user.email_confirmed==true) {
-        if(response.logged_in ==true && response.role =="admin"  ){
+        if(response.logged_in ==true && response.role =="admin"  ){ 
           sessionStorage.setItem( 'admindata', JSON.stringify( response.user ) );
           sessionStorage.setItem( 'logged_in', JSON.stringify( response.logged_in ) );
           sessionStorage.setItem( 'role', JSON.stringify( response.role ) );

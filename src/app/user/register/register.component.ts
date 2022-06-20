@@ -25,21 +25,24 @@ export class RegisterComponent implements OnInit {
   register(f:any){
     let data=f.value
     console.log(data)
-    this.freelancersService.register(data).subscribe(data=>{
-      Swal.fire('Whooa!', 'Account succeful created , Acctivate Email to acced account profil!', 'success')
-     // this.router.navigate(['/login'])
-      
-      console.log(data)
-    },(err:HttpErrorResponse)=>{
-     
-      if(err.status == 422){
-        this.messageError="Email is already taken"
- 
-      }else{
-        console.log(err)
-        this.messageError="champs required or not valid"
-      }
-     })
+    if(data.email.length!==0){
+      this.freelancersService.register(data).subscribe(data=>{
+        Swal.fire('Whooa!', 'Account succeful created , Acctivate Email to acced account profil!', 'success')
+       // this.router.navigate(['/login'])
+        
+        console.log(data)
+      },(err:HttpErrorResponse)=>{
+       
+  
+          console.log(err)
+          this.messageError="Email taken"
+        
+       })
+    }else{
+      this.messageError="Champs rquired"
+
+    }
+
 
   }
 

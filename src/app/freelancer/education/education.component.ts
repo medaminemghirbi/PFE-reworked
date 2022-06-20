@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+// import * as moment from 'moment';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
 
@@ -19,6 +20,8 @@ export class EducationComponent implements OnInit {
   freelancerdata: any;
   id: any;
   addeducation!: FormGroup;
+  date: any;
+
   constructor(public router: Router, public usersService: UsersService) {
     this.freelancerdata = JSON.parse(sessionStorage.getItem('freelancerdata')!);
     this.addeducation = new FormGroup({
@@ -52,6 +55,7 @@ export class EducationComponent implements OnInit {
 
 
   addschool(f: any) {
+
     const formData = new FormData();
     formData.append('ecole', this.addeducation.value.ecole);
     formData.append('dateDebut', this.addeducation.value.dateDebut);
@@ -61,18 +65,38 @@ export class EducationComponent implements OnInit {
     let data = f.value
 
     console.log(data)
+    if (data.dateDebut < data.dateFin) {
+      this.usersService.addschool(formData).subscribe(() => {
 
-    this.usersService.addschool(formData).subscribe(() => {
-      console.log(data)
-      Swal.fire('Saved!', 'Education added succefully', 'success')
-      window.location.reload();
+        // this.date = moment(Date.now()).format("YYYY-MM-DD");
+        console.log(data.dateDebut)
 
-    }, (err: HttpErrorResponse) => {
-      this.messageErr = err.error
-      console.log(err.error)
-      console.log(err.status)
+        console.log(data.dateFin)
 
-    });
+
+        console.log(data)
+        Swal.fire('Saved!', 'Education added succefully', 'success')
+        window.location.reload();
+
+
+      }, (err: HttpErrorResponse) => {
+        this.messageErr = err.error
+        console.log(err.error)
+        console.log(err.status)
+
+      });
+    }
+    else {
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Start Date must be before End date !',
+
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
   }
 
   deleteeducation(id: any) {
@@ -128,41 +152,67 @@ export class EducationComponent implements OnInit {
     formData.append('user_id', this.freelancerdata.id);
 
     let data = f.value
+    if (data.dateDebut < data.dateFin) {
+      Swal.fire({
+        title: 'Do you want to save the changes?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Save',
+        denyButtonText: `Don't save`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.usersService.updateschool(this.dataeducation.id, formData).subscribe(response => {
 
-    Swal.fire({
-      title: 'Do you want to save the changes?',
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: 'Save',
-      denyButtonText: `Don't save`,
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        this.usersService.updateschool(this.dataeducation.id, formData).subscribe(response => {
-          console.log(response)
+            if (data.dateDebut > data.dateFin) {
 
-          let indexId = this.dataArray.findIndex((obj: any) => obj.id == this.dataArray.id)
+              console.log(response)
 
-          //this.dataArray[indexId].id=data.id
-          this.dataArray[indexId].ecole = data.ecole
-          this.dataArray[indexId].dateDebut = data.dateDebut
-          this.dataArray[indexId].dateFin = data.dateFin
+              let indexId = this.dataArray.findIndex((obj: any) => obj.id == this.dataArray.id)
 
+              //this.dataArray[indexId].id=data.id
+              this.dataArray[indexId].ecole = data.ecole
+              this.dataArray[indexId].dateDebut = data.dateDebut
+              this.dataArray[indexId].dateFin = data.dateFin
 
+            }
+            else {
 
-        }, (err: HttpErrorResponse) => {
-          console.log(err.message)
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Start Date must be before End date !',
 
-        })
+                showConfirmButton: false,
+                timer: 1500
+              })
+            }
 
-        Swal.fire('Saved!', '', 'success')
-        window.location.reload();
-      } else if (result.isDenied) {
+          }, (err: HttpErrorResponse) => {
+            console.log(err.message)
 
-        Swal.fire('Changes are not saved', '', 'info')
-      }
-    })
+          })
 
+          Swal.fire('Saved!', '', 'success')
+          window.location.reload();
+        } else if (result.isDenied) {
+
+          Swal.fire('Changes are not saved', '', 'info')
+        }
+      })
+
+    }
+    else {
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Start Date must be before End date !',
+
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
 
   }
 

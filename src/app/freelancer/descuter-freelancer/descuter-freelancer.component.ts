@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 declare var apiRTC: any;
 @Component({
   selector: 'app-descuter-freelancer',
@@ -72,22 +73,34 @@ export class DescuterFreelancerComponent implements OnInit {
     formData.append('receiver_id', this.activatedRoute.snapshot.params['id']);
 
     
-    window.location.reload();
+
   let data=f.value   
   console.log(data)
-  this.usersService.sendmessage(formData).subscribe( ()=>{
-    window.location.reload();
-      console.log(data)
-
-
-  },(err:HttpErrorResponse)=>{
-    this.messageErr=err.error
-    console.log(err.error)
-     console.log(err.status)
-     
-  }) ;
-
+    if(data.text.length !==0){
+      this.usersService.sendmessage(formData).subscribe( ()=>{
+        window.location.reload();
+          console.log(data)
+    
+    
+      },(err:HttpErrorResponse)=>{
+        this.messageErr=err.error
+        console.log(err.error)
+         console.log(err.status)
+         
+      }) ;
+    }
+    else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Cant send a vide message' ,
+   
+          showConfirmButton: false,
+          timer: 1500
+      })  
+    }
   }
+  
   getOrcreateConversation() {
     var localStream: null = null;
 

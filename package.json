@@ -29,6 +29,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@ng-select/ng-select": "^8.1.1",
+    "@ngx-translate/core": "^13.0.0",
     "angular-bootstrap-md": "^13.0.0",
     "creditcardpayments": "^1.0.3",
     "html2canvas": "^1.4.1",
