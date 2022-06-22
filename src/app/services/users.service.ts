@@ -220,6 +220,9 @@ export class UsersService {
     countAllHome(){
       return this.http.get<any>(`${environment.urlBackend}`+'countAllHome/')
     }
+    static(){
+      return this.http.get<any>(environment.urlBackend + 'static/')
+    }
     countAllFreelancer(user_id : any ) {
       return this.http.get<any>(`${environment.urlBackend}` + 'countAllFreelancer/' + user_id)
     }

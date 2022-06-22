@@ -64,7 +64,7 @@
                     oninput="validity.valid||(value='');" min="0" max="1000000000" placeholder="(DT)" required>
                 </div><br>
                 <div class="form-group">
-                  <label for="exampleFormControlInput2">Language </label>
+                  <label for="exampleFormControlInput2">Skills </label>
                   <ng-select class="form-control" appendTo="body" [multiple]="true" appendTo="body"
                     id="exampleFormControlSelect2" formControlName="language_id" [(ngModel)]="selectedDefaultLanguage">
                     <ng-option *ngFor="let l of languages" [value]="l.id">{{l.name}}</ng-option>

@@ -52,7 +52,7 @@ export class StatsticComponent implements OnInit {
       responsive: true
     };
 
-    this.UsersService.countAllHome().subscribe(result=>{
+    this.UsersService.static().subscribe(result=>{
       
       this.chartDatasets =[ 
         { data: [result.data[0], result.data[1], result.data[2]],label: 'Freelancy Officiel statistic'  }

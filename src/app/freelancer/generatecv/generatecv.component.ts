@@ -31,10 +31,12 @@ export class GeneratecvComponent implements OnInit {
   freelancerdata:any
   freelancereducation:any
   freelancerskills:any
+  freelancerexperience:any
   url:any
   constructor(private activatedRoute: ActivatedRoute, private usersService: UsersService) {
     this.logged_in = JSON.parse(sessionStorage.getItem('logged_in')!);
     console.log(this.logged_in)
+    this.freelancerexperience = JSON.parse( sessionStorage.getItem('freelancerexperience')!);
    this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
    this.freelancereducation = JSON.parse( sessionStorage.getItem('freelancereducation') !);
    this.freelancerskills = JSON.parse( sessionStorage.getItem('freelancerskills')!);
@@ -74,6 +76,7 @@ export class GeneratecvComponent implements OnInit {
     this.usersService.getfreelancerexperiance(this.activatedRoute.snapshot.params['id']).subscribe(data => {
 
       console.log(data)
+      sessionStorage.setItem( 'freelancerexperience', JSON.stringify( data ) );
       this.dataArrayyy = data,
         (err: HttpErrorResponse) => {
           console.log(err)
@@ -234,6 +237,30 @@ export class GeneratecvComponent implements OnInit {
         ]
       },
       {
+        text: 'Experience  Details',
+        style: 'sectionHeader'
+      },
+      {
+        columns: [
+          [
+            {
+              
+              text:"Society  : " +this.freelancerexperience.map(function(a:any) {return a.entreprise;}),
+              bold: true
+            },
+            
+            { text:"JobType : " +     this.freelancerexperience.map(function(a:any) {return a.jobType;})},
+            { text:"Start Date : " + this.freelancerexperience.map(function(a:any) {return a.dateDebut;})},
+            { text:"End Date : " +     this.freelancerexperience.map(function(a:any) {return a.dateFin;})},
+            { text:"Description : " +     this.freelancerexperience.map(function(a:any) {return a.description;})},
+          ],
+          [
+    
+          ]
+        ]
+      },
+      
+      {
        text: 'Skills Details',
         style: 'sectionHeader'
       },
@@ -242,8 +269,8 @@ export class GeneratecvComponent implements OnInit {
           headerRows: 1,
           widths: ['*', 'auto'],
           body: [
-            [ 'skills',  'SKils Percentage'],
-            ['French', 'Java']
+            [ 'skills',  ' %'],
+            [this.freelancerskills.map(function(a:any) {return a.language.name;}),this.freelancerskills.map(function(a:any) {return a.languagerate;})]
    
           ]
         }
