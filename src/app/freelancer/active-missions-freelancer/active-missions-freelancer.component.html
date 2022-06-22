@@ -48,7 +48,7 @@
                   <tbody>
                       <tr *ngFor="let item of dataArray |paginate: { itemsPerPage: 3, currentPage: p } | filter:searchedKeyword ; index as i">
                           <th scope="row"> {{item.id}} </th>
-                          <td>{{item.mission.title}}</td>
+                          <td [routerLink]="['/detail-mission',item.mission.id]">{{item.mission.title}}</td>
 
                           <td>
                               <button *ngIf="item.mission.completed===true "

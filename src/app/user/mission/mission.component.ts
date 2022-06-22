@@ -151,12 +151,12 @@ addfavoris(id: any ) {
     // let data=f.value   
    // console.log(formData)
     this.usersService.addFavoris(formData).subscribe(() => {
-      this.route.navigate(['/postulated-missions-freelancer'])
+      this.route.navigate(['/favoris'])
 
       Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'Your work has been saved',
+        title: 'Add To Favorite Succefully  ',
         showConfirmButton: false,
         timer: 1500
       })

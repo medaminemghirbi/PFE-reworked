@@ -20,7 +20,6 @@
                           <p class="text-muted font-size-sm" *ngIf="item.reviews_count && item.reviews_count !== 'null' " >
                             {{item.reviews_count}}  Stars </p>
                           <div  >
-                            <button (click)="printPage()" class="btn btn-outline-primary" *ngIf="logged_in && role==='freelancer' " routerLink="/edit-freelancer"  > Download My CV </button>
                             <button *ngIf="!logged_in" class="btn btn-outline-primary">Contacter</button>
                          </div>
                          

@@ -63,14 +63,14 @@ class="card-header py-3" >
                                         >
                                             
                                             <td>{{item.mission.id}}</td> 
-                                            <td>{{item.mission.title}}</td>
+                                            <td [routerLink]="['/detail-mission',item.mission.id]"> {{item.mission.title}}</td>
                                             <td>{{item.mission.description}}</td>
                                             <td> <button *ngIf="item.status==='accepted' " class="btn btn-success">{{item.status}}</button> </td>
                                           
                                             <td> <button *ngIf="item.mission.completed===true " class="btn btn-success">{{item.mission.completed}}</button> 
                                              <button *ngIf="item.mission.completed===false " class="btn btn-warning">{{item.mission.completed}}</button> </td>
                     
-                                            <td > <a [routerLink]="['/detailfreelancer',item.freelancer_id]" >  {{item.freelancer.email }} </a></td> 
+                                            <td > <a [routerLink]="['/detail-freelancer',item.freelancer_id]" >  {{item.freelancer.email }} </a></td> 
                                             <td> <a  class="btn btn-outline-secondary" [routerLink]="['/generatecontratclient',item.mission.id]" > Generate </a></td>
                     
                                             <td> <a  class="btn btn-outline-dark" [routerLink]="['/descuter',item.freelancer_id]" >  Discuss </a></td> 

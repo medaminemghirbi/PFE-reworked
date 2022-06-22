@@ -42,7 +42,7 @@
                           <button type="submit" class="btn btn-primary px-4" style="background-color: rgb(38, 8, 158);">Update Image</button>
                       </form>
                       
-                      <div class="about">
+                      <div *ngIf="admindata.descirption!=null" class="about">
                           <h5>About</h5>
                           <p>{{ admindata.description }}  </p>
                       </div>
