@@ -52,7 +52,7 @@ class="card-header py-3" >
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr *ngFor="let item of dataArray.request  |paginate: { itemsPerPage: 3, currentPage: p } | filter:searchedKeyword ; index as i"
+                                  <tr *ngFor="let item of dataArray.request  |paginate: { itemsPerPage: 3, currentPage: p }   ; index as i"
                                   >
                     
                                     <td *ngIf="item.status==='accepted' "> <button class="btn btn-success">{{item.status}}</button>

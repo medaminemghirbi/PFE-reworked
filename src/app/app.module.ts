@@ -27,7 +27,8 @@ import { CategoriesComponent } from './admin/categories/categories.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+//remove cause it end of life
+//import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MissionsComponent } from './admin/missions/missions.component';
 import { SkillsComponent } from './admin/skills/skills.component';
 import { AllusersComponent } from './admin/allusers/allusers.component';
@@ -121,12 +122,14 @@ import { StatsticComponent } from './user/statstic/statstic.component';
     ReactiveFormsModule,
     ChartsModule,
     NgSelectModule,
-    Ng2SearchPipeModule,
+    
+    //dwam lelh
+    //Ng2SearchPipeModule,
     NgxPaginationModule,
     TableModule,
     BrowserAnimationsModule,
     NgMultiSelectDropDownModule.forRoot()
-  ], 
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

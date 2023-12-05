@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
@@ -32,14 +32,14 @@ export class AddmissionComponent implements OnInit {
     this.clientdata = JSON.parse( sessionStorage.getItem('clientdata') !);
     console.log(this.clientdata.firstname)  
 
-    this.addmissionn = new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-      duration: new FormControl('', [Validators.required]),
-      beginingDate: new FormControl('', [Validators.required]),
-      budget: new FormControl('', [Validators.required]),
-      category_id: new FormControl('', [Validators.required]),
-      language_id: new FormControl('', [Validators.required]),
+    this.addmissionn = new UntypedFormGroup({
+      title: new UntypedFormControl('', [Validators.required]),
+      description: new UntypedFormControl('', [Validators.required]),
+      duration: new UntypedFormControl('', [Validators.required]),
+      beginingDate: new UntypedFormControl('', [Validators.required]),
+      budget: new UntypedFormControl('', [Validators.required]),
+      category_id: new UntypedFormControl('', [Validators.required]),
+      language_id: new UntypedFormControl('', [Validators.required]),
     });
 
   }

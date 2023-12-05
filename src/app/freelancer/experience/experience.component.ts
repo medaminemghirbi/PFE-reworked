@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
 
@@ -17,17 +17,17 @@ export class ExperienceComponent implements OnInit {
   messageErr =''
   freelancerdata:any;
   id:any;
-  addexper! :  FormGroup;
+  addexper! :  UntypedFormGroup;
   constructor(public usersService:UsersService) {
     this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
-    this.addexper = new FormGroup({
-      entreprise: new FormControl('', [Validators.required]),
-      dateDebut: new FormControl('', [Validators.required]),
-      dateFin: new FormControl('', [Validators.required]),
-      jobType: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-      langugage: new FormControl('', [Validators.required]),
-      languagerating: new FormControl('', [Validators.required]),
+    this.addexper = new UntypedFormGroup({
+      entreprise: new UntypedFormControl('', [Validators.required]),
+      dateDebut: new UntypedFormControl('', [Validators.required]),
+      dateFin: new UntypedFormControl('', [Validators.required]),
+      jobType: new UntypedFormControl('', [Validators.required]),
+      description: new UntypedFormControl('', [Validators.required]),
+      langugage: new UntypedFormControl('', [Validators.required]),
+      languagerating: new UntypedFormControl('', [Validators.required]),
     });
   //  console.log(this.freelancerdata)
    }

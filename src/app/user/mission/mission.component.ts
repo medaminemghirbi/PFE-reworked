@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
@@ -39,8 +39,8 @@ export class MissionComponent implements OnInit {
     this.role = JSON.parse( sessionStorage.getItem('role') !);
     console.log(this.role)
 
-    this.languagefiltre = new FormGroup({
-      language_id: new FormControl('', [Validators.required]),
+    this.languagefiltre = new UntypedFormGroup({
+      language_id: new UntypedFormControl('', [Validators.required]),
     });
    }
 

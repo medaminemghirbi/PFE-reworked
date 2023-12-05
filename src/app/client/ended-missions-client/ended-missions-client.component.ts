@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CheckoutService } from 'src/app/services/checkout.service';
 import { UsersService } from 'src/app/services/users.service';
@@ -36,7 +36,7 @@ export class EndedMissionsClientComponent implements OnInit {
     dataArrayy:any ;
     paydata:any;
     dataArrayyy:any ;
-    update: FormGroup;
+    update: UntypedFormGroup;
     count: any;
     data: any =[];
   
@@ -44,10 +44,10 @@ export class EndedMissionsClientComponent implements OnInit {
       this.clientdata = JSON.parse( sessionStorage.getItem('clientdata') !);
       console.log(this.clientdata)
   
-      this.update = new FormGroup({
-        status: new FormControl(''),
-        mission_id: new FormControl(''),
-        freelancer_id: new FormControl(''),
+      this.update = new UntypedFormGroup({
+        status: new UntypedFormControl(''),
+        mission_id: new UntypedFormControl(''),
+        freelancer_id: new UntypedFormControl(''),
       });
       /*render(
         {

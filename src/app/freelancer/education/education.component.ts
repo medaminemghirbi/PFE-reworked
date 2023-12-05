@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
@@ -18,13 +18,13 @@ export class EducationComponent implements OnInit {
   messageErr = ''
   freelancerdata: any;
   id: any;
-  addeducation!: FormGroup;
+  addeducation!: UntypedFormGroup;
   constructor(public router: Router, public usersService: UsersService) {
     this.freelancerdata = JSON.parse(sessionStorage.getItem('freelancerdata')!);
-    this.addeducation = new FormGroup({
-      ecole: new FormControl('', [Validators.required]),
-      dateDebut: new FormControl('', [Validators.required]),
-      dateFin: new FormControl('', [Validators.required]),
+    this.addeducation = new UntypedFormGroup({
+      ecole: new UntypedFormControl('', [Validators.required]),
+      dateDebut: new UntypedFormControl('', [Validators.required]),
+      dateFin: new UntypedFormControl('', [Validators.required]),
     });
     //  console.log(this.freelancerdata)
   }

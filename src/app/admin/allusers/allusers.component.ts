@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 import Swal from 'sweetalert2';
 
 @Component({

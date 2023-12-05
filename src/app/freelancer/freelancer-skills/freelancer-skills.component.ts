@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
 
@@ -18,13 +18,13 @@ export class FreelancerSkillsComponent implements OnInit {
   messageErr =''
   freelancerdata:any;
   id:any;
-  addlang! :  FormGroup;
+  addlang! :  UntypedFormGroup;
 
   constructor(public usersService:UsersService) {
     this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
-    this.addlang = new FormGroup({
-      language_id: new FormControl('', [Validators.required]),
-      languagerate: new FormControl('', [Validators.required]),
+    this.addlang = new UntypedFormGroup({
+      language_id: new UntypedFormControl('', [Validators.required]),
+      languagerate: new UntypedFormControl('', [Validators.required]),
       
     });
   //  console.log(this.freelancerdata)

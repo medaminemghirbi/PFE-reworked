@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
@@ -23,27 +23,27 @@ export class ProfilFreelancerComponent implements OnInit {
   constructor(private route:Router, private usersService:UsersService) {
     this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
     console.log(this.freelancerdata)
-    this.imageupdate = new FormGroup({
-      avatar: new FormControl('', [Validators.required]),
+    this.imageupdate = new UntypedFormGroup({
+      avatar: new UntypedFormControl('', [Validators.required]),
     });
-    this.upadate = new FormGroup({
+    this.upadate = new UntypedFormGroup({
      // avatar: new FormControl('', [Validators.required]),
-      firstname: new FormControl('', [Validators.required]),
-      lastname: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required]),
-      job: new FormControl('', [Validators.required]),
-      description : new FormControl('', [Validators.required]),
-      birthday: new FormControl('', [Validators.required]),
-      adresse: new FormControl('', [Validators.required]),
+      firstname: new UntypedFormControl('', [Validators.required]),
+      lastname: new UntypedFormControl('', [Validators.required]),
+      email: new UntypedFormControl('', [Validators.required]),
+      phone: new UntypedFormControl('', [Validators.required]),
+      job: new UntypedFormControl('', [Validators.required]),
+      description : new UntypedFormControl('', [Validators.required]),
+      birthday: new UntypedFormControl('', [Validators.required]),
+      adresse: new UntypedFormControl('', [Validators.required]),
       // rating: new FormControl('', [Validators.required]),
-      earning : new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      github: new FormControl('', [Validators.required]),
-      facebook: new FormControl('', [Validators.required]),
-      instagram : new FormControl('', [Validators.required]),
-      linkedin: new FormControl('', [Validators.required]),
-      rib: new FormControl('', [Validators.required]),
+      earning : new UntypedFormControl('', [Validators.required]),
+      password: new UntypedFormControl('', [Validators.required]),
+      github: new UntypedFormControl('', [Validators.required]),
+      facebook: new UntypedFormControl('', [Validators.required]),
+      instagram : new UntypedFormControl('', [Validators.required]),
+      linkedin: new UntypedFormControl('', [Validators.required]),
+      rib: new UntypedFormControl('', [Validators.required]),
     //  password_confirmation: new FormControl('', [Validators.required]),
     });
   }

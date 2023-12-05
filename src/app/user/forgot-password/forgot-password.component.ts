@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
@@ -12,12 +12,12 @@ import Swal from 'sweetalert2';
 })
 export class ForgotPasswordComponent implements OnInit {
   logo:any = "./assets/lg.png";
-  resetemaillink! :  FormGroup;
+  resetemaillink! :  UntypedFormGroup;
   messageSuccess = '' ;
   messageErr =''
   constructor(private usersService:UsersService,private route:Router) {
-    this.resetemaillink = new FormGroup({
-      email: new FormControl('', [Validators.required])
+    this.resetemaillink = new UntypedFormGroup({
+      email: new UntypedFormControl('', [Validators.required])
 
     });
    }

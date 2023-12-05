@@ -3,7 +3,7 @@ import { faSearch} from '@fortawesome/free-solid-svg-icons';
 
 import { UsersService } from 'src/app/services/users.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-freelancer',
@@ -27,8 +27,8 @@ export class FreelancerComponent implements OnInit {
 
   constructor(private usersService:UsersService,) { 
    // this.produits = usersService.listeProduits();
-   this.stepOneOfOneForm = new FormGroup({
-    language_id: new FormControl('', [Validators.required]),
+   this.stepOneOfOneForm = new UntypedFormGroup({
+    language_id: new UntypedFormControl('', [Validators.required]),
   });
   
     this.usersService.getallfreelancers().subscribe(data=>{

@@ -4,7 +4,7 @@ import { Component, OnInit,Input, Output,EventEmitter } from '@angular/core';
 
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class CategoriesComponent implements OnInit {
   counter:any
-  addcategorie! :  FormGroup;
+  addcategorie! :  UntypedFormGroup;
   messageErr="" ;
   image:any;
   submitted : boolean = false ;
@@ -37,17 +37,17 @@ export class CategoriesComponent implements OnInit {
     */
   }
 
-  update! :  FormGroup;
+  update! :  UntypedFormGroup;
 
 
   constructor(private usersService:UsersService,private route:Router) { 
-    this.update = new FormGroup({
-      name: new FormControl(''),
-      avatar: new FormControl(''),
+    this.update = new UntypedFormGroup({
+      name: new UntypedFormControl(''),
+      avatar: new UntypedFormControl(''),
     });
-    this.addcategorie = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      avatar: new FormControl('', [Validators.required]),
+    this.addcategorie = new UntypedFormGroup({
+      name: new UntypedFormControl('', [Validators.required]),
+      avatar: new UntypedFormControl('', [Validators.required]),
     });
   }
 

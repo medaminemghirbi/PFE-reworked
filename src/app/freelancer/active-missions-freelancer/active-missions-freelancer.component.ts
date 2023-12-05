@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
@@ -31,15 +31,15 @@ export class ActiveMissionsFreelancerComponent implements OnInit {
   submitted: boolean = false ;
   dataArrayy:any ;
   dataArrayyy:any ;
-  update: FormGroup;
+  update: UntypedFormGroup;
   counter:any
   constructor(private usersService:UsersService,private route:Router ,private activatedRoute: ActivatedRoute, ) {
     this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
     console.log(this.freelancerdata.id)
 
-    this.update = new FormGroup({
-      completed: new FormControl(''),
-      filepath: new FormControl(''),
+    this.update = new UntypedFormGroup({
+      completed: new UntypedFormControl(''),
+      filepath: new UntypedFormControl(''),
     });
     
   }
