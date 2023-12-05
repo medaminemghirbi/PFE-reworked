@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
@@ -24,7 +24,7 @@ export class SkillsComponent implements OnInit {
   image: any;
   // add! :  FormGroup;
   submitted: boolean = false ; 
-  update!: FormGroup;
+  update!: UntypedFormGroup;
 
 
   dataLang ={
@@ -37,8 +37,8 @@ export class SkillsComponent implements OnInit {
       name: new FormControl('' )
       
     });  */
-    this.update = new FormGroup({
-      name: new FormControl('' )
+    this.update = new UntypedFormGroup({
+      name: new UntypedFormControl('' )
       
     });
     

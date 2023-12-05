@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
@@ -29,7 +29,7 @@ export class PostulatedMissionsClientComponent implements OnInit {
   submitted: boolean = false ;
   dataArrayy:any ;
   dataArrayyy:any ;
-  update: FormGroup;
+  update: UntypedFormGroup;
   missionAcceptedValue:any=[]
   test:boolean = false
   i:any
@@ -40,10 +40,10 @@ export class PostulatedMissionsClientComponent implements OnInit {
     this.clientdata = JSON.parse( sessionStorage.getItem('clientdata') !);
     console.log(this.clientdata)
 
-    this.update = new FormGroup({
-      status: new FormControl(''),
-      mission_id: new FormControl(''),
-      freelancer_id: new FormControl(''),
+    this.update = new UntypedFormGroup({
+      status: new UntypedFormControl(''),
+      mission_id: new UntypedFormControl(''),
+      freelancer_id: new UntypedFormControl(''),
     });
     
   }

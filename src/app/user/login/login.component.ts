@@ -2,7 +2,7 @@ import { NgForm } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder ,FormGroup,FormControl,Validators } from '@angular/forms';
+import { FormBuilder ,UntypedFormGroup,UntypedFormControl,Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { User } from 'src/app/model/user.model';
 import { UsersService } from 'src/app/services/users.service';
@@ -19,9 +19,9 @@ export class LoginComponent implements OnInit {
 
   messageError:any
 
-  registerForm =  new FormGroup({
-    email:new FormControl(),
-    password:new FormControl()
+  registerForm =  new UntypedFormGroup({
+    email:new UntypedFormControl(),
+    password:new UntypedFormControl()
   })
 
   user : User ={

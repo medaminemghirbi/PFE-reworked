@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
@@ -10,12 +10,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
-  resetpassword! :  FormGroup;
+  resetpassword! :  UntypedFormGroup;
   messageSuccess = '' ;
   messageErr =''
   constructor(private usersService:UsersService, public activatedRoute: ActivatedRoute,private route:Router) {
-    this.resetpassword = new FormGroup({
-      password: new FormControl('', [Validators.required])
+    this.resetpassword = new UntypedFormGroup({
+      password: new UntypedFormControl('', [Validators.required])
 
     });
    }

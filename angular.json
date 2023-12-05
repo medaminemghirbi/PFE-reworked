@@ -28,8 +28,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css",
-              "node_modules/@apizee/apirtc/apiRTC.min.js"
+              "src/styles.css"
 
             ],
             "scripts": []
@@ -71,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "PFE_front-reworked:build:production"
+              "buildTarget": "PFE_front-reworked:build:production"
             },
             "development": {
-              "browserTarget": "PFE_front-reworked:build:development"
+              "buildTarget": "PFE_front-reworked:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "PFE_front-reworked:build"
+            "buildTarget": "PFE_front-reworked:build"
           }
         },
         "test": {
@@ -105,6 +104,5 @@
         }
       }
     }
-  },
-  "defaultProject": "PFE_front-reworked"
+  }
 }

@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 declare var apiRTC: any;
@@ -21,11 +21,11 @@ export class DescuterFreelancerComponent implements OnInit {
   conversationFormGroup = this.fb.group({
     name: this.fb.control('', [Validators.required])
   });
-  constructor(private activatedRoute: ActivatedRoute,private fb: FormBuilder,private usersService:UsersService) {
+  constructor(private activatedRoute: ActivatedRoute,private fb: UntypedFormBuilder,private usersService:UsersService) {
     this.freelancerdata = JSON.parse( sessionStorage.getItem('freelancerdata') !);
 
-    this.addmessage = new FormGroup({
-      text: new FormControl('', [Validators.required]),
+    this.addmessage = new UntypedFormGroup({
+      text: new UntypedFormControl('', [Validators.required]),
 
     });
   }
@@ -60,8 +60,8 @@ export class DescuterFreelancerComponent implements OnInit {
     })
 
   }
-  get conversationNameFc(): FormControl {
-    return this.conversationFormGroup.get('name') as FormControl;
+  get conversationNameFc(): UntypedFormControl {
+    return this.conversationFormGroup.get('name') as UntypedFormControl;
   }
 
 
